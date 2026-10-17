@@ -1,0 +1,65 @@
+name: Pipeline SERCOP Monitor
+
+on:
+  schedule:
+    # Corre cada 6 horas en el minuto 17 (evita horas punta en GitHub Actions)
+    - cron: '17 */6 * * *'
+  workflow_dispatch: # Permite ejecución manual bajo demanda
+
+# Evita que dos ejecuciones compitan entre sí por rate-limits
+concurrency:
+  group: sercop-pipeline-execution
+  cancel-in-progress: false
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar Pipeline de Extracción y Monitoreo (Turso Cloud)
+        env:
+          STORAGE_BACKEND: ${{ secrets.STORAGE_BACKEND || 'turso' }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REQUEST_DELAY_SECONDS: "3.2"
+          REQUEST_TIMEOUT_SECONDS: "20.0"
+        run: |
+          python -m src.main --rubro ferreteria_construccion --pages 1
+
+      - name: Alerta de Fallo Crítico en Telegram
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              -d "chat_id=${TELEGRAM_CHAT_ID}" \
+              -d "text=❌ *ALERTA CRÍTICA: Falló el Pipeline SERCOP en GitHub Actions*%0A%0ARun ID: ${GITHUB_RUN_ID}%0ARepositorio: ${GITHUB_REPOSITORY}%0AEvento: ${GITHUB_EVENT_NAME}" \
+              -d "parse_mode=Markdown"
+          fi
+
+      - name: Mantener Workflow Activo (Anti-desactivación de 60 días)
+        uses: gautamkrishnar/keepalive-workflow@v2
+        if: always()
+        with:
+          use_api: true
