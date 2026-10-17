@@ -1,0 +1,66 @@
+name: Reporte Semanal SERCOP
+
+on:
+  schedule:
+    # Corre todos los lunes a las 13:00 UTC (8:00 AM hora de Ecuador, UTC-5)
+    - cron: '0 13 * * 1'
+  workflow_dispatch: # Permite generar y enviar el reporte bajo demanda
+
+concurrency:
+  group: sercop-weekly-report
+  cancel-in-progress: true
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generar y Despachar Reporte Ejecutivo en Excel (.xlsx)
+        env:
+          STORAGE_BACKEND: ${{ secrets.STORAGE_BACKEND || 'turso' }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          # Notificaciones Email (Resend)
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          # Notificaciones WhatsApp (Evolution API)
+          EVOLUTION_API_URL: ${{ secrets.EVOLUTION_API_URL }}
+          EVOLUTION_API_KEY: ${{ secrets.EVOLUTION_API_KEY }}
+          EVOLUTION_INSTANCE_NAME: ${{ secrets.EVOLUTION_INSTANCE_NAME }}
+          EVOLUTION_TARGET_NUMBER: ${{ secrets.EVOLUTION_TARGET_NUMBER }}
+          # Notificaciones Telegram
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python -m src.reporte --rubro ferreteria_construccion --dias 7
+
+      - name: Alerta de Fallo en Reporte Semanal
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              -d "chat_id=${TELEGRAM_CHAT_ID}" \
+              -d "text=❌ *Fallo al generar el Reporte Semanal SERCOP en GitHub Actions*%0ARun ID: ${GITHUB_RUN_ID}" \
+              -d "parse_mode=Markdown"
+          fi

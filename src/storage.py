@@ -14,9 +14,24 @@ from abc import ABC, abstractmethod
 from typing import Optional, Dict, Any, List, Tuple
 from datetime import datetime, timezone
 import httpx
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_exponential,
+    retry_if_exception,
+    before_sleep_log,
+)
 from src.models import ProcesoSercop, AlertaMatch
 
 logger = logging.getLogger("sercop.storage")
+
+def es_error_red_turso(exception: BaseException) -> bool:
+    """Identifica errores transitorios de red o timeouts para reintentos con Turso."""
+    if isinstance(exception, (httpx.ConnectTimeout, httpx.ReadTimeout, httpx.NetworkError, httpx.PoolTimeout)):
+        return True
+    if isinstance(exception, httpx.HTTPStatusError):
+        return exception.response.status_code in (429, 500, 502, 503, 504)
+    return False
 
 
 class BaseStorage(ABC):
@@ -43,6 +58,11 @@ class BaseStorage(ABC):
     @abstractmethod
     def registrar_alerta(self, alerta: AlertaMatch, enviado: bool = False) -> int:
         """Registra la alerta disparada en la tabla histórica."""
+        pass
+
+    @abstractmethod
+    def obtener_procesos_recientes(self, dias: int = 7) -> List[Dict[str, Any]]:
+        """Obtiene procesos registrados o actualizados para reportes semanales."""
         pass
 
 
@@ -194,6 +214,18 @@ class SqliteStorage(BaseStorage):
             )
             return cursor.lastrowid
 
+    def obtener_procesos_recientes(self, dias: int = 7) -> List[Dict[str, Any]]:
+        with self._get_connection() as conn:
+            cursor = conn.execute(
+                """
+                SELECT ocid, hash_sha256, title, buyer, region, amount, method, first_seen, last_seen, raw_json
+                FROM procesos
+                ORDER BY amount DESC
+                LIMIT 500
+                """
+            )
+            return [dict(r) for r in cursor.fetchall()]
+
 
 class TursoStorage(BaseStorage):
     """Implementación de SQLite en la nube mediante la API HTTP Pipeline de Turso (LibSQL)."""
@@ -248,6 +280,13 @@ class TursoStorage(BaseStorage):
                 d[name] = val
         return d
 
+    @retry(
+        retry=retry_if_exception(es_error_red_turso),
+        stop=stop_after_attempt(5),
+        wait=wait_exponential(multiplier=1.5, min=1, max=10),
+        before_sleep=before_sleep_log(logger, logging.WARNING),
+        reraise=True,
+    )
     def _execute(self, sql: str, params: Optional[List[Any]] = None) -> List[Dict[str, Any]]:
         stmt: Dict[str, Any] = {"sql": sql}
         if params:
@@ -390,6 +429,15 @@ class TursoStorage(BaseStorage):
         ])
         return 1
 
+    def obtener_procesos_recientes(self, dias: int = 7) -> List[Dict[str, Any]]:
+        sql = """
+        SELECT ocid, hash_sha256, title, buyer, region, amount, method, first_seen, last_seen, raw_json
+        FROM procesos
+        ORDER BY amount DESC
+        LIMIT 500;
+        """
+        return self._execute(sql)
+
 
 class SupabaseStorage(BaseStorage):
     """Implementación Cloud basada en Supabase (PostgreSQL via REST)."""
@@ -491,6 +539,20 @@ class SupabaseStorage(BaseStorage):
         except Exception as e:
             logger.error(f"Error registrando alerta en Supabase ({alerta.ocid}): {e}")
         return 0
+
+    def obtener_procesos_recientes(self, dias: int = 7) -> List[Dict[str, Any]]:
+        try:
+            resp = self.client.table("procesos").select(
+                "ocid, hash_sha256, title, buyer, region, amount, method, first_seen, last_seen, raw_json"
+            ).order("amount", desc=True).limit(500).execute()
+            rows = resp.data or []
+            for r in rows:
+                if "amount" in r and r["amount"] is not None:
+                    r["amount"] = float(r["amount"])
+            return rows
+        except Exception as e:
+            logger.error(f"Error consultando procesos recientes en Supabase: {e}")
+            return []
 
 
 def get_storage(backend: Optional[str] = None, **kwargs) -> BaseStorage:

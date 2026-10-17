@@ -14,7 +14,7 @@ import os
 import time
 import argparse
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 from dotenv import load_dotenv
 
@@ -45,6 +45,8 @@ def ejecutar_pipeline(
     year: Optional[int] = None,
     max_pages: int = 1,
     keywords_busqueda: Optional[List[str]] = None,
+    batch_size: int = 8,
+    ciclo: Optional[int] = None,
     storage_backend: Optional[str] = None,
     db_path: Optional[str] = None,
     enviar_heartbeat: bool = True
@@ -65,10 +67,25 @@ def ejecutar_pipeline(
     matcher = Matcher()
     notifier = Notifier()
 
-    # Si no se pasan keywords específicas de consulta, usamos las principales del perfil
-    if not keywords_busqueda:
-        perfil = matcher.rubros.get(rubro_key, {})
-        keywords_busqueda = perfil.get("keywords", ["cemento", "acero", "pintura"])[:3]
+    # Si no se pasan keywords específicas de consulta, aplicamos rotación por ciclo horario
+    perfil = matcher.rubros.get(rubro_key, {})
+    todas_keywords = perfil.get("keywords", ["cemento", "acero", "pintura"])
+
+    if keywords_busqueda:
+        info_ciclo = f"Manual ({len(keywords_busqueda)} términos)"
+    else:
+        # Rotación inteligente: divide las keywords en 4 ciclos diarios según la hora UTC (cada 6h)
+        hora_utc = datetime.now(timezone.utc).hour
+        ciclo_idx = (hora_utc // 6) if ciclo is None else ciclo
+        total_kw = len(todas_keywords)
+        inicio = (ciclo_idx * batch_size) % total_kw
+        fin = inicio + batch_size
+        keywords_busqueda = todas_keywords[inicio:fin]
+        if len(keywords_busqueda) < batch_size and total_kw > batch_size:
+            keywords_busqueda += todas_keywords[: (batch_size - len(keywords_busqueda))]
+        info_ciclo = f"Ciclo {ciclo_idx + 1}/4 ({len(keywords_busqueda)}/{total_kw} términos)"
+
+    logger.info(f"📋 Keywords asignadas ({info_ciclo}): {', '.join(keywords_busqueda)}")
 
     total_procesados = 0
     total_nuevos_o_cambiados = 0
@@ -154,7 +171,8 @@ def ejecutar_pipeline(
             errores=total_errores_validacion,
             duracion_segundos=duracion,
             backend_nombre=backend_seleccionado,
-            advertencias=advertencias if advertencias else None
+            advertencias=advertencias if advertencias else None,
+            keywords_ciclo=info_ciclo
         )
 
 def main():
@@ -163,6 +181,8 @@ def main():
     parser.add_argument("--year", type=int, default=None, help="Año a consultar (por defecto calcula el año actual)")
     parser.add_argument("--pages", type=int, default=1, help="Número de páginas a descargar por keyword")
     parser.add_argument("--keywords", nargs="+", help="Lista personalizada de keywords para búsqueda en servidor")
+    parser.add_argument("--batch-size", type=int, default=8, help="Número de keywords por corrida en rotación automática")
+    parser.add_argument("--ciclo", type=int, default=None, help="Índice de ciclo (0 a 3). Por defecto calculado según hora UTC")
     parser.add_argument("--backend", default=None, choices=["sqlite", "turso", "supabase"], help="Backend de persistencia")
     parser.add_argument("--db", default=None, help="Ruta personalizada a la base SQLite")
     parser.add_argument("--no-heartbeat", action="store_true", help="Desactiva el envío del mensaje de heartbeat")
@@ -176,6 +196,8 @@ def main():
         year=args.year,
         max_pages=args.pages,
         keywords_busqueda=args.keywords,
+        batch_size=args.batch_size,
+        ciclo=args.ciclo,
         storage_backend=args.backend,
         db_path=args.db,
         enviar_heartbeat=not args.no_heartbeat

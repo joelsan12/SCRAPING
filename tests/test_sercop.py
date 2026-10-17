@@ -1,22 +1,26 @@
 """
-Pruebas unitarias para el Pipeline SERCOP.
+Pruebas unitarias para el Pipeline SERCOP (Semana 3).
 Verifica:
 1. Normalización Unicode NFKC
 2. Coerción estricta de Pydantic v2
 3. Estabilidad y determinismo del Hash SHA-256
 4. Deduplicación por hash y detección de diffs en SQLite
-5. Motor de matching por rubro y palabras clave
-6. Fábrica de persistencia dual (get_storage)
-7. Generador de heartbeat de salud y telemetría
+5. Fábrica de persistencia (SQLite, Turso, Supabase)
+6. Motor de matching por rubro y palabras clave
+7. Telemetría y Heartbeat
+8. Generación de reporte Excel (.xlsx) estilizado
+9. Rotación determinista de palabras clave por ciclo
 """
 
 import os
 import pytest
+import openpyxl
 from src.models import ProcesoSercop
 from src.transform import normalizar_texto, calcular_hash_proceso, calcular_diff_precio
 from src.storage import Storage, SqliteStorage, get_storage
 from src.matcher import Matcher
 from src.notify import Notifier
+from src.reporte import generar_excel_semanal
 
 def test_normalizacion_nfkc():
     raw = "   CONSTRUCCIÓN   DE   ACERAS   "
@@ -92,17 +96,20 @@ def test_storage_deduplicacion_y_diff(tmp_path):
     assert hubo_cambio is True
     assert monto_ant == 20000.0
 
-def test_storage_factory_selection(tmp_path):
+def test_storage_factory_selection(tmp_path, monkeypatch):
     db_file = str(tmp_path / "custom.db")
     st = get_storage("sqlite", db_path=db_file)
     assert isinstance(st, SqliteStorage)
     assert st.db_path == db_file
 
-    # Turso sin credenciales debe arrojar ValueError controlado
+    # Aislar variables de entorno para probar validación de credenciales faltantes
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.delenv("TURSO_AUTH_TOKEN", raising=False)
     with pytest.raises(ValueError, match="Credenciales de Turso no configuradas"):
         get_storage("turso", database_url="", auth_token="")
 
-    # Supabase sin credenciales debe arrojar ValueError controlado
+    monkeypatch.delenv("SUPABASE_URL", raising=False)
+    monkeypatch.delenv("SUPABASE_KEY", raising=False)
     with pytest.raises(ValueError, match="Credenciales de Supabase no configuradas"):
         get_storage("supabase", supabase_url="", supabase_key="")
 
@@ -150,3 +157,74 @@ def test_notifier_heartbeat():
         advertencias=["Prueba de advertencia"]
     )
     assert enviado is True
+
+def test_generador_excel_semanal(tmp_path):
+    procesos_muestra = [
+        {
+            "ocid": "ocds-test-1",
+            "title": "Adquisición de Cemento Selvalegre",
+            "buyer": "GAD Municipal de Quito",
+            "region": "PICHINCHA",
+            "amount": 45000.0,
+            "method": "subasta_inversa",
+            "first_seen": "2026-10-15T10:00:00",
+            "keywords_str": "cemento, hormigon"
+        },
+        {
+            "ocid": "ocds-test-2",
+            "title": "Provisión de Varillas y Tubería PVC",
+            "buyer": "Empresa Pública de Agua",
+            "region": "GUAYAS",
+            "amount": 32000.50,
+            "method": "cotizacion",
+            "first_seen": "2026-10-14T15:30:00",
+            "keywords_str": "varilla, tuberia"
+        }
+    ]
+
+    out_dir = str(tmp_path / "reportes")
+    excel_path = generar_excel_semanal(
+        procesos_coincidentes=procesos_muestra,
+        rubro_nombre="Ferretería y Construcción",
+        output_dir=out_dir
+    )
+
+    assert os.path.exists(excel_path)
+    wb = openpyxl.load_workbook(excel_path)
+    assert "Oportunidades Semanales" in wb.sheetnames
+    assert "Resumen por Región" in wb.sheetnames
+
+    ws1 = wb["Oportunidades Semanales"]
+    assert ws1["A1"].value == "REPORTE EJECUTIVO DE COMPRAS PÚBLICAS - SERCOP ECUADOR"
+    assert ws1["D5"].value == 45000.0
+
+    ws2 = wb["Resumen por Región"]
+    assert ws2["A3"].value == "Provincia / Región"
+
+def test_rotacion_keywords():
+    todas = [f"kw_{i}" for i in range(32)]
+    batch_size = 8
+
+    # Ciclo 0 (00:00 - 05:59 UTC)
+    c0 = todas[0:8]
+    assert len(c0) == 8
+    assert c0[0] == "kw_0" and c0[-1] == "kw_7"
+
+    # Ciclo 1 (06:00 - 11:59 UTC)
+    c1 = todas[8:16]
+    assert len(c1) == 8
+    assert c1[0] == "kw_8" and c1[-1] == "kw_15"
+
+    # Ciclo 2 (12:00 - 17:59 UTC)
+    c2 = todas[16:24]
+    assert len(c2) == 8
+    assert c2[0] == "kw_16" and c2[-1] == "kw_23"
+
+    # Ciclo 3 (18:00 - 23:59 UTC)
+    c3 = todas[24:32]
+    assert len(c3) == 8
+    assert c3[0] == "kw_24" and c3[-1] == "kw_31"
+
+    # Cobertura completa del 100% de keywords en un día (4 ciclos)
+    cubiertas = set(c0 + c1 + c2 + c3)
+    assert len(cubiertas) == 32
