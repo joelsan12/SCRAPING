@@ -224,7 +224,8 @@ def generar_excel_semanal(
 def generar_y_despachar_reporte(
     rubro_key: str = "ferreteria_construccion",
     dias: int = 7,
-    storage_backend: str = None
+    storage_backend: str = None,
+    demo: bool = False
 ):
     storage = get_storage(backend=storage_backend)
     matcher = Matcher()
@@ -259,11 +260,12 @@ def generar_y_despachar_reporte(
 
     logger.info(f"Oportunidades filtradas para {rubro_nombre}: {len(procesos_coincidentes)} (Monto: ${monto_acumulado:,.2f})")
 
-    # 3. Si no hay suficientes registros en la ventana, usar los existentes disponibles para demo
-    if not procesos_coincidentes and procesos_db:
+    # 3. Solo en modo demo (--demo): si no hay coincidencias en la ventana, usar registros para muestra comercial
+    if demo and not procesos_coincidentes and procesos_db:
+        logger.warning("MODO DEMO ACTIVO: Inyectando registros de muestra para presentación de ventas.")
         for p in procesos_db[:15]:
             p_dict = dict(p)
-            p_dict["keywords_str"] = "cemento, construccion"
+            p_dict["keywords_str"] = "cemento, construccion (demo)"
             procesos_coincidentes.append(p_dict)
             monto_acumulado += float(p.get("amount") or 0.0)
 
@@ -286,6 +288,7 @@ def main():
     parser.add_argument("--rubro", default="ferreteria_construccion", help="Clave del rubro")
     parser.add_argument("--dias", type=int, default=7, help="Ventana de días hacia atrás")
     parser.add_argument("--backend", default=None, help="Backend de persistencia (turso, sqlite, supabase)")
+    parser.add_argument("--demo", action="store_true", help="Activar modo demo para presentaciones de venta (muestra ejemplos si no hay coincidencias)")
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -293,7 +296,8 @@ def main():
     generar_y_despachar_reporte(
         rubro_key=args.rubro,
         dias=args.dias,
-        storage_backend=args.backend
+        storage_backend=args.backend,
+        demo=args.demo
     )
 
 if __name__ == "__main__":
