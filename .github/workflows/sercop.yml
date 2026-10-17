@@ -15,6 +15,9 @@ jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: write
 
     steps:
       - name: Checkout del repositorio
@@ -59,7 +62,9 @@ jobs:
           fi
 
       - name: Mantener Workflow Activo (Anti-desactivación de 60 días)
-        uses: gautamkrishnar/keepalive-workflow@v2
         if: always()
-        with:
-          use_api: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow enable sercop.yml || true
+
