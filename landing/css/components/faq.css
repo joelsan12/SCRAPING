@@ -1,0 +1,80 @@
+/* ==========================================================================
+   LicitaciónYa — Interactive FAQ Accordion Component
+   ========================================================================== */
+
+.faq-section {
+  padding: 5rem 0 6.5rem;
+}
+
+.faq-container {
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.faq-item.active {
+  border-color: var(--border-medium);
+  background: rgba(22, 30, 48, 0.85);
+}
+
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1.6rem;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  gap: 1rem;
+}
+
+.faq-item.active .faq-question-btn {
+  color: var(--brand-green-light);
+}
+
+.faq-icon {
+  font-size: 1.2rem;
+  transition: transform 0.25s ease;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+  color: var(--brand-green-light);
+}
+
+.faq-answer-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+}
+
+.faq-item.active .faq-answer-wrapper {
+  max-height: 300px;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.faq-answer-content {
+  padding: 0 1.6rem 1.4rem;
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}

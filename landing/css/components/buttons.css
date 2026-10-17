@@ -1,0 +1,115 @@
+/* ==========================================================================
+   LicitaciónYa — Buttons & Interactive Action Triggers
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  user-select: none;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-md {
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+.btn-lg {
+  padding: 0.9rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+.btn-xl {
+  padding: 1.1rem 2.2rem;
+  font-size: 1.15rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+  background: linear-gradient(135deg, var(--brand-whatsapp) 0%, #128c7e 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-wa-glow);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
+  background: linear-gradient(135deg, #2ae06e 0%, #159c8d 100%);
+}
+
+.btn-whatsapp:active {
+  transform: translateY(0);
+}
+
+/* Secondary & Outline Buttons */
+.btn-outline {
+  background: var(--bg-glass);
+  border-color: var(--border-medium);
+  color: var(--text-main);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background: var(--bg-glass-strong);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Floating WhatsApp Action Button */
+.floating-wa-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--brand-whatsapp);
+  color: #ffffff;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+  transition: all var(--transition-normal);
+}
+
+.floating-wa-btn:hover {
+  transform: scale(1.05) translateY(-3px);
+  background: var(--brand-whatsapp-hover);
+  box-shadow: 0 15px 32px rgba(37, 211, 102, 0.6);
+}
+
+.floating-wa-btn svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .floating-wa-label {
+    display: none;
+  }
+  .floating-wa-btn {
+    padding: 0.85rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+}

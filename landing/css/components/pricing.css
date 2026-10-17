@@ -1,0 +1,131 @@
+/* ==========================================================================
+   LicitaciónYa — Pricing Section Component
+   ========================================================================== */
+
+.pricing-section {
+  padding: 6rem 0;
+}
+
+.pricing-card-wrapper {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: linear-gradient(180deg, rgba(20, 30, 48, 0.85) 0%, rgba(12, 18, 28, 0.95) 100%);
+  border: 2px solid rgba(16, 185, 129, 0.45);
+  border-radius: 24px;
+  padding: 3.2rem 2.6rem;
+  box-shadow: var(--shadow-green-glow), var(--shadow-lg);
+  position: relative;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-hover) 100%);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.4rem 1.3rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+  white-space: nowrap;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 1.85rem;
+}
+
+.plan-name {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 0.45rem;
+}
+
+.plan-target {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+}
+
+/* Price Container */
+.price-container {
+  text-align: center;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2.2rem;
+}
+
+.price-monthly {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.currency {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.amount {
+  font-size: 4.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.period {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+}
+
+.setup-fee {
+  margin-top: 0.65rem;
+  font-size: 0.96rem;
+  color: var(--brand-green-light);
+  font-weight: 600;
+}
+
+/* Feature Checklist */
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2.5rem;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 0.96rem;
+  color: #e5e7eb;
+}
+
+.check-icon {
+  color: var(--brand-green-light);
+  font-weight: 800;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.guarantee-text {
+  display: block;
+  text-align: center;
+  margin-top: 0.95rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .pricing-card {
+    padding: 2.5rem 1.6rem;
+  }
+}

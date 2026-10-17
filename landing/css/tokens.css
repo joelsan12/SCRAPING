@@ -1,0 +1,61 @@
+/* ==========================================================================
+   LicitaciónYa — Design Tokens & CSS Custom Properties
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Dark Luxury & Vibrant Accents */
+  --bg-primary: #0a0e17;
+  --bg-surface: #0f1626;
+  --bg-card: rgba(18, 24, 38, 0.75);
+  --bg-card-hover: rgba(26, 36, 56, 0.9);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --bg-glass-strong: rgba(255, 255, 255, 0.06);
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-glow: rgba(16, 185, 129, 0.35);
+
+  /* Typography Colors */
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  --text-inverse: #0a0e17;
+
+  /* Brand Accents */
+  --brand-green: #10b981;
+  --brand-green-light: #34d399;
+  --brand-green-hover: #059669;
+
+  --brand-blue: #3b82f6;
+  --brand-blue-light: #60a5fa;
+
+  --brand-whatsapp: #25d366;
+  --brand-whatsapp-hover: #20ba59;
+
+  --accent-gold: #fbbf24;
+  --accent-danger: #f87171;
+
+  /* Typography Families */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Elevations & Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --shadow-green-glow: 0 0 35px rgba(16, 185, 129, 0.18);
+  --shadow-wa-glow: 0 8px 25px rgba(37, 211, 102, 0.35);
+
+  /* Layout Constants */
+  --container-max: 1140px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s var(--ease-smooth);
+}

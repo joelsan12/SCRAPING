@@ -1,0 +1,41 @@
+/* ==========================================================================
+   LicitaciónYa — Footer Component
+   ========================================================================== */
+
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  background: #060910;
+  padding: 5.5rem 0 3.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-cta {
+  max-width: 680px;
+  margin: 0 auto 3.8rem;
+}
+
+.footer-cta h2 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.footer-cta p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  margin-bottom: 2.2rem;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  padding-top: 2.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.7;
+}

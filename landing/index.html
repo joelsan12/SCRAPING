@@ -8,28 +8,43 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Modular CSS Architecture -->
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-  <!-- Background Decorative Glows -->
-  <div class="glow-bg glow-1"></div>
-  <div class="glow-bg glow-2"></div>
+  <!-- Ambient Decorative Background Elements -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-middle"></div>
+  <div class="ambient-glow glow-bottom"></div>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <header class="navbar" id="navbar">
     <div class="container nav-content">
-      <a href="#" class="logo">
+      <a href="#" class="logo" id="brand-logo">
         <span class="logo-icon">⚡</span>
         <span class="logo-text">Licitación<strong>Ya</strong></span>
         <span class="badge-country">EC 🇪🇨</span>
       </a>
-      <nav class="nav-links">
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
         <a href="#como-funciona">Cómo Funciona</a>
         <a href="#demo">Demostración</a>
+        <a href="#calculadora">Calculadora ROI</a>
         <a href="#precios">Precios</a>
         <a href="#faq">Preguntas</a>
       </nav>
+
       <div class="nav-cta">
         <a href="https://wa.me/593999999999?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20activar%20mi%20piloto%20gratuito%20de%2015%20d%C3%ADas%20para%20monitorear%20SERCOP" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-whatsapp" id="nav-whatsapp-btn">
           <span>Prueba Gratis 15 Días</span>
@@ -44,7 +59,7 @@
     <div class="container hero-container">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
-        <span>Tecnología B2B para Proveedores de Ferretería y Construcción</span>
+        <span>Inteligencia B2B para Proveedores de Ferretería y Construcción</span>
       </div>
       <h1 class="hero-title">
         No vuelvas a perder una licitación pública por <span class="text-gradient">enterarte tarde</span>
@@ -58,13 +73,13 @@
           <span>Activar Piloto Gratis (15 Días)</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
         </a>
-        <a href="#demo" class="btn btn-lg btn-outline" id="hero-demo-btn">Ver Reporte de Muestra</a>
+        <a href="#calculadora" class="btn btn-lg btn-outline" id="hero-calc-btn">Calcular mi Retorno (ROI)</a>
       </div>
 
       <div class="hero-trust">
         <div class="trust-item">
           <span class="trust-icon">✓</span>
-          <span>Sin tarjeta de crédito requerida</span>
+          <span>Sin tarjeta ni compromiso inicial</span>
         </div>
         <div class="trust-item">
           <span class="trust-icon">✓</span>
@@ -82,13 +97,14 @@
   <section class="demo-section" id="demo">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">Demostración en Vivo</span>
         <h2 class="section-title">Información quirúrgica en tus manos</h2>
         <p class="section-subtitle">No te llenamos de correos basura. Recibes exactamente lo que tu empresa vende en los canales donde tomas decisiones.</p>
       </div>
 
       <div class="demo-grid">
         <!-- Mockup WhatsApp Alert -->
-        <div class="mockup-card whatsapp-card">
+        <article class="mockup-card whatsapp-card" id="card-whatsapp">
           <div class="mockup-header">
             <div class="mockup-header-left">
               <span class="wa-avatar">🤖</span>
@@ -115,10 +131,10 @@
               <span class="wa-time">10:14 AM ✓✓</span>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Mockup Excel Sheet -->
-        <div class="mockup-card excel-card">
+        <article class="mockup-card excel-card" id="card-excel">
           <div class="mockup-header">
             <div class="mockup-header-left">
               <span class="excel-icon">📊</span>
@@ -174,17 +190,18 @@
             </table>
           </div>
           <div class="excel-card-footer">
-            <span>✨ Incluye hoja adicional de <strong>Resumen Geográfico por Provincia</strong> para despacho comercial.</span>
+            <span>✨ Incluye hoja adicional de <strong>Resumen Geográfico por Provincia</strong> para optimizar logística.</span>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- How it works (3 Steps) -->
+  <!-- How it Works (3 Steps) -->
   <section class="steps-section" id="como-funciona">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">Metodología Automatizada</span>
         <h2 class="section-title">Cómo funciona el servicio</h2>
         <p class="section-subtitle">Tú sigues atendiendo tu negocio. Nuestro motor se encarga de vigilar el Estado por ti.</p>
       </div>
@@ -220,11 +237,77 @@
     </div>
   </section>
 
+  <!-- Interactive ROI Calculator Section -->
+  <section class="calculator-section" id="calculadora">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Simulador Financiero</span>
+        <h2 class="section-title">Calcula el Retorno de Inversión (ROI)</h2>
+        <p class="section-subtitle">Descubre cuánto dinero pierde tu empresa cada año al no enterarse a tiempo de compras públicas afines a tus materiales.</p>
+      </div>
+
+      <div class="calculator-wrapper">
+        <div class="calculator-grid">
+          <!-- Controls -->
+          <div class="calc-controls">
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <label for="calc-margin-slider">Margen promedio por contrato ganado:</label>
+                <span class="calc-badge" id="calc-margin-badge">$15,000 USD</span>
+              </div>
+              <input type="range" id="calc-margin-slider" class="calc-slider" min="3000" max="60000" step="1000" value="15000">
+              <div class="calc-slider-scale">
+                <span>$3,000</span>
+                <span>$30,000</span>
+                <span>$60,000+</span>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <label for="calc-contracts-slider">Contratos adicionales al año con alertas tempranas:</label>
+                <span class="calc-badge" id="calc-contracts-badge">2 contratos</span>
+              </div>
+              <input type="range" id="calc-contracts-slider" class="calc-slider" min="1" max="10" step="1" value="2">
+              <div class="calc-slider-scale">
+                <span>1 contrato</span>
+                <span>5 contratos</span>
+                <span>10 contratos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Box -->
+          <div class="calc-results">
+            <div class="calc-result-header">Beneficio Bruto Estimado Anual</div>
+            <div class="calc-result-main" id="calc-result-profit">$30,000</div>
+
+            <div class="calc-result-stats">
+              <div class="stat-item">
+                <small>Costo anual LicitaciónYa</small>
+                <strong id="calc-result-cost">$1,160</strong>
+              </div>
+              <div class="stat-item">
+                <small>Retorno Neto Estimado (ROI)</small>
+                <strong class="roi-tag" id="calc-result-roi">+2,486%</strong>
+              </div>
+            </div>
+
+            <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-md btn-whatsapp btn-block" id="calc-cta-btn">
+              <span>Capturar Estas Oportunidades</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing Section -->
   <section class="pricing-section" id="precios">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Inversión transparente para tu empresa</h2>
+        <span class="section-tag">Tarifas Transparentes</span>
+        <h2 class="section-title">Inversión clara para tu empresa</h2>
         <p class="section-subtitle">Cuesta menos que el 2% de lo que te deja un solo contrato ganado.</p>
       </div>
 
@@ -233,7 +316,7 @@
           <div class="pricing-badge">Plan Proveedor B2B Ecuador</div>
           <div class="pricing-header">
             <h3 class="plan-name">Suscripción Integral LicitaciónYa</h3>
-            <p class="plan-target">Para distribuidores ferreteros, importadoras de materiales y contratistas</p>
+            <p class="plan-target">Para distribuidores ferreteros, importadoras de materiales y constructoras</p>
           </div>
 
           <div class="price-container">
@@ -242,25 +325,25 @@
               <span class="amount">80</span>
               <span class="period">/ mes</span>
             </div>
-            <div class="setup-fee">+ $200 USD de setup inicial (pago único de calibración)</div>
+            <div class="setup-fee">+ $200 USD de setup inicial (pago único de calibración personalizada)</div>
           </div>
 
           <ul class="pricing-features">
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>15 días de piloto 100% gratuito</strong> para validar el servicio</span>
+              <span><strong>15 días de piloto 100% gratuito</strong> para validar el servicio en tu negocio</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span>Monitoreo 24/7 del SERCOP (ciclos automáticos cada 6 horas)</span>
+              <span>Monitoreo ininterrumpido 24/7 de SERCOP (ciclos automáticos cada 6 horas)</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span>Hasta 30 palabras clave técnicas calibradas a tu catálogo</span>
+              <span>Hasta 30 palabras clave técnicas calibradas a tu catálogo específico</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span>Filtro geográfico por provincias y cantones de cobertura</span>
+              <span>Filtro geográfico por provincias y cantones de cobertura logística</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
@@ -272,11 +355,11 @@
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span>Factura electrónica autorizada por el SRI (gasto deducible)</span>
+              <span>Factura electrónica autorizada por el SRI (gasto deducible para la empresa)</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span>Garantía técnica: actualización en menos de 24h ante cambios del portal</span>
+              <span>Garantía técnica: actualización en menos de 24h ante cambios del portal estatal</span>
             </li>
           </ul>
 
@@ -292,32 +375,65 @@
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- Interactive FAQ Section -->
   <section class="faq-section" id="faq">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">Resolviendo Inquietudes</span>
         <h2 class="section-title">Preguntas Frecuentes</h2>
       </div>
 
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h4 class="faq-question">¿Es legal este servicio?</h4>
-          <p class="faq-answer">Completamente legal. Consumimos exclusivamente la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública bajo el estándar internacional OCDS. No intervenimos en los sistemas del Estado ni usamos credenciales privadas.</p>
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <button class="faq-question-btn" aria-expanded="true">
+            <span>¿Es legal este servicio de monitoreo?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer-content">
+              Completamente legal y transparente. Consumimos de forma exclusiva la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública bajo el estándar internacional OCDS (Open Contracting Data Standard). No intervenimos en los sistemas del Estado ni usamos credenciales privadas.
+            </div>
+          </div>
         </div>
 
+        <!-- FAQ 2 -->
         <div class="faq-item">
-          <h4 class="faq-question">¿Por qué pagar si el portal del SERCOP es público?</h4>
-          <p class="faq-answer">El portal es público pero buscar manualmente consume horas, la página suele colapsar y las licitaciones cierran preguntas en 72 horas. Pagar a un asistente cuesta más de $500/mes. LicitaciónYa cuesta $80 y no se le pasa una sola compra.</p>
+          <button class="faq-question-btn" aria-expanded="false">
+            <span>¿Por qué pagar si el portal del SERCOP es público y gratis?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer-content">
+              El portal es público pero buscar manualmente consume horas, la página suele colapsar y las licitaciones cierran preguntas en 72 horas. Pagar a un asistente para buscar a mano cuesta más de $500/mes y se le escapan procesos. LicitaciónYa cuesta $80 y tiene un radar 24/7 que te avisa antes que a tu competencia.
+            </div>
+          </div>
         </div>
 
+        <!-- FAQ 3 -->
         <div class="faq-item">
-          <h4 class="faq-question">¿Cómo funciona la prueba gratis de 15 días?</h4>
-          <p class="faq-answer">Te configuramos tus palabras clave y tu número de WhatsApp sin cobrarte un centavo. Durante dos semanas recibes las alertas reales y dos reportes de lunes. Si decides no continuar, se cancela sin compromiso.</p>
+          <button class="faq-question-btn" aria-expanded="false">
+            <span>¿Cómo funciona la prueba gratis de 15 días?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer-content">
+              Te configuramos tus palabras clave y tu número de WhatsApp sin cobrarte un solo dólar. Durante dos semanas recibes las alertas reales y dos reportes de lunes en Excel. Si al terminar no ves valor comercial claro, se cancela sin compromiso alguno.
+            </div>
+          </div>
         </div>
 
+        <!-- FAQ 4 -->
         <div class="faq-item">
-          <h4 class="faq-question">¿Emiten factura para mi empresa?</h4>
-          <p class="faq-answer">Sí. Todos los pagos se facturan electrónicamente con autorización del SRI, siendo 100% deducibles de impuestos para tu negocio.</p>
+          <button class="faq-question-btn" aria-expanded="false">
+            <span>¿Emiten factura autorizada por el SRI?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer-content">
+              Sí. Todos los pagos se facturan electrónicamente con autorización del SRI, siendo 100% deducibles de impuestos para tu empresa como gasto operativo de inteligencia comercial.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -346,5 +462,7 @@
     <span class="floating-wa-label">Piloto Gratis</span>
   </a>
 
+  <!-- Modular ES Modules Entry Point -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
