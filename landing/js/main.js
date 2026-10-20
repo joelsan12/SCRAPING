@@ -11,6 +11,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initCalculator();
   initFaq();
-
-  console.log('⚡ LicitaciónYa App inicializada correctamente.');
 });

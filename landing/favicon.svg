@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#0F2744"/>
+  <!-- Concentric radar circles -->
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-dasharray="4 3"/>
+  <circle cx="32" cy="32" r="14" fill="none" stroke="#2563EB" stroke-width="2"/>
+  <!-- Central Pulse Point -->
+  <circle cx="32" cy="32" r="5" fill="#10B981"/>
+  <!-- Scanning Radar Beam / Lightning Accent -->
+  <path d="M32 14 L37 28 L45 28 L34 46 L37 34 L29 34 Z" fill="#38BDF8"/>
+</svg>
