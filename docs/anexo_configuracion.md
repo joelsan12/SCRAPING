@@ -53,7 +53,7 @@ Marque con una `X` las provincias donde su empresa tiene capacidad operativa de 
 
 ### 3. Configuración de Canales de Despacho
 
-#### 3.1 Canal de Alertas Instantáneas (WhatsApp / Telegram)
+#### 3.1 Canal de Alertas Automatizadas (WhatsApp / Telegram)
 * **Canal preferente:** `[ WhatsApp / Telegram ]`
 * **Número(s) celular para recepción (con código de país):**
   * Principal: `+593 [99 999 9999]` — Titular: `[Nombre y Cargo]`
