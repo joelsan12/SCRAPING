@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LicitaciónYa — Base Reset, Layout & Utility Styles
+   LicitaciónYa — Base Reset, Layout & Corporate Business Styles
    ========================================================================== */
 
 *, *::before, *::after {
@@ -24,84 +24,70 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ambient Background Glows */
-.ambient-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(130px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.glow-top {
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 650px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(59, 130, 246, 0.06) 65%, transparent 100%);
-}
-
-.glow-middle {
-  top: 1100px;
-  right: -150px;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-}
-
-.glow-bottom {
-  bottom: 400px;
-  left: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-}
-
-/* Grid & Container */
+/* Section Containers & Backgrounds */
 .container {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
-  z-index: 1;
+}
+
+.section-py {
+  padding: 5rem 0;
+}
+
+.bg-surface {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bg-white {
+  background-color: var(--bg-primary);
 }
 
 /* Section Header Utility */
 .section-header {
   text-align: center;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto 3.5rem;
 }
 
 .section-tag {
-  display: inline-block;
-  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--brand-green-light);
-  margin-bottom: 0.75rem;
+  color: var(--brand-navy-light);
+  background-color: var(--brand-blue-soft);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
 }
 
 .section-title {
-  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 0.85rem;
+  color: var(--brand-navy);
+  line-height: 1.25;
+  margin-bottom: 0.9rem;
   letter-spacing: -0.02em;
 }
 
 .section-subtitle {
   color: var(--text-muted);
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* Text Utilities */
 .text-gradient {
-  background: linear-gradient(135deg, #34d399 0%, #3b82f6 50%, #60a5fa 100%);
+  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-light) 60%, var(--brand-blue) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -109,7 +95,60 @@ body {
 
 .font-mono { font-family: var(--font-mono); }
 .text-right { text-align: right; }
+.text-center { text-align: center; }
 .font-bold { font-weight: 700; }
-.text-success { color: var(--brand-green-light); }
+.text-success { color: var(--brand-green); }
 .text-gold { color: var(--accent-gold); }
-.text-blue { color: var(--brand-blue-light); }
+.text-blue { color: var(--brand-blue); }
+.text-navy { color: var(--brand-navy); }
+
+/* Corporate Trust & Metrics Strip */
+.metrics-strip {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 2.2rem 0;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 1rem;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.metric-item:last-child {
+  border-right: none;
+}
+
+.metric-value {
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: var(--brand-navy);
+  font-family: var(--font-sans);
+  line-height: 1.15;
+}
+
+.metric-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+  }
+  .metric-item:nth-child(2) {
+    border-right: none;
+  }
+}
+

@@ -1,34 +1,35 @@
 /* ==========================================================================
    LicitaciónYa — Live Preview & Demo Cards (WhatsApp & Excel Mockups)
+   Clean Multipurpose Business Deliverables Style
    ========================================================================== */
 
 .demo-section {
   padding: 5rem 0;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .demo-grid {
   display: grid;
   grid-template-columns: 1fr 1.35fr;
-  gap: 2.2rem;
+  gap: 2.5rem;
   align-items: start;
 }
 
 /* Card Container */
 .mockup-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .mockup-card:hover {
-  border-color: var(--border-medium);
-  transform: translateY(-5px);
-  box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.6);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* Card Header */
@@ -36,15 +37,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.1rem 1.4rem;
+  padding: 1rem 1.4rem;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.25);
+  background: #ffffff;
 }
 
 .mockup-header-left {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .mockup-header-left small {
@@ -53,13 +54,26 @@
   color: var(--text-dim);
 }
 
+.mockup-header-left strong {
+  font-size: 0.92rem;
+  color: var(--brand-navy);
+}
+
 .online-status {
-  color: var(--brand-green-light) !important;
+  color: var(--brand-green) !important;
   font-weight: 600;
 }
 
 .wa-avatar, .excel-icon {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
 }
 
 .pill {
@@ -72,67 +86,94 @@
 }
 
 .pill-wa {
-  background: rgba(37, 211, 102, 0.15);
-  color: #25d366;
-  border: 1px solid rgba(37, 211, 102, 0.3);
+  background: var(--brand-green-soft);
+  color: var(--brand-green-text);
+  border: 1px solid rgba(5, 150, 105, 0.25);
 }
 
 .pill-excel {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: var(--brand-blue-soft);
+  color: var(--brand-navy-light);
+  border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 /* WhatsApp Message Bubble */
+.wa-container-box {
+  background: #f0f2f5;
+  padding: 1.5rem;
+}
+
 .wa-message-bubble {
-  background: #0d281f;
+  background: #ffffff;
   border-left: 4px solid var(--brand-whatsapp);
   border-radius: var(--radius-md);
-  margin: 1.5rem;
-  padding: 1.3rem;
-  font-size: 0.92rem;
+  padding: 1.25rem;
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-main);
 }
 
 .wa-message-title {
-  color: var(--brand-green-light);
+  color: var(--brand-navy);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  font-size: 0.92rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.wa-phase-badge {
+  display: inline-block;
+  background: var(--brand-green-soft);
+  color: var(--brand-green-text);
   font-weight: 700;
-  margin-bottom: 0.85rem;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.65rem;
 }
 
 .wa-message-body p {
-  margin-bottom: 0.5rem;
-  color: #e5e7eb;
+  margin-bottom: 0.45rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.wa-message-body strong {
+  color: var(--brand-navy);
 }
 
 .highlight-amount {
-  color: var(--accent-gold);
+  color: var(--brand-green-text);
   font-weight: 800;
-  font-size: 1.05rem;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
 }
 
 .wa-message-body code {
-  background: rgba(0, 0, 0, 0.45);
-  padding: 0.15rem 0.4rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-subtle);
+  padding: 0.1rem 0.35rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  color: #a7f3d0;
-  font-size: 0.82rem;
+  color: var(--brand-navy);
+  font-size: 0.78rem;
 }
 
 .wa-message-footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 0.85rem;
   padding-top: 0.65rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.8rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.76rem;
 }
 
 .wa-link {
-  color: var(--brand-blue-light);
-  font-weight: 600;
-  cursor: pointer;
+  color: var(--brand-blue);
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .wa-time {
@@ -142,53 +183,60 @@
 /* Excel Mockup Table */
 .excel-table-wrapper {
   overflow-x: auto;
-  padding: 1rem 1.25rem;
+  padding: 0;
 }
 
 .excel-preview-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
 }
 
 .excel-preview-table th {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-muted);
+  background: var(--bg-surface-alt);
+  color: var(--brand-navy);
   text-align: left;
-  padding: 0.65rem 0.85rem;
-  font-weight: 600;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.75rem 0.9rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-medium);
   white-space: nowrap;
 }
 
 .excel-preview-table td {
-  padding: 0.8rem 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  color: #d1d5db;
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-muted);
 }
 
 .excel-preview-table tr:hover td {
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--bg-surface);
+}
+
+.text-link {
+  color: var(--brand-blue);
+  font-weight: 600;
 }
 
 .tag {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.07);
-  padding: 0.15rem 0.45rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-subtle);
+  padding: 0.12rem 0.4rem;
   border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  margin-right: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--brand-navy-light);
+  margin-right: 0.2rem;
 }
 
 .excel-card-footer {
-  padding: 0.9rem 1.4rem;
-  background: rgba(0, 0, 0, 0.35);
+  padding: 0.85rem 1.4rem;
+  background: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
-@media (max-width: 920px) {
+@media (max-width: 960px) {
   .demo-grid {
     grid-template-columns: 1fr;
   }

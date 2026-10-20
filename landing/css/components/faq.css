@@ -1,30 +1,40 @@
 /* ==========================================================================
    LicitaciónYa — Interactive FAQ Accordion Component
+   Clean Multipurpose Business Style
    ========================================================================== */
 
 .faq-section {
-  padding: 5rem 0 6.5rem;
+  padding: 5rem 0 6rem;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .faq-container {
-  max-width: 840px;
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1rem;
 }
 
 .faq-item {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-sm);
 }
 
 .faq-item.active {
-  border-color: var(--border-medium);
-  background: rgba(22, 30, 48, 0.85);
+  border-color: var(--brand-blue);
+  box-shadow: var(--shadow-sm);
 }
 
 .faq-question-btn {
@@ -32,12 +42,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.4rem 1.6rem;
+  padding: 1.25rem 1.5rem;
   background: none;
   border: none;
-  color: var(--text-main);
+  color: var(--brand-navy);
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
@@ -46,19 +56,20 @@
 }
 
 .faq-item.active .faq-question-btn {
-  color: var(--brand-green-light);
+  color: var(--brand-blue);
 }
 
 .faq-icon {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   transition: transform 0.25s ease;
   color: var(--text-dim);
   flex-shrink: 0;
+  font-weight: 400;
 }
 
 .faq-item.active .faq-icon {
   transform: rotate(45deg);
-  color: var(--brand-green-light);
+  color: var(--brand-blue);
 }
 
 .faq-answer-wrapper {
@@ -68,13 +79,13 @@
 }
 
 .faq-item.active .faq-answer-wrapper {
-  max-height: 300px;
+  max-height: 350px;
   transition: max-height 0.4s ease-in-out;
 }
 
 .faq-answer-content {
-  padding: 0 1.6rem 1.4rem;
+  padding: 0 1.5rem 1.35rem;
   color: var(--text-muted);
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   line-height: 1.65;
 }

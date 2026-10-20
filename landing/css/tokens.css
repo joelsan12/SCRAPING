@@ -1,57 +1,64 @@
 /* ==========================================================================
    LicitaciónYa — Design Tokens & CSS Custom Properties
+   Corporate Business & Consulting Palette
    ========================================================================== */
 
 :root {
-  /* Color Palette - Dark Luxury & Vibrant Accents */
-  --bg-primary: #0a0e17;
-  --bg-surface: #0f1626;
-  --bg-card: rgba(18, 24, 38, 0.75);
-  --bg-card-hover: rgba(26, 36, 56, 0.9);
-  --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-strong: rgba(255, 255, 255, 0.06);
+  /* Color Palette - Clean Corporate & Business Consulting */
+  --bg-primary: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-alt: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(15, 39, 68, 0.02);
+  --bg-glass-strong: rgba(15, 39, 68, 0.04);
 
   /* Borders & Dividers */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-glow: rgba(16, 185, 129, 0.35);
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-focus: #2563eb;
 
-  /* Typography Colors */
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
-  --text-inverse: #0a0e17;
+  /* Typography Colors - High Legibility Slate */
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+  --text-inverse: #ffffff;
 
-  /* Brand Accents */
-  --brand-green: #10b981;
-  --brand-green-light: #34d399;
-  --brand-green-hover: #059669;
+  /* Brand Accents - Enterprise Navy, Executive Blue & Emerald */
+  --brand-navy: #0f2744;
+  --brand-navy-light: #1e3a8a;
+  --brand-blue: #2563eb;
+  --brand-blue-light: #3b82f6;
+  --brand-blue-soft: #eff6ff;
 
-  --brand-blue: #3b82f6;
-  --brand-blue-light: #60a5fa;
+  --brand-green: #059669;
+  --brand-green-light: #10b981;
+  --brand-green-soft: #ecfdf5;
+  --brand-green-text: #065f46;
 
-  --brand-whatsapp: #25d366;
-  --brand-whatsapp-hover: #20ba59;
+  --brand-whatsapp: #16a34a;
+  --brand-whatsapp-hover: #15803d;
 
-  --accent-gold: #fbbf24;
-  --accent-danger: #f87171;
+  --accent-gold: #d97706;
+  --accent-danger: #dc2626;
 
   /* Typography Families */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Elevations & Shadows */
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  --shadow-green-glow: 0 0 35px rgba(16, 185, 129, 0.18);
-  --shadow-wa-glow: 0 8px 25px rgba(37, 211, 102, 0.35);
+  /* Elevations & Soft Business Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --shadow-card: 0 0 0 1px #e2e8f0, 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 0 0 1px #cbd5e1, 0 12px 28px -4px rgba(15, 23, 42, 0.09);
 
   /* Layout Constants */
-  --container-max: 1140px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --container-max: 1180px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-full: 9999px;
 
   /* Transitions */

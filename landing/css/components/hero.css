@@ -1,31 +1,42 @@
 /* ==========================================================================
    LicitaciónYa — Hero Section Component
+   Multipurpose Business & Consulting Split Layout
    ========================================================================== */
 
 .hero-section {
-  padding: 6.5rem 0 4.5rem;
-  text-align: center;
+  padding: 4rem 0 4.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-surface) 100%);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.hero-container {
-  display: flex;
-  flex-direction: column;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
-/* Badge with Pulse Effect */
+/* Left Column: Value Proposition */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.45rem 1.1rem;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  color: var(--brand-green-light);
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 1.85rem;
+  background: var(--brand-blue-soft);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: var(--brand-navy-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .pulse-dot {
@@ -33,76 +44,222 @@
   height: 8px;
   border-radius: 50%;
   background: var(--brand-green);
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7);
   animation: pulse-ring 2s infinite;
 }
 
 @keyframes pulse-ring {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 9px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(5, 150, 105, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
 }
 
-/* Hero Typography */
 .hero-title {
-  font-size: clamp(2.4rem, 5.2vw, 3.8rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.025em;
-  max-width: 920px;
-  margin-bottom: 1.6rem;
+  color: var(--brand-navy);
+  margin-bottom: 1.25rem;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: 1.08rem;
   color: var(--text-muted);
-  max-width: 740px;
-  margin-bottom: 2.75rem;
-  line-height: 1.7;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 580px;
 }
 
-/* CTA Action Bar */
 .hero-actions {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 3.25rem;
+  margin-bottom: 2.2rem;
+  width: 100%;
 }
 
-/* Trust Bar */
 .hero-trust {
   display: flex;
-  gap: 2.2rem;
+  gap: 1.4rem;
   flex-wrap: wrap;
-  justify-content: center;
   color: var(--text-dim);
-  font-size: 0.9rem;
+  font-size: 0.84rem;
 }
 
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .trust-icon {
-  color: var(--brand-green-light);
+  color: var(--brand-green);
   font-weight: 800;
 }
 
-@media (max-width: 640px) {
-  .hero-section {
-    padding: 4.5rem 0 3rem;
+/* Right Column: Executive Live Radar Card */
+.hero-radar-card {
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform var(--transition-normal);
+}
+
+.hero-radar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+}
+
+.radar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.95rem 1.25rem;
+  background: var(--brand-navy);
+  color: #ffffff;
+}
+
+.radar-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.radar-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.radar-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.radar-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.radar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: #ffffff;
+  transition: background var(--transition-fast);
+}
+
+.radar-item:last-child {
+  border-bottom: none;
+}
+
+.radar-item:hover {
+  background: var(--bg-surface);
+}
+
+.radar-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  max-width: 68%;
+}
+
+.radar-entity {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.radar-meta {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.radar-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.radar-amount {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+}
+
+.badge-phase {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.badge-open {
+  background: var(--brand-green-soft);
+  color: var(--brand-green-text);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+.badge-recent {
+  background: var(--bg-surface-alt);
+  color: var(--text-dim);
+  border: 1px solid var(--border-subtle);
+}
+
+.radar-footer {
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.radar-footer strong {
+  color: var(--brand-navy);
+}
+
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
+
+  .hero-subtitle {
+    max-width: 100%;
+  }
+
   .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    max-width: 380px;
+    justify-content: stretch;
   }
-  .hero-trust {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: center;
+
+  .hero-actions .btn {
+    flex: 1;
+    min-width: 220px;
   }
 }
