@@ -73,6 +73,7 @@ class Matcher:
         return AlertaMatch(
             ocid=proceso.ocid,
             rubro=perfil.get("nombre", rubro_key),
+            fase=proceso.fase,
             title=proceso.title,
             description=proceso.description or "",
             buyer=proceso.buyer or "Entidad Pública",

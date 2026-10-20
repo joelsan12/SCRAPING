@@ -90,6 +90,8 @@ def ejecutar_pipeline(
     total_procesados = 0
     total_nuevos_o_cambiados = 0
     total_alertas = 0
+    total_alertas_abiertas = 0
+    total_alertas_adjudicadas = 0
     total_errores_validacion = 0
     advertencias = []
 
@@ -140,6 +142,10 @@ def ejecutar_pipeline(
 
                     if alerta:
                         total_alertas += 1
+                        if alerta.fase.upper() == "ABIERTA":
+                            total_alertas_abiertas += 1
+                        else:
+                            total_alertas_adjudicadas += 1
                         enviado = notifier.enviar_alerta(alerta)
                         storage.registrar_alerta(alerta, enviado=enviado)
 
@@ -156,7 +162,7 @@ def ejecutar_pipeline(
     print(f"Backend persistencia: {backend_seleccionado}")
     print(f"Total registros analizados: {total_procesados}")
     print(f"Registros nuevos o con cambios: {total_nuevos_o_cambiados}")
-    print(f"Alertas de negocio disparadas: {total_alertas}")
+    print(f"Alertas de negocio disparadas: {total_alertas} (Abiertas: {total_alertas_abiertas} | Adjudicadas: {total_alertas_adjudicadas})")
     print(f"Errores de validación Pydantic: {total_errores_validacion}")
     print(f"Duración total: {duracion:.2f}s")
     print("=" * 55)
@@ -172,7 +178,9 @@ def ejecutar_pipeline(
             duracion_segundos=duracion,
             backend_nombre=backend_seleccionado,
             advertencias=advertencias if advertencias else None,
-            keywords_ciclo=info_ciclo
+            keywords_ciclo=info_ciclo,
+            alertas_abiertas=total_alertas_abiertas,
+            alertas_adjudicadas=total_alertas_adjudicadas
         )
 
 def main():

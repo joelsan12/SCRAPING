@@ -23,11 +23,14 @@ Las empresas proveedoras de ferretería, materiales de construcción y suministr
 ```
 
 #### Entregables del Servicio:
-* **Alertas Inmediatas por WhatsApp y Telegram:** Apenas una entidad contratante (Ministerio, Municipio, Empresa Pública, Prefectura o Empresa Eléctrica) publica una compra que coincida con sus productos y supere su presupuesto mínimo, usted recibe un mensaje directo con el enlace oficial, presupuesto referencial y fecha de cierre.
+* **Alertas Inmediatas por WhatsApp y Telegram:** Detección y notificación automatizada ante cada nuevo corte liberado por SERCOP (auditoría continua cada 6 horas). Cada alerta clasifica explícitamente el estado del proceso:
+  * **🟢 Convocatoria Abierta:** Procesos en concurso o pliegos donde la entidad estatal aún no ha seleccionado proveedor, permitiendo preparar ofertas y contactar a la entidad.
+  * **⚪ Adjudicación Reciente:** Inteligencia competitiva de precios finales y oferentes ganadores para monitorear a la competencia y conocer la demanda real en su zona.
+  * Incluye presupuesto referencial en USD, entidad compradora, palabras clave detectadas y enlace hipervinculado directo al pliego oficial.
 * **Reporte Ejecutivo Semanal en Excel (.xlsx):** Todos los lunes a las **8:00 AM**, recibe en su correo electrónico una matriz gerencial organizada en dos hojas:
   * **Oportunidades Semanales:** Listado de licitaciones vigentes con código de proceso, entidad contratante, descripción, monto formateado en USD y enlace hipervinculado directo al pliego.
   * **Resumen Geográfico:** Agrupación por provincias para coordinar la logística de entrega de su equipo de ventas.
-* **Calibración a Medida:** Ajuste exacto a sus líneas comerciales (cemento, acero corrugado, perfiles estructurales, PVC, pintura industrial, herramientas, generadores, etc.) y a su cobertura geográfica de despacho.
+* **Calibración a Medida:** Ajuste exacto a sus líneas comerciales (cemento, acero corrugado, perfiles estructurales, PVC, pintura industrial, herramientas, generadores, etc.) y a su cobertura geográfica de despacho mediante el [Anexo de Configuración](anexo_configuracion.md).
 
 ---
 
@@ -60,9 +63,10 @@ Para presentar el servicio a un tomador de decisiones (Gerente General, Director
    ```bash
    python -m src.main --rubro ferreteria_construccion --pages 1
    ```
-   Mostrar la detección instantánea y el disparo de la alerta en WhatsApp.
-3. **Apertura del Excel Ejecutivo (3 min):** Abrir en pantalla el archivo generado (`reportes/reporte_semanal_...xlsx`) mostrando contratos millonarios reales recientemente detectados:
-   * *Cuerpo de Ingenieros del Ejército:* Materiales de construcción por **$994,289.69 USD**.
-   * *Municipio de Rumiñahui:* Cemento y asfalto por **$286,400.00 USD**.
-   * *CNEL EP:* Ferretería eléctrica por **$154,200.00 USD**.
+   Mostrar la detección instantánea y el disparo de la alerta en WhatsApp con su etiqueta de fase (🟢 Abierta o ⚪ Adjudicada).
+3. **Apertura del Excel Ejecutivo (3 min):** Abrir en pantalla el archivo generado (`downloads/Reporte_SERCOP_Semana_XX_YYYY.xlsx`) mostrando contratos millonarios reales recientemente detectados:
+   * *Cuerpo de Ingenieros del Ejército:* Materiales de construcción por **$994,289.69 USD** (Pichincha).
+   * *Empresa Eléctrica Ambato (EEASA):* Materiales y conductores por **$732,152.96 USD** (Tungurahua).
+   * *CNEL EP:* Ferretería y suministros eléctricos por **$350,393.12 USD** (Guayas).
+   * *Municipio de Rumiñahui:* Cemento y materiales viales por **$286,062.01 USD** (Pichincha).
 4. **Cierre de Piloto (2 min):** *"Permíteme conectar el número de WhatsApp de tu gerente de ventas y tu correo. Te activo las 2 semanas de prueba gratis hoy mismo."*

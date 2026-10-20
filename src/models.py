@@ -5,7 +5,7 @@ Asegura validación de tipos, coerción limpia de montos y campos robustos.
 
 from typing import List, Optional, Any, Union
 from datetime import datetime, timezone
-from pydantic import BaseModel, Field, field_validator, ConfigDict
+from pydantic import BaseModel, Field, field_validator, model_validator, ConfigDict
 
 class ProcesoSercop(BaseModel):
     """Representa un proceso de contratación pública obtenido desde search_ocds."""
@@ -26,13 +26,49 @@ class ProcesoSercop(BaseModel):
     date: Optional[str] = None
     title: str = Field(default="Proceso de compra pública")
     description: Optional[str] = Field(default="")
+    fase: str = Field(default="ABIERTA")
 
-    @field_validator("title", mode="before")
+    @model_validator(mode="before")
     @classmethod
-    def parse_titulo(cls, v: Any) -> str:
-        if not v:
-            return "Proceso de contratación pública"
-        return str(v).strip()
+    def preparar_datos_proceso(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            # 1. Normalizar OCID / ID y buyer
+            ocid = str(data.get("ocid") or data.get("id") or "").strip()
+            buyer = str(data.get("buyer") or "Entidad Pública").strip()
+            
+            # 2. Rescate inteligente de title con fallback a description o buyer + ocid
+            title_val = data.get("title")
+            desc_val = data.get("description")
+            
+            title_clean = str(title_val).strip() if title_val and str(title_val).strip() not in ("", "None", "null") else None
+            desc_clean = str(desc_val).strip() if desc_val and str(desc_val).strip() not in ("", "None", "null") else None
+            
+            if title_clean:
+                data["title"] = title_clean
+            elif desc_clean:
+                data["title"] = desc_clean[:220]
+            else:
+                data["title"] = f"{buyer} — Proceso {ocid}" if ocid else "Proceso de contratación pública"
+
+            # 3. Rescate de description
+            if desc_clean:
+                data["description"] = desc_clean
+            else:
+                data["description"] = data.get("title", "")
+
+            # 4. Rescate de method
+            method_val = data.get("method")
+            if not method_val or str(method_val).strip() in ("", "None", "null"):
+                data["method"] = str(data.get("internal_type") or "desconocido").strip()
+
+            # 5. Clasificación de fase: ABIERTA vs ADJUDICADA
+            supp_val = data.get("suppliers")
+            if supp_val and str(supp_val).strip() not in ("", "None", "null", "[]"):
+                data["fase"] = "ADJUDICADA"
+            else:
+                data["fase"] = "ABIERTA"
+
+        return data
 
     @field_validator("amount", "budget", mode="before")
     @classmethod
@@ -77,6 +113,7 @@ class AlertaMatch(BaseModel):
     """Estructura de la alerta que se notifica al cliente."""
     ocid: str
     rubro: str
+    fase: str = Field(default="ABIERTA")
     title: str
     description: str
     buyer: str

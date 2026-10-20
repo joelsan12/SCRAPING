@@ -228,3 +228,78 @@ def test_rotacion_keywords():
     # Cobertura completa del 100% de keywords en un día (4 ciclos)
     cubiertas = set(c0 + c1 + c2 + c3)
     assert len(cubiertas) == 32
+
+def test_tolerancia_campos_nulos_y_fallbacks():
+    # 1. Fallback a description cuando title es None
+    d1 = {
+        "id": 101,
+        "ocid": "ocds-null-101",
+        "year": 2026,
+        "title": None,
+        "description": "Adquisición de pintura vial de alto tráfico",
+        "buyer": "GAD Municipal",
+        "suppliers": None,
+    }
+    p1 = ProcesoSercop.model_validate(d1)
+    assert p1.title == "Adquisición de pintura vial de alto tráfico"
+    assert p1.description == "Adquisición de pintura vial de alto tráfico"
+    assert p1.fase == "ABIERTA"
+
+    # 2. Fallback a {buyer} — Proceso {ocid} cuando title y description son None
+    d2 = {
+        "id": 102,
+        "ocid": "ocds-null-102",
+        "year": 2026,
+        "title": None,
+        "description": None,
+        "buyer": "Cuerpo de Ingenieros",
+        "suppliers": "",
+    }
+    p2 = ProcesoSercop.model_validate(d2)
+    assert p2.title == "Cuerpo de Ingenieros — Proceso ocds-null-102"
+    assert p2.fase == "ABIERTA"
+
+    # 3. Clasificación de fase como ADJUDICADA cuando hay proveedor
+    d3 = {
+        "id": 103,
+        "ocid": "ocds-adj-103",
+        "year": 2026,
+        "title": "Suministro de Cemento",
+        "suppliers": "HOLCIM ECUADOR S.A.",
+    }
+    p3 = ProcesoSercop.model_validate(d3)
+    assert p3.fase == "ADJUDICADA"
+
+def test_clasificacion_fase_y_alertas():
+    matcher = Matcher(config_path="config/rubros.yaml")
+    notifier = Notifier()
+
+    # Proceso abierto
+    p_abierto = ProcesoSercop(
+        id=201,
+        ocid="ocds-abierto-201",
+        year=2026,
+        title="Compra de Cemento Rocafuerte",
+        amount=15000.0,
+        suppliers="",
+    )
+    alerta_abierta = matcher.evaluar_proceso(p_abierto, "ferreteria_construccion")
+    assert alerta_abierta is not None
+    assert alerta_abierta.fase == "ABIERTA"
+    msg_abierto = notifier.formatear_mensaje_texto(alerta_abierta)
+    assert "🟢 *FASE: CONVOCATORIA ABIERTA*" in msg_abierto
+
+    # Proceso adjudicado
+    p_adjudicado = ProcesoSercop(
+        id=202,
+        ocid="ocds-adj-202",
+        year=2026,
+        title="Compra de Cemento Rocafuerte",
+        amount=18000.0,
+        suppliers="DISTRIBUIDORA FERRETERA CIA LTDA",
+    )
+    alerta_adj = matcher.evaluar_proceso(p_adjudicado, "ferreteria_construccion")
+    assert alerta_adj is not None
+    assert alerta_adj.fase == "ADJUDICADA"
+    msg_adj = notifier.formatear_mensaje_texto(alerta_adj)
+    assert "⚪ *FASE: ADJUDICADA*" in msg_adj

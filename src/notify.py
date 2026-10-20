@@ -64,9 +64,11 @@ class Notifier:
         keywords_str = ", ".join(f"#{kw.replace(' ', '_')}" for kw in alerta.keywords_detectadas)
         monto_str = f"${alerta.amount:,.2f}"
         desc_corta = alerta.description[:250] + ("..." if len(alerta.description) > 250 else "")
+        fase_tag = "🟢 *FASE: CONVOCATORIA ABIERTA*" if alerta.fase.upper() == "ABIERTA" else "⚪ *FASE: ADJUDICADA*"
 
         return (
             f"🚨 *NUEVA OPORTUNIDAD SERCOP*\n"
+            f"{fase_tag}\n"
             f"🏷️ *Rubro:* {alerta.rubro}\n"
             f"🏢 *Entidad:* {alerta.buyer}\n"
             f"📍 *Región:* {alerta.region}\n"
@@ -78,6 +80,12 @@ class Notifier:
 
     def formatear_alerta_html(self, alerta: AlertaMatch) -> str:
         """Plantilla HTML profesional para envíos por correo con Resend."""
+        es_abierta = alerta.fase.upper() == "ABIERTA"
+        fase_bg = "#E8F8F5" if es_abierta else "#F2F4F4"
+        fase_color = "#117864" if es_abierta else "#566573"
+        fase_lbl = "🟢 CONVOCATORIA ABIERTA" if es_abierta else "⚪ PROCESO ADJUDICADO"
+        fase_badge = f'<span style="background-color:{fase_bg};color:{fase_color};padding:4px 10px;border-radius:4px;font-weight:bold;font-size:12px;display:inline-block;margin-top:6px;">{fase_lbl}</span>'
+
         keywords_tags = " ".join(
             f'<span style="background-color:#EBF5FB;color:#1A5276;padding:3px 8px;border-radius:4px;font-size:12px;margin-right:5px;">{kw}</span>'
             for kw in alerta.keywords_detectadas
@@ -90,6 +98,7 @@ class Notifier:
                 <div style="background-color: #1F4E79; color: #ffffff; padding: 18px 24px;">
                     <h2 style="margin: 0; font-size: 20px;">🚨 Nueva Oportunidad de Compra Pública</h2>
                     <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.9;">Rubro: {alerta.rubro}</p>
+                    {fase_badge}
                 </div>
                 <div style="padding: 24px;">
                     <div style="margin-bottom: 16px;">
@@ -264,17 +273,23 @@ class Notifier:
         duracion_segundos: float,
         backend_nombre: str = "sqlite",
         advertencias: Optional[list] = None,
-        keywords_ciclo: Optional[str] = None
+        keywords_ciclo: Optional[str] = None,
+        alertas_abiertas: int = 0,
+        alertas_adjudicadas: int = 0,
     ) -> bool:
         """Envía el reporte de salud de la corrida periódica."""
         estado_icono = "✅" if errores == 0 else "⚠️"
+        desglose_alertas = f"`{alertas}`"
+        if alertas > 0:
+            desglose_alertas += f" (🟢 Abiertas: `{alertas_abiertas}` | ⚪ Adjudicadas: `{alertas_adjudicadas}`)"
+
         msg = (
             f"{estado_icono} *HEARTBEAT PIPELINE SERCOP*\n"
             f"🏷️ *Rubro:* `{rubro}`\n"
             f"⏱️ *Duración:* `{duracion_segundos:.1f}s`\n"
             f"📊 *Analizados:* `{total_analizados}`\n"
             f"🆕 *Nuevos/Modificados:* `{nuevos}`\n"
-            f"🚨 *Alertas emitidas:* `{alertas}`\n"
+            f"🚨 *Alertas emitidas:* {desglose_alertas}\n"
             f"❌ *Errores validación:* `{errores}`\n"
             f"🗄️ *Backend:* `{backend_nombre}`"
         )
