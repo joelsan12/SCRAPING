@@ -34,8 +34,8 @@ La landing page se despliega en Cloudflare Pages mediante carga directa de archi
    * Inicie sesión en [dash.cloudflare.com](https://dash.cloudflare.com/) (cuenta gratuita).
 2. **Crear proyecto Pages:**
    * En el menú lateral, diríjase a **Workers & Pages → Create application → Pages → Upload assets**.
-3. **Configuración del número de WhatsApp (Paso previo al despliegue):**
-   * En `landing/index.html`, busque `593999999999` y reemplácelo por su número corporativo real de WhatsApp (ej. `593987654321`) para activar los 6 botones de contacto directo.
+3. **Número de WhatsApp configurado:**
+   * El número corporativo real `593979116551` ya está vinculado en todos los 6 botones de llamada a la acción (CTA) de `landing/index.html` y el simulador de ROI.
 4. **Carga de archivos:**
    * Nombre del proyecto: `licitacionya`.
    * Arrastre o seleccione el contenido completo de la carpeta local `landing/` (debe incluir `index.html`, `404.html`, `robots.txt`, `favicon.svg`, `og-image.png`, `fonts/`, `css/` y `js/`).

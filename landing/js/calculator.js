@@ -48,7 +48,7 @@ export function initCalculator() {
       const waText = encodeURIComponent(
         `Hola LicitaciónYa, calculé en su web un retorno estimado de ${formatCurrency(totalProfit)} con ${contracts} contrato(s). Quisiera activar el piloto de 15 días gratis para mi empresa.`
       );
-      calcCtaBtn.href = `https://wa.me/593999999999?text=${waText}`;
+      calcCtaBtn.href = `https://wa.me/593979116551?text=${waText}`;
     }
   }
 
