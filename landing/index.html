@@ -28,19 +28,19 @@
   <link rel="stylesheet" href="css/fonts.css">
   
   <!-- Parallel Modular CSS (Zero @import Waterfall) -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components/buttons.css">
-  <link rel="stylesheet" href="css/components/navbar.css?v=20261020">
-  <link rel="stylesheet" href="css/components/hero.css?v=20261020">
-  <link rel="stylesheet" href="css/components/industries.css">
-  <link rel="stylesheet" href="css/components/demo-cards.css">
-  <link rel="stylesheet" href="css/components/comparison.css">
-  <link rel="stylesheet" href="css/components/steps.css">
-  <link rel="stylesheet" href="css/components/calculator.css">
-  <link rel="stylesheet" href="css/components/pricing.css">
-  <link rel="stylesheet" href="css/components/faq.css">
-  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/tokens.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/base.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/buttons.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/navbar.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/hero.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/industries.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/demo-cards.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/comparison.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/steps.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/calculator.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/pricing.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/faq.css?v=20261020_v3">
+  <link rel="stylesheet" href="css/components/footer.css?v=20261020_v3">
 
   <!-- Structured Data: Organization & FAQPage Schema -->
   <script type="application/ld+json">
@@ -216,77 +216,426 @@
         <!-- Radar Filter Tabs: Modern Segmented Control -->
         <div class="radar-tabs-wrapper">
           <div class="radar-tabs">
-            <button class="radar-tab active" data-filter="all">Todos (4)</button>
-            <button class="radar-tab" data-filter="open">Convocatoria Abierta (3)</button>
-            <button class="radar-tab" data-filter="recent">Adjudicadas (1)</button>
+            <button type="button" class="radar-tab active" data-filter="all">Todos (<span id="radar-tab-all-count">8</span>)</button>
+            <button type="button" class="radar-tab" data-filter="open">Convocatoria Abierta (<span id="radar-tab-open-count">6</span>)</button>
+            <button type="button" class="radar-tab" data-filter="recent">Adjudicadas (<span id="radar-tab-recent-count">2</span>)</button>
           </div>
         </div>
 
-        <div class="radar-list">
-          <!-- Real Contract 1: Cuerpo de Ingenieros del Ejército -->
-          <div class="radar-item" data-phase="open">
-            <div class="radar-item-left">
-              <span class="radar-entity">Cuerpo de Ingenieros del Ejército</span>
-              <div class="radar-meta">
-                <span class="code-pill">LICO-CEE-2024-001</span>
-                <span>• Pichincha</span>
+        <!-- Radar Quick Search Bar -->
+        <div class="radar-search-wrapper">
+          <div class="radar-search-box">
+            <svg class="radar-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="radar-search-input" class="radar-search-input" placeholder="Filtrar por entidad, provincia o código..." aria-label="Filtrar procesos SERCOP">
+            <button type="button" class="radar-search-clear" id="radar-search-clear" style="display:none;" title="Limpiar filtro">&times;</button>
+          </div>
+        </div>
+
+        <!-- Radar Process List (Scrollable & Paged) -->
+        <div class="radar-list" id="radar-items-container">
+          <!-- Item 1: Cuerpo de Ingenieros del Ejército -->
+          <div class="radar-item" data-phase="open" data-index="0" data-keywords="cuerpo ingenieros ejercito lico-cee-2024-001 pichincha quito herramientas perfiles taller">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">Cuerpo de Ingenieros del Ejército</span>
+                <div class="radar-meta">
+                  <span class="code-pill">LICO-CEE-2024-001</span>
+                  <span>• Pichincha</span>
+                  <span class="expand-hint">Ver pliego &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$994,289.69</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
               </div>
             </div>
-            <div class="radar-item-right">
-              <span class="radar-amount">$994,289.69</span>
-              <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Adquisición de herramientas industriales, perfiles de acero y consumibles de taller mecánico.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Tipo de Contratación</span>
+                  <span class="drawer-val">Licitación de Bienes (LICO)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha Límite Ofertas</span>
+                  <span class="drawer-val text-alert">28 Octubre 2026 • 15:00</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">42921 (Ferretería Industrial)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Garantía / Anticipo</span>
+                  <span class="drawer-val">Fiel Cumplimiento 5%</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20recibir%20alertas%20del%20proceso%20LICO-CEE-2024-001%20del%20Cuerpo%20de%20Ingenieros" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Monitorear por WhatsApp
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="LICO-CEE-2024-001">Copiar Código</button>
+              </div>
             </div>
           </div>
 
-          <!-- Real Contract 2: Empresa Eléctrica Ambato -->
-          <div class="radar-item" data-phase="open">
-            <div class="radar-item-left">
-              <span class="radar-entity">Empresa Eléctrica Ambato (EEASA)</span>
-              <div class="radar-meta">
-                <span class="code-pill">CE-20240002558712</span>
-                <span>• Tungurahua</span>
+          <!-- Item 2: Empresa Eléctrica Ambato -->
+          <div class="radar-item" data-phase="open" data-index="1" data-keywords="empresa electrica ambato eeasa ce-20240002558712 tungurahua conductores aluminio transformadores">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">Empresa Eléctrica Ambato (EEASA)</span>
+                <div class="radar-meta">
+                  <span class="code-pill">CE-20240002558712</span>
+                  <span>• Tungurahua</span>
+                  <span class="expand-hint">Ver pliego &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$732,152.96</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
               </div>
             </div>
-            <div class="radar-item-right">
-              <span class="radar-amount">$732,152.96</span>
-              <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Suministro de conductores de aluminio para media tensión y transformadores de distribución trifásicos.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Tipo de Contratación</span>
+                  <span class="drawer-val">Catálogo Electrónico (CE)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha Límite Ofertas</span>
+                  <span class="drawer-val text-alert">30 Octubre 2026 • 12:00</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">46211 (Transformadores y Cables)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Lugar de Entrega</span>
+                  <span class="drawer-val">Bodegas EEASA • Ambato</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20recibir%20alertas%20del%20proceso%20CE-20240002558712%20de%20EEASA" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Monitorear por WhatsApp
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="CE-20240002558712">Copiar Código</button>
+              </div>
             </div>
           </div>
 
-          <!-- Real Contract 3: CNEL EP Guayaquil -->
-          <div class="radar-item" data-phase="recent">
-            <div class="radar-item-left">
-              <span class="radar-entity">CNEL EP Guayaquil</span>
-              <div class="radar-meta">
-                <span class="code-pill">CE-20240002562764</span>
-                <span>• Guayas</span>
+          <!-- Item 3: CNEL EP Guayaquil -->
+          <div class="radar-item" data-phase="recent" data-index="2" data-keywords="cnel ep guayaquil ce-20240002562764 guayas tuberia pvc valvulas red matriz">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">CNEL EP Guayaquil</span>
+                <div class="radar-meta">
+                  <span class="code-pill">CE-20240002562764</span>
+                  <span>• Guayas</span>
+                  <span class="expand-hint">Ver adjudicación &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$350,393.12</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-recent"><span class="dot-indicator dot-recent"></span> Adjudicada</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
               </div>
             </div>
-            <div class="radar-item-right">
-              <span class="radar-amount">$350,393.12</span>
-              <span class="badge-phase badge-recent"><span class="dot-indicator dot-recent"></span> Adjudicada</span>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Adquisición de tubería PVC presión y accesorios para modernización de redes de distribución.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Estado Oficial</span>
+                  <span class="drawer-val">Adjudicado • Contrato Suscrito</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha de Adjudicación</span>
+                  <span class="drawer-val">14 Octubre 2026</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">36320 (Tuberías de Plástico)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Ahorro SERCOP</span>
+                  <span class="drawer-val">4.2% bajo presupuesto</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20reporte%20de%20adjudicaciones%20de%20CNEL%20EP%20Guayaquil" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Consultar Histórico
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="CE-20240002562764">Copiar Código</button>
+              </div>
             </div>
           </div>
 
-          <!-- Real Contract 4: GAD Municipal de Rumiñahui -->
-          <div class="radar-item" data-phase="open">
-            <div class="radar-item-left">
-              <span class="radar-entity">GAD Municipal de Rumiñahui</span>
-              <div class="radar-meta">
-                <span class="code-pill">COTO-GADMUR-2024-001</span>
-                <span>• Pichincha</span>
+          <!-- Item 4: GAD Municipal de Rumiñahui -->
+          <div class="radar-item" data-phase="open" data-index="3" data-keywords="gad municipal ruminahui coto-gadmur-2024-001 pichincha sangolqui petreos asfalto cemento vialidad">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">GAD Municipal de Rumiñahui</span>
+                <div class="radar-meta">
+                  <span class="code-pill">COTO-GADMUR-2024-001</span>
+                  <span>• Pichincha</span>
+                  <span class="expand-hint">Ver pliego &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$286,062.01</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
               </div>
             </div>
-            <div class="radar-item-right">
-              <span class="radar-amount">$286,062.01</span>
-              <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Suministro de materiales pétreos, mezcla asfáltica y cemento portland para mantenimiento vial cantonal.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Tipo de Contratación</span>
+                  <span class="drawer-val">Cotización de Bienes (COTO)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha Límite Ofertas</span>
+                  <span class="drawer-val text-alert">25 Octubre 2026 • 17:00</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">37510 (Áridos y Hormigón)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Plazo de Ejecución</span>
+                  <span class="drawer-val">90 días calendario</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20alertas%20del%20proceso%20COTO-GADMUR-2024-001%20del%20GAD%20Rumi%C3%B1ahui" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Monitorear por WhatsApp
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="COTO-GADMUR-2024-001">Copiar Código</button>
+              </div>
             </div>
           </div>
+
+          <!-- Item 5: EPMAPS Agua de Quito -->
+          <div class="radar-item" data-phase="open" data-index="4" data-keywords="epmaps agua quito sie-epmaps-2024-042 pichincha valvulas medidores caudal tuberias">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">EPMAPS Agua Potable de Quito</span>
+                <div class="radar-meta">
+                  <span class="code-pill">SIE-EPMAPS-2024-042</span>
+                  <span>• Pichincha</span>
+                  <span class="expand-hint">Ver pliego &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$418,900.50</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Provisión e instalación de válvulas reductoras de presión, macro-medidores electromagnéticos y juntas de desmontaje.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Tipo de Contratación</span>
+                  <span class="drawer-val">Subasta Inversa Electrónica (SIE)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha Límite Ofertas</span>
+                  <span class="drawer-val text-alert">31 Octubre 2026 • 14:00</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">43230 (Bombas y Válvulas)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Modalidad Puja</span>
+                  <span class="drawer-val">Puja a la baja 1% mínimo</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20alertas%20del%20proceso%20SIE-EPMAPS-2024-042%20de%20EPMAPS%20Quito" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Monitorear por WhatsApp
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="SIE-EPMAPS-2024-042">Copiar Código</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6: GAD Provincial de Pichincha -->
+          <div class="radar-item" data-phase="open" data-index="5" data-keywords="gad provincial pichincha mco-gadpp-2024-019 repuestos volquetas equipo caminero filtros maquinaria">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">GAD Provincial de Pichincha</span>
+                <div class="radar-meta">
+                  <span class="code-pill">MCO-GADPP-2024-019</span>
+                  <span>• Pichincha</span>
+                  <span class="expand-hint">Ver pliego &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$195,430.00</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Adquisición de repuestos originales, lubricantes y filtros de alto rendimiento para flota de equipo caminero.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Tipo de Contratación</span>
+                  <span class="drawer-val">Menor Cuantía Bienes (MCO)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha Límite Ofertas</span>
+                  <span class="drawer-val text-alert">27 Octubre 2026 • 11:30</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">49111 (Repuestos Maquinaria)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Preferencia</span>
+                  <span class="drawer-val">MYPES y Productores Locales</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20alertas%20del%20proceso%20MCO-GADPP-2024-019%20del%20GAD%20Pichincha" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Monitorear por WhatsApp
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="MCO-GADPP-2024-019">Copiar Código</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7: CELEC EP Termopichincha -->
+          <div class="radar-item" data-phase="recent" data-index="6" data-keywords="celec ep termopichincha lics-celec-2024-008 azuay turbinas empaquetaduras filtros combustible">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">CELEC EP Termopichincha</span>
+                <div class="radar-meta">
+                  <span class="code-pill">LICS-CELEC-2024-008</span>
+                  <span>• Azuay</span>
+                  <span class="expand-hint">Ver adjudicación &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$845,610.20</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-recent"><span class="dot-indicator dot-recent"></span> Adjudicada</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Suministro de empaquetaduras de turbina a gas, sensores de instrumentación y filtros de combustible pesados.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Estado Oficial</span>
+                  <span class="drawer-val">Adjudicado • Proceso Cerrado</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha de Adjudicación</span>
+                  <span class="drawer-val">09 Octubre 2026</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">43110 (Motores y Turbinas)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Proveedor Ganador</span>
+                  <span class="drawer-val">TurboPartes Andina Cía. Ltda.</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20monitorear%20procesos%20de%20CELEC%20EP" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Consultar Histórico
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="LICS-CELEC-2024-008">Copiar Código</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8: Hospital General Guasmo Sur -->
+          <div class="radar-item" data-phase="open" data-index="7" data-keywords="hospital general guasmo sur sie-hgo-2024-015 guayas insumos medicos quirurgicos jeringuillas guantes">
+            <div class="radar-item-main">
+              <div class="radar-item-left">
+                <span class="radar-entity">Hospital General Guasmo Sur</span>
+                <div class="radar-meta">
+                  <span class="code-pill">SIE-HGO-2024-015</span>
+                  <span>• Guayas</span>
+                  <span class="expand-hint">Ver pliego &darr;</span>
+                </div>
+              </div>
+              <div class="radar-item-right">
+                <span class="radar-amount">$162,750.00</span>
+                <div class="badge-wrapper">
+                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+            <div class="radar-item-drawer">
+              <p class="drawer-obj"><strong>Objeto:</strong> Adquisición de insumos médicos descartables, suturas y material estéril para área quirúrgica hospitalaria.</p>
+              <div class="drawer-grid">
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Tipo de Contratación</span>
+                  <span class="drawer-val">Subasta Inversa Electrónica (SIE)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Fecha Límite Ofertas</span>
+                  <span class="drawer-val text-alert">02 Noviembre 2026 • 10:00</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Código CPC</span>
+                  <span class="drawer-val">48180 (Insumos Médicos)</span>
+                </div>
+                <div class="drawer-stat">
+                  <span class="drawer-lbl">Registro Sanitario</span>
+                  <span class="drawer-val">Obligatorio ARCSA</span>
+                </div>
+              </div>
+              <div class="drawer-actions">
+                <a href="https://wa.me/593979116551?text=Hola%20Licitaci%C3%B3nYa%2C%20quisiera%20alertas%20del%20proceso%20SIE-HGO-2024-015%20del%20Hospital%20Guasmo%20Sur" target="_blank" rel="noopener noreferrer" class="btn-drawer-wa">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  Monitorear por WhatsApp
+                </a>
+                <button type="button" class="btn-drawer-copy" data-copy="SIE-HGO-2024-015">Copiar Código</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar Pagination Navigation Toolbar -->
+        <div class="radar-pagination-bar">
+          <button type="button" class="radar-nav-btn" id="radar-prev-btn" disabled title="Ver procesos anteriores">&larr; Anterior</button>
+          <span class="radar-nav-info">Mostrando <strong id="radar-nav-shown">1 - 4</strong> de <strong id="radar-nav-total">8</strong> procesos</span>
+          <button type="button" class="radar-nav-btn" id="radar-next-btn" title="Ver más procesos">Siguiente &rarr;</button>
         </div>
 
         <div class="radar-footer">
-          <span>Inspección algorítmica continua</span>
-          <strong>68% en Convocatoria Abierta</strong>
+          <span id="radar-footer-status">Inspección algorítmica continua</span>
+          <strong id="radar-footer-stat">75% en Convocatoria Abierta ($2.8M USD)</strong>
         </div>
       </div>
     </div>
@@ -475,9 +824,9 @@
 
           <!-- Bottom Sheet Tabs -->
           <div class="excel-sheet-tabs">
-            <span class="excel-sheet-tab active">Oportunidades_SERCOP</span>
-            <span class="excel-sheet-tab">Resumen_Geografico</span>
-            <span class="excel-sheet-tab">Analisis_Entidad</span>
+            <button type="button" class="excel-sheet-tab active" data-sheet="oportunidades">Oportunidades_SERCOP</button>
+            <button type="button" class="excel-sheet-tab" data-sheet="geografico">Resumen_Geografico</button>
+            <button type="button" class="excel-sheet-tab" data-sheet="entidad">Analisis_Entidad</button>
           </div>
 
           <div class="excel-card-footer">
@@ -847,6 +1196,218 @@
   </a>
 
   <!-- Modular ES Modules Entry Point -->
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js?v=20261020_v3"></script>
+
+  <!-- Immediate Inline Interactive Controller (Fail-Safe Navigation & Click Handling) -->
+  <script>
+    (function() {
+      // 1. Radar Table Controller
+      var currentFilter = 'all';
+      var searchQuery = '';
+      var currentPage = 1;
+      var pageSize = 4;
+
+      function getRadarItems() {
+        return Array.prototype.slice.call(document.querySelectorAll('.radar-item'));
+      }
+
+      function updateRadarView() {
+        var items = getRadarItems();
+        if (!items.length) return;
+
+        var q = (searchQuery || '').trim().toLowerCase();
+        var matching = items.filter(function(item) {
+          var phase = item.getAttribute('data-phase');
+          var matchesFilter = (currentFilter === 'all' || phase === currentFilter);
+          if (!matchesFilter) return false;
+          if (!q) return true;
+          var kw = (item.getAttribute('data-keywords') || '').toLowerCase();
+          var txt = item.textContent.toLowerCase();
+          return kw.indexOf(q) !== -1 || txt.indexOf(q) !== -1;
+        });
+
+        var total = matching.length;
+        var totalPages = Math.max(1, Math.ceil(total / pageSize));
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        var start = (currentPage - 1) * pageSize;
+        var end = Math.min(start + pageSize, total);
+
+        items.forEach(function(item) {
+          var idx = matching.indexOf(item);
+          if (idx >= start && idx < end) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        var shownEl = document.getElementById('radar-nav-shown');
+        var totalEl = document.getElementById('radar-nav-total');
+        var prevBtn = document.getElementById('radar-prev-btn');
+        var nextBtn = document.getElementById('radar-next-btn');
+
+        if (shownEl) shownEl.textContent = total > 0 ? (start + 1) + ' - ' + end : '0';
+        if (totalEl) totalEl.textContent = total;
+        if (prevBtn) prevBtn.disabled = (currentPage <= 1);
+        if (nextBtn) nextBtn.disabled = (currentPage >= totalPages);
+
+        var statEl = document.getElementById('radar-footer-stat');
+        if (statEl) {
+          if (currentFilter === 'open') {
+            statEl.textContent = total + ' en Convocatoria Abierta (~$2.8M USD)';
+          } else if (currentFilter === 'recent') {
+            statEl.textContent = total + ' Adjudicadas recientemente (~$1.2M USD)';
+          } else {
+            statEl.textContent = '75% en Convocatoria Abierta ($2.8M USD)';
+          }
+        }
+      }
+
+      // Event delegation for all clicks
+      document.addEventListener('click', function(e) {
+        // Tab click
+        var tab = e.target.closest('.radar-tab');
+        if (tab) {
+          e.preventDefault();
+          var tabs = document.querySelectorAll('.radar-tab');
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          currentFilter = tab.getAttribute('data-filter') || 'all';
+          currentPage = 1;
+          updateRadarView();
+          return;
+        }
+
+        // Pagination Prev
+        if (e.target.closest('#radar-prev-btn')) {
+          e.preventDefault();
+          if (currentPage > 1) {
+            currentPage--;
+            updateRadarView();
+            var list = document.getElementById('radar-items-container');
+            if (list) list.scrollTop = 0;
+          }
+          return;
+        }
+
+        // Pagination Next
+        if (e.target.closest('#radar-next-btn')) {
+          e.preventDefault();
+          currentPage++;
+          updateRadarView();
+          var list = document.getElementById('radar-items-container');
+          if (list) list.scrollTop = 0;
+          return;
+        }
+
+        // Clear Search
+        if (e.target.closest('#radar-search-clear')) {
+          e.preventDefault();
+          var input = document.getElementById('radar-search-input');
+          if (input) {
+            input.value = '';
+            searchQuery = '';
+            e.target.closest('#radar-search-clear').style.display = 'none';
+            currentPage = 1;
+            updateRadarView();
+            input.focus();
+          }
+          return;
+        }
+
+        // Copy Code Button
+        var copyBtn = e.target.closest('.btn-drawer-copy');
+        if (copyBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          var code = copyBtn.getAttribute('data-copy');
+          if (navigator.clipboard && code) {
+            navigator.clipboard.writeText(code).then(function() {
+              var orig = copyBtn.textContent;
+              copyBtn.textContent = '¡Copiado!';
+              copyBtn.style.color = '#059669';
+              setTimeout(function() {
+                copyBtn.textContent = orig;
+                copyBtn.style.color = '';
+              }, 1800);
+            });
+          }
+          return;
+        }
+
+        // Row Click: Expand / Collapse Drawer
+        var row = e.target.closest('.radar-item');
+        if (row && !e.target.closest('a') && !e.target.closest('button')) {
+          var isExpanded = row.classList.contains('expanded');
+          row.classList.toggle('expanded');
+          var hint = row.querySelector('.expand-hint');
+          if (hint) {
+            hint.innerHTML = isExpanded ? 'Ver pliego &darr;' : 'Ocultar &uarr;';
+          }
+          return;
+        }
+
+        // Excel Sheet Tabs
+        var excelTab = e.target.closest('.excel-sheet-tab');
+        if (excelTab) {
+          e.preventDefault();
+          var exTabs = document.querySelectorAll('.excel-sheet-tab');
+          exTabs.forEach(function(t) { t.classList.remove('active'); });
+          excelTab.classList.add('active');
+
+          var sheet = excelTab.getAttribute('data-sheet');
+          var tbody = document.querySelector('.excel-preview-table tbody');
+          var thead = document.querySelector('.excel-preview-table thead');
+          var footer = document.querySelector('.excel-card-footer');
+
+          if (sheet === 'geografico' && tbody && thead) {
+            thead.innerHTML = '<tr><th>Provincia</th><th>Procesos</th><th>Monto Acumulado USD</th><th>Entidad Principal</th><th>Fase</th></tr>';
+            tbody.innerHTML = '<tr><td class="font-mono text-link">Pichincha</td><td>3 procesos</td><td class="text-right font-bold text-success">$1,475,782.20</td><td>Cuerpo de Ingenieros</td><td><span class="badge-phase badge-open">Abiertas</span></td></tr>' +
+              '<tr><td class="font-mono text-link">Tungurahua</td><td>1 proceso</td><td class="text-right font-bold text-success">$732,152.96</td><td>Empresa Eléctrica Ambato</td><td><span class="badge-phase badge-open">Abierta</span></td></tr>' +
+              '<tr><td class="font-mono text-link">Guayas</td><td>2 procesos</td><td class="text-right font-bold text-success">$513,143.12</td><td>CNEL EP Guayaquil</td><td><span class="badge-phase badge-open">1 Abierta / 1 Adj.</span></td></tr>' +
+              '<tr><td class="font-mono text-link">Azuay</td><td>1 proceso</td><td class="text-right font-bold">$845,610.20</td><td>CELEC EP Termopichincha</td><td><span class="badge-phase badge-recent">Adjudicada</span></td></tr>';
+            if (footer) footer.innerHTML = '<span>Filtro territorial para optimizar <strong>rutas comerciales, despachos y viáticos de entrega</strong>.</span>';
+          } else if (sheet === 'entidad' && tbody && thead) {
+            thead.innerHTML = '<tr><th>Entidad Contratante</th><th>Sector</th><th>Frecuencia Anual</th><th>Presupuesto Promedio</th><th>Historial</th></tr>';
+            tbody.innerHTML = '<tr><td class="font-mono text-link">Cuerpo de Ingenieros</td><td>Defensa / Obras</td><td class="text-right font-bold text-success">12 procesos/año</td><td>$850,000 USD</td><td><span class="badge-phase badge-open">Alta Confiabilidad</span></td></tr>' +
+              '<tr><td class="font-mono text-link">EEASA Ambato</td><td>Sector Eléctrico</td><td class="text-right font-bold text-success">18 procesos/año</td><td>$680,000 USD</td><td><span class="badge-phase badge-open">Pago Puntual</span></td></tr>' +
+              '<tr><td class="font-mono text-link">CNEL EP Guayaquil</td><td>Energía Pública</td><td class="text-right font-bold text-success">26 procesos/año</td><td>$420,000 USD</td><td><span class="badge-phase badge-open">Gran Volumen</span></td></tr>' +
+              '<tr><td class="font-mono text-link">GAD Municipal Rumiñahui</td><td>Gobierno Local</td><td class="text-right font-bold text-success">8 procesos/año</td><td>$280,000 USD</td><td><span class="badge-phase badge-open">Obras Viales</span></td></tr>';
+            if (footer) footer.innerHTML = '<span>Análisis de comprador público: <strong>frecuencia de adjudicación y comportamiento en SERCOP</strong>.</span>';
+          } else if (sheet === 'oportunidades' && tbody && thead) {
+            thead.innerHTML = '<tr><th>Código Real</th><th>Entidad Contratante</th><th>Presupuesto USD</th><th>Provincia</th><th>Fase</th></tr>';
+            tbody.innerHTML = '<tr><td class="font-mono text-link">LICO-CEE-2024-001</td><td>Cuerpo de Ingenieros del Ejército</td><td class="text-right font-bold text-success">$994,289.69</td><td>Pichincha</td><td><span class="badge-phase badge-open">Abierta</span></td></tr>' +
+              '<tr><td class="font-mono text-link">CE-20240002558712</td><td>Empresa Eléctrica Ambato</td><td class="text-right font-bold text-success">$732,152.96</td><td>Tungurahua</td><td><span class="badge-phase badge-open">Abierta</span></td></tr>' +
+              '<tr><td class="font-mono text-link">CE-20240002562764</td><td>CNEL EP Guayaquil</td><td class="text-right font-bold">$350,393.12</td><td>Guayas</td><td><span class="badge-phase badge-recent">Adjudicada</span></td></tr>' +
+              '<tr><td class="font-mono text-link">COTO-GADMUR-2024-001</td><td>GAD Municipal de Rumiñahui</td><td class="text-right font-bold text-success">$286,062.01</td><td>Pichincha</td><td><span class="badge-phase badge-open">Abierta</span></td></tr>';
+            if (footer) footer.innerHTML = '<span>Incluye hoja adicional de <strong>Resumen Geográfico y Análisis por Entidad</strong> para planificar despachos.</span>';
+          }
+          return;
+        }
+      });
+
+      // Search input event
+      document.addEventListener('input', function(e) {
+        if (e.target && e.target.id === 'radar-search-input') {
+          searchQuery = e.target.value;
+          var clearBtn = document.getElementById('radar-search-clear');
+          if (clearBtn) {
+            clearBtn.style.display = searchQuery ? 'inline-block' : 'none';
+          }
+          currentPage = 1;
+          updateRadarView();
+        }
+      });
+
+      // Run on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateRadarView);
+      } else {
+        updateRadarView();
+      }
+    })();
+  </script>
 </body>
 </html>

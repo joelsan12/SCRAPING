@@ -267,8 +267,15 @@
   border-top-right-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
   border-bottom: none;
-  cursor: default;
+  cursor: pointer;
   white-space: nowrap;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.excel-sheet-tab:hover:not(.active) {
+  background: #f1f5f9;
+  color: var(--brand-navy);
 }
 
 .excel-sheet-tab.active {

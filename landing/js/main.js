@@ -2,10 +2,10 @@
  * LicitaciónYa — Main Application Entry Point (ES Module)
  */
 
-import { initNavbar } from './navbar.js';
-import { initCalculator } from './calculator.js';
-import { initFaq } from './faq.js';
-import { initInteractive } from './interactive.js';
+import { initNavbar } from './navbar.js?v=20261020_v3';
+import { initCalculator } from './calculator.js?v=20261020_v3';
+import { initFaq } from './faq.js?v=20261020_v3';
+import { initInteractive } from './interactive.js?v=20261020_v3';
 
 function init() {
   initNavbar();
