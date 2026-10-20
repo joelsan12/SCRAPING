@@ -1,0 +1,156 @@
+/* ==========================================================================
+   LicitaciónYa — Industry / Rubro Interactive Selector Component
+   ========================================================================== */
+
+.industries-section {
+  padding: 3.5rem 0;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.industries-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.industry-btn {
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1.15rem;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+}
+
+.industry-btn:hover {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  background: #ffffff;
+}
+
+.industry-btn.active {
+  background: var(--brand-navy);
+  color: #ffffff;
+  border-color: var(--brand-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Industry Display Card */
+.industry-card {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem 2.25rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.industry-info h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+  margin-bottom: 0.5rem;
+}
+
+.industry-info p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.industry-cpc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--brand-navy-light);
+  margin-bottom: 1rem;
+}
+
+.industry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.industry-tag {
+  background: var(--brand-blue-soft);
+  color: var(--brand-navy-light);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+/* Industry Tender Sample Box */
+.industry-sample-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--brand-blue);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.sample-box-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-blue);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.sample-tender-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+}
+
+.sample-tender-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.sample-amount {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: var(--brand-green-text);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 820px) {
+  .industries-section {
+    padding: 2.25rem 0;
+  }
+  .industry-card {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem;
+    gap: 1.5rem;
+  }
+}

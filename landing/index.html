@@ -33,7 +33,9 @@
   <link rel="stylesheet" href="css/components/buttons.css">
   <link rel="stylesheet" href="css/components/navbar.css">
   <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/industries.css">
   <link rel="stylesheet" href="css/components/demo-cards.css">
+  <link rel="stylesheet" href="css/components/comparison.css">
   <link rel="stylesheet" href="css/components/steps.css">
   <link rel="stylesheet" href="css/components/calculator.css">
   <link rel="stylesheet" href="css/components/pricing.css">
@@ -122,6 +124,8 @@
 
       <nav class="nav-links" id="nav-links">
         <a href="#hero">Radar SERCOP</a>
+        <a href="#rubros">Rubros B2B</a>
+        <a href="#comparativa">Comparativa</a>
         <a href="#entregables">Entregables</a>
         <a href="#metodologia">Metodología</a>
         <a href="#calculadora">Calculadora ROI</a>
@@ -188,9 +192,16 @@
           </span>
         </div>
 
+        <!-- Radar Filter Tabs -->
+        <div class="radar-tabs">
+          <button class="radar-tab active" data-filter="all">Todos (4)</button>
+          <button class="radar-tab" data-filter="open">Convocatoria Abierta (3)</button>
+          <button class="radar-tab" data-filter="recent">Adjudicadas (1)</button>
+        </div>
+
         <div class="radar-list">
           <!-- Real Contract 1: Cuerpo de Ingenieros del Ejército -->
-          <div class="radar-item">
+          <div class="radar-item" data-phase="open">
             <div class="radar-item-left">
               <span class="radar-entity">Cuerpo de Ingenieros del Ejército</span>
               <span class="radar-meta">LICO-CEE-2024-001 • Pichincha</span>
@@ -202,7 +213,7 @@
           </div>
 
           <!-- Real Contract 2: Empresa Eléctrica Ambato -->
-          <div class="radar-item">
+          <div class="radar-item" data-phase="open">
             <div class="radar-item-left">
               <span class="radar-entity">Empresa Eléctrica Ambato (EEASA)</span>
               <span class="radar-meta">CE-20240002558712 • Tungurahua</span>
@@ -214,7 +225,7 @@
           </div>
 
           <!-- Real Contract 3: CNEL EP Guayaquil -->
-          <div class="radar-item">
+          <div class="radar-item" data-phase="recent">
             <div class="radar-item-left">
               <span class="radar-entity">CNEL EP Guayaquil</span>
               <span class="radar-meta">CE-20240002562764 • Guayas</span>
@@ -226,7 +237,7 @@
           </div>
 
           <!-- Real Contract 4: GAD Municipal de Rumiñahui -->
-          <div class="radar-item">
+          <div class="radar-item" data-phase="open">
             <div class="radar-item-left">
               <span class="radar-entity">GAD Municipal de Rumiñahui</span>
               <span class="radar-meta">COTO-GADMUR-2024-001 • Pichincha</span>
@@ -265,6 +276,53 @@
         <div class="metric-item">
           <span class="metric-value">Lunes 8:00 AM</span>
           <span class="metric-label">Entrega de la matriz en Excel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Industry / Rubro Selector Section -->
+  <section class="industries-section" id="rubros">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Cobertura Especializada</span>
+        <h2 class="section-title">Calibrado a la Línea Comercial de su Negocio</h2>
+        <p class="section-subtitle">Filtramos por código clasificador central de productos (CPC) y palabras técnicas para que reciba únicamente pliegos afines.</p>
+      </div>
+
+      <!-- Rubros Navigation Tabs -->
+      <div class="industries-nav">
+        <button class="industry-btn active" data-industry="ferreteria">Ferretería Industrial</button>
+        <button class="industry-btn" data-industry="construccion">Materiales de Construcción</button>
+        <button class="industry-btn" data-industry="electrico">Redes Eléctricas</button>
+        <button class="industry-btn" data-industry="sanitario">Tubería y Saneamiento</button>
+      </div>
+
+      <!-- Dynamic Industry Card -->
+      <div class="industry-card" id="industry-active-card">
+        <div class="industry-info">
+          <div class="industry-cpc-badge">CPC 42921 • Herramientas y Artículos de Ferretería</div>
+          <h3 class="industry-title">Ferretería Industrial y Suministros Mecánicos</h3>
+          <p class="industry-desc">
+            Monitoreo de adquisiciones para talleres del Estado, Fuerzas Armadas, empresas públicas de agua y mantenimiento municipal.
+          </p>
+          <div class="industry-tags">
+            <span class="industry-tag">pernos alta resistencia</span>
+            <span class="industry-tag">discos de corte</span>
+            <span class="industry-tag">soldadura 7018</span>
+            <span class="industry-tag">herramientas eléctricas</span>
+            <span class="industry-tag">rodamientos</span>
+            <span class="industry-tag">seguridad industrial</span>
+          </div>
+        </div>
+
+        <div class="industry-sample-box">
+          <span class="sample-box-label">Licitación de Referencia SERCOP</span>
+          <h4 class="sample-tender-title">ADQUISICIÓN DE HERRAMIENTAS, PERFILES Y SUMINISTROS DE TALLER</h4>
+          <div class="sample-tender-meta">
+            <span class="sample-entity-text">Cuerpo de Ingenieros del Ejército • LICO-CEE-2024-001 • Pichincha</span>
+            <span class="sample-amount">$994,289.69 USD</span>
+          </div>
         </div>
       </div>
     </div>
@@ -330,6 +388,12 @@
             <span class="pill pill-excel">Excel Semanal</span>
           </div>
 
+          <!-- Formula Bar -->
+          <div class="excel-formula-bar">
+            <span class="excel-formula-fx">fx</span>
+            <span class="excel-formula-val">=SUMA(C2:C5) &rarr; $2,362,897.78 USD</span>
+          </div>
+
           <div class="excel-table-wrapper">
             <table class="excel-preview-table">
               <thead>
@@ -373,10 +437,68 @@
               </tbody>
             </table>
           </div>
+
+          <!-- Bottom Sheet Tabs -->
+          <div class="excel-sheet-tabs">
+            <span class="excel-sheet-tab active">Oportunidades_SERCOP</span>
+            <span class="excel-sheet-tab">Resumen_Geografico</span>
+            <span class="excel-sheet-tab">Analisis_Entidad</span>
+          </div>
+
           <div class="excel-card-footer">
             <span>Incluye hoja adicional de <strong>Resumen Geográfico y Análisis por Entidad</strong> para planificar despachos.</span>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section: Manual Search vs. LicitaciónYa -->
+  <section class="comparison-section" id="comparativa">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Eficiencia Operativa</span>
+        <h2 class="section-title">Búsqueda Manual vs. Monitoreo Automatizado</h2>
+        <p class="section-subtitle">Por qué las empresas proveedoras reemplazan la navegación manual en el portal por inteligencia automatizada.</p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Criterio Operativo</th>
+              <th class="col-manual">Búsqueda Manual en Portal</th>
+              <th class="col-service">Con LicitaciónYa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-feature">Frecuencia de inspección</td>
+              <td class="cell-manual">1 vez al día o esporádica (sujeto al tiempo del colaborador)</td>
+              <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Cada 6 horas continuas</span></td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Tiempo semanal invertido</td>
+              <td class="cell-manual"><span class="compare-badge-negative">10 a 15 horas / semana</span> navegando tablas lentas</td>
+              <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> 0 horas</span> (reportes directos a WhatsApp y Excel)</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Riesgo de perder pliegos</td>
+              <td class="cell-manual"><span class="compare-badge-negative">Alto</span> (etapas de preguntas vencen en 3-5 días hábiles)</td>
+              <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Nulo</span> (alertas tempranas en convocatoria abierta)</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Filtrado por catálogo</td>
+              <td class="cell-manual">Palabras sueltas en buscador genérico con saturación de ruido</td>
+              <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Calibración exacta</span> hasta 30 términos y códigos CPC</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Costo operativo mensual</td>
+              <td class="cell-manual">+$500 USD (tiempo productivo de personal comercial)</td>
+              <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> $80 USD / mes</span> (100% deducible SRI)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -655,6 +777,8 @@
           <h4>Navegación</h4>
           <ul>
             <li><a href="#hero">Radar SERCOP</a></li>
+            <li><a href="#rubros">Rubros B2B</a></li>
+            <li><a href="#comparativa">Comparativa</a></li>
             <li><a href="#entregables">Entregables</a></li>
             <li><a href="#metodologia">Metodología</a></li>
             <li><a href="#calculadora">Calculadora ROI</a></li>

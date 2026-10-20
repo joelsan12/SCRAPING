@@ -5,10 +5,17 @@
 import { initNavbar } from './navbar.js';
 import { initCalculator } from './calculator.js';
 import { initFaq } from './faq.js';
+import { initInteractive } from './interactive.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize UI Components
+function init() {
   initNavbar();
   initCalculator();
   initFaq();
-});
+  initInteractive();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

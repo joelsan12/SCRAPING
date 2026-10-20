@@ -1,0 +1,111 @@
+/* ==========================================================================
+   LicitaciónYa — Comparison Section Component
+   Manual Search vs. LicitaciónYa Automated Intelligence
+   ========================================================================== */
+
+.comparison-section {
+  padding: 3.5rem 0;
+  background-color: #ffffff;
+}
+
+.comparison-table-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.comparison-table th {
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.comparison-table th.col-feature {
+  width: 32%;
+  color: var(--brand-navy);
+  background: var(--bg-surface-alt);
+}
+
+.comparison-table th.col-manual {
+  width: 34%;
+  color: #64748b;
+  background: #f8fafc;
+}
+
+.comparison-table th.col-service {
+  width: 34%;
+  color: #ffffff;
+  background: var(--brand-navy);
+}
+
+.comparison-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+  line-height: 1.45;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table td.cell-feature {
+  font-weight: 700;
+  color: var(--brand-navy);
+  background: #ffffff;
+}
+
+.comparison-table td.cell-manual {
+  color: #64748b;
+  background: #fafafa;
+}
+
+.comparison-table td.cell-service {
+  color: var(--brand-navy);
+  background: var(--brand-blue-soft);
+  font-weight: 600;
+}
+
+.compare-badge-negative {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.compare-badge-positive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--brand-green-text);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .comparison-section {
+    padding: 2.25rem 0;
+  }
+  
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .comparison-table {
+    min-width: 580px;
+  }
+}

@@ -140,6 +140,43 @@
   border-radius: var(--radius-full);
 }
 
+/* Radar Filter Tabs */
+.radar-tabs {
+  display: flex;
+  background: var(--bg-surface-alt);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.75rem;
+  gap: 0.35rem;
+  overflow-x: auto;
+}
+
+.radar-tab {
+  background: none;
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.radar-tab:hover {
+  color: var(--brand-navy);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.radar-tab.active {
+  background: #ffffff;
+  color: var(--brand-navy);
+  font-weight: 700;
+  box-shadow: var(--shadow-xs);
+  border-color: var(--border-subtle);
+}
+
 .radar-list {
   display: flex;
   flex-direction: column;

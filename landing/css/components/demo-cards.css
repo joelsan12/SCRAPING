@@ -220,11 +220,69 @@
   font-weight: 600;
 }
 
+/* Excel Formula Bar */
+.excel-formula-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--bg-surface-alt);
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.excel-formula-fx {
+  font-weight: 700;
+  color: var(--brand-navy);
+}
+
+.excel-formula-val {
+  background: #ffffff;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  color: var(--brand-navy);
+  font-weight: 600;
+}
+
+/* Excel Bottom Sheet Tabs */
+.excel-sheet-tabs {
+  display: flex;
+  background: var(--bg-surface-alt);
+  border-top: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.5rem 0;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+
+.excel-sheet-tab {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: #e2e8f0;
+  border-top-left-radius: var(--radius-sm);
+  border-top-right-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  border-bottom: none;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.excel-sheet-tab.active {
+  background: #ffffff;
+  color: var(--brand-green-text);
+  font-weight: 700;
+  border-top: 2px solid var(--brand-green);
+}
+
 .excel-card-footer {
-  padding: 0.7rem 1.15rem;
+  padding: 0.65rem 1.15rem;
   background: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
 }
 
