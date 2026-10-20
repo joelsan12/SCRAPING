@@ -3,10 +3,18 @@ Generador de imagen Open Graph (1200x630) para LicitaciónYa.
 Fondo corporativo navy, marca, propuesta de valor y métricas auditadas.
 """
 
-from PIL import Image, ImageDraw, ImageFont
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    Image = None
+    ImageDraw = None
+    ImageFont = None
 import os
 
 def generar_og_image(output_path="landing/og-image.png"):
+    if Image is None:
+        raise ImportError("Pillow no está instalado. Ejecute 'pip install pillow' para generar la imagen OG.")
+
     width = 1200
     height = 630
 
