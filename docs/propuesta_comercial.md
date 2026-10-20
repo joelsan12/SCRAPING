@@ -13,7 +13,7 @@ Las empresas proveedoras de ferretería, materiales de construcción y suministr
 ---
 
 ### 2. La Solución: LicitaciónYa
-**LicitaciónYa** es un servicio gestionado de vigilancia automatizada que audita continuamente el sistema oficial de compras públicas de Ecuador (SERCOP), filtra quirúrgicamente las licitaciones relevantes para su catálogo comercial y le notifica en tiempo real.
+**LicitaciónYa** es un servicio gestionado de vigilancia automatizada que audita continuamente el sistema oficial de compras públicas de Ecuador (SERCOP), filtra quirúrgicamente las licitaciones relevantes para su catálogo comercial y le notifica automáticamente con clasificación explícita de fase (convocatoria abierta / adjudicada).
 
 ```
 ┌─────────────────────────┐     ┌────────────────────────┐     ┌────────────────────────┐
@@ -23,7 +23,7 @@ Las empresas proveedoras de ferretería, materiales de construcción y suministr
 ```
 
 #### Entregables del Servicio:
-* **Alertas Inmediatas por WhatsApp y Telegram:** Detección y notificación automatizada ante cada nuevo corte liberado por SERCOP (auditoría continua cada 6 horas). Cada alerta clasifica explícitamente el estado del proceso:
+* **Alertas Automatizadas por WhatsApp y Telegram:** Detección y notificación automatizada ante cada nuevo corte liberado por SERCOP (auditoría continua cada 6 horas). Cada alerta clasifica explícitamente el estado del proceso:
   * **🟢 Convocatoria Abierta:** Procesos en concurso o pliegos donde la entidad estatal aún no ha seleccionado proveedor, permitiendo preparar ofertas y contactar a la entidad.
   * **⚪ Adjudicación Reciente:** Inteligencia competitiva de precios finales y oferentes ganadores para monitorear a la competencia y conocer la demanda real en su zona.
   * Incluye presupuesto referencial en USD, entidad compradora, palabras clave detectadas y enlace hipervinculado directo al pliego oficial.
@@ -39,7 +39,7 @@ Las empresas proveedoras de ferretería, materiales de construcción y suministr
 | Concepto | Inversión (USD) | Detalle |
 | :--- | :---: | :--- |
 | **Setup y Calibración Inicial** | **$200.00** *(pago único)* | Configuración del catálogo de búsqueda (hasta 30 términos técnicos), umbrales presupuestarios, filtros provinciales e integración de canales (WhatsApp / Email). |
-| **Suscripción Mensual** | **$80.00** */ mes* | Operación ininterrumpida 24/7, monitoreo cada 6 horas, alertas instantáneas ilimitadas y entrega de reportes semanales. |
+| **Suscripción Mensual** | **$80.00** */ mes* | Operación ininterrumpida 24/7, monitoreo cada 6 horas, alertas automatizadas ilimitadas en cada ciclo de monitoreo de 6 horas y entrega de reportes semanales. |
 
 > **Facturación Formal:** Todos los valores se emiten con Factura Electrónica autorizada por el SRI (válida como gasto deducible para su empresa).
 
@@ -63,7 +63,7 @@ Para presentar el servicio a un tomador de decisiones (Gerente General, Director
    ```bash
    python -m src.main --rubro ferreteria_construccion --pages 1
    ```
-   Mostrar la detección instantánea y el disparo de la alerta en WhatsApp con su etiqueta de fase (🟢 Abierta o ⚪ Adjudicada).
+   Mostrar la detección automatizada y el despacho de la alerta en WhatsApp con su etiqueta de fase (🟢 Abierta o ⚪ Adjudicada).
 3. **Apertura del Excel Ejecutivo (3 min):** Abrir en pantalla el archivo generado (`downloads/Reporte_SERCOP_Semana_XX_YYYY.xlsx`) mostrando contratos millonarios reales recientemente detectados:
    * *Cuerpo de Ingenieros del Ejército:* Materiales de construcción por **$994,289.69 USD** (Pichincha).
    * *Empresa Eléctrica Ambato (EEASA):* Materiales y conductores por **$732,152.96 USD** (Tungurahua).

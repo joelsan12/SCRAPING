@@ -54,7 +54,7 @@ Semana 1: Contacto Frío
 Semana 2: Activación y Entrega
   • Configuración de palabras clave personalizadas para los 6 pilotos.
   • Envío del primer reporte semanal de lunes a las 8:00 AM.
-  • Alertas en tiempo real a sus números de WhatsApp.
+  • Alertas automatizadas con clasificación de fase a sus números de WhatsApp.
 
 Semana 3: Demostración de Impacto
   • Llamada de seguimiento: "¿Pudieron cotizar el proceso de [X Entidad]?".

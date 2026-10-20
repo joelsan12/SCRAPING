@@ -14,7 +14,7 @@ Las partes convienen libre y voluntariamente en celebrar el presente contrato al
 EL PROVEEDOR prestará a favor de EL CLIENTE el servicio de monitoreo e inteligencia comercial denominado **"LicitaciónYa"**, consistente en:
 1. **Auditoría continua:** Supervisión periódica automatizada (ciclos de cada 6 horas) de las convocatorias oficiales del Servicio Nacional de Contratación Pública (SERCOP) del Ecuador mediante fuentes de datos abiertos oficiales.
 2. **Filtrado parametrizado:** Detección de procesos contractuales que coincidan con el catálogo de palabras clave técnicas, umbrales de presupuesto y áreas geográficas definidas por EL CLIENTE en el anexo de configuración.
-3. **Alertas inmediatas:** Despacho de notificaciones en tiempo real vía WhatsApp y/o Telegram al número corporativo designado por EL CLIENTE.
+3. **Alertas automatizadas:** Despacho de notificaciones sin dilación indebida tras la liberación de cada corte en la fuente oficial, indicando la fase del proceso (convocatoria abierta o adjudicada), vía WhatsApp y/o Telegram al número corporativo designado por EL CLIENTE.
 4. **Reporte semanal:** Generación y entrega semanal (todos los días lunes a las 08:00 AM) de un informe consolidado en formato de hoja de cálculo estructurada (`.xlsx`) a la dirección de correo electrónico de EL CLIENTE.
 
 ---
