@@ -1,13 +1,13 @@
 /* ==========================================================================
    LicitaciónYa — Buttons & Interactive Action Triggers
-   Corporate Business & Consulting Palette
+   Compact, Touch-Optimized & Fully Responsive
    ========================================================================== */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
   font-weight: 600;
@@ -21,23 +21,23 @@
 }
 
 .btn-sm {
-  padding: 0.5rem 0.95rem;
-  font-size: 0.84rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
 }
 
 .btn-md {
-  padding: 0.75rem 1.35rem;
-  font-size: 0.92rem;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.88rem;
 }
 
 .btn-lg {
-  padding: 0.88rem 1.65rem;
-  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.96rem;
 }
 
 .btn-xl {
-  padding: 1.05rem 2rem;
-  font-size: 1.08rem;
+  padding: 0.95rem 1.85rem;
+  font-size: 1.02rem;
 }
 
 .btn-block {
@@ -49,14 +49,14 @@
   background-color: var(--brand-navy);
   color: #ffffff;
   border-color: var(--brand-navy);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
 }
 
 .btn-primary:hover {
   background-color: var(--brand-navy-light);
   border-color: var(--brand-navy-light);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   color: #ffffff;
 }
 
@@ -65,14 +65,13 @@
   background-color: var(--brand-blue);
   color: #ffffff;
   border-color: var(--brand-blue);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
 }
 
 .btn-blue:hover {
   background-color: #1d4ed8;
   border-color: #1d4ed8;
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
   color: #ffffff;
 }
 
@@ -81,14 +80,14 @@
   background-color: var(--brand-whatsapp);
   color: #ffffff;
   border-color: var(--brand-whatsapp);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
 }
 
 .btn-whatsapp:hover {
   background-color: var(--brand-whatsapp-hover);
   border-color: var(--brand-whatsapp-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.28);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
   color: #ffffff;
 }
 
@@ -114,28 +113,28 @@
 /* Floating WhatsApp Action Widget */
 .floating-wa-btn {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.75rem;
+  right: 1.75rem;
   z-index: 999;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.5rem;
   background-color: var(--brand-whatsapp);
   color: #ffffff;
-  padding: 0.8rem 1.3rem;
+  padding: 0.7rem 1.15rem;
   border-radius: var(--radius-full);
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.92rem;
-  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.32);
+  font-size: 0.88rem;
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
   transition: all var(--transition-normal);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .floating-wa-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   background-color: var(--brand-whatsapp-hover);
-  box-shadow: 0 12px 28px rgba(22, 163, 74, 0.45);
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.45);
 }
 
 .floating-wa-btn svg {
@@ -147,8 +146,12 @@
     display: none;
   }
   .floating-wa-btn {
-    padding: 0.75rem;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
     bottom: 1.25rem;
     right: 1.25rem;
+    border-radius: 50%;
   }
 }
