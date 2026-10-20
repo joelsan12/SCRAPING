@@ -95,7 +95,7 @@
 
 .trust-icon {
   color: var(--brand-green);
-  font-weight: 800;
+  flex-shrink: 0;
 }
 
 /* Right Column: Executive Live Radar Card */
@@ -224,6 +224,21 @@
   background: var(--bg-surface-alt);
   color: var(--text-dim);
   border: 1px solid var(--border-subtle);
+}
+
+.dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-open {
+  background: var(--brand-green);
+}
+
+.dot-recent {
+  background: var(--text-dim);
 }
 
 .radar-footer {
