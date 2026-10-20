@@ -108,21 +108,21 @@ body {
 .metrics-strip {
   background-color: #ffffff;
   border-bottom: 1px solid var(--border-subtle);
-  padding: 1.6rem 0;
+  padding: 1.85rem 0;
 }
 
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 1.25rem;
   text-align: center;
 }
 
 .metric-item {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding: 0 0.75rem;
+  gap: 0.25rem;
+  padding: 0 0.85rem;
   border-right: 1px solid var(--border-subtle);
 }
 
@@ -131,16 +131,23 @@ body {
 }
 
 .metric-value {
-  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-size: clamp(1.6rem, 2.4vw, 2.05rem);
   font-weight: 800;
-  color: var(--brand-navy);
+  color: #0f1f3d;
   font-family: var(--font-sans);
   line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .metric-label {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  font-size: 0.82rem;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.metric-desc {
+  font-size: 0.72rem;
+  color: #64748b;
   font-weight: 500;
 }
 

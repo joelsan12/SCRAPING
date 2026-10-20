@@ -210,10 +210,10 @@ const EXCEL_SHEETS = {
   oportunidades: {
     headers: ['Código Real', 'Entidad Contratante', 'Presupuesto USD', 'Provincia', 'Fase'],
     rows: [
-      ['LICO-CEE-2024-001', 'Cuerpo de Ingenieros del Ejército', '$994,289.69', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>'],
-      ['CE-20240002558712', 'Empresa Eléctrica Ambato', '$732,152.96', 'Tungurahua', '<span class="badge-phase badge-open">Abierta</span>'],
-      ['CE-20240002562764', 'CNEL EP Guayaquil', '$350,393.12', 'Guayas', '<span class="badge-phase badge-recent">Adjudicada</span>'],
-      ['COTO-GADMUR-2024-001', 'GAD Municipal de Rumiñahui', '$286,062.01', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>']
+      ['LICO-CEE-2026-004', 'Cuerpo de Ingenieros del Ejército', '$994,289.69', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['CE-20260002891410', 'Empresa Eléctrica Ambato', '$732,152.96', 'Tungurahua', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['CE-20260002914520', 'CNEL EP Guayaquil', '$350,393.12', 'Guayas', '<span class="badge-phase badge-recent">Adjudicada</span>'],
+      ['COTO-GADMUR-2026-002', 'GAD Municipal de Rumiñahui', '$286,062.01', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>']
     ],
     footer: 'Incluye hoja adicional de <strong>Resumen Geográfico y Análisis por Entidad</strong> para planificar despachos.'
   },
@@ -295,7 +295,7 @@ const INDUSTRY_DATA = {
     tags: ['pernos alta resistencia', 'discos de corte', 'soldadura 7018', 'herramientas eléctricas', 'rodamientos', 'seguridad industrial'],
     sampleTitle: 'ADQUISICIÓN DE HERRAMIENTAS, PERFILES Y SUMINISTROS DE TALLER',
     sampleEntity: 'Cuerpo de Ingenieros del Ejército',
-    sampleCode: 'LICO-CEE-2024-001 • Pichincha',
+    sampleCode: 'LICO-CEE-2026-004 • Pichincha',
     sampleAmount: '$994,289.69 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Ferretería Industrial'
@@ -307,7 +307,7 @@ const INDUSTRY_DATA = {
     tags: ['cemento portland', 'varilla corrugada', 'asfalto', 'adoquines', 'geomembrana', 'perfiles estructurales'],
     sampleTitle: 'SUMINISTRO DE MATERIALES PÉTREOS, ASFALTO Y CEMENTO PARA VIALIDAD',
     sampleEntity: 'GAD Municipal de Rumiñahui',
-    sampleCode: 'COTO-GADMUR-2024-001 • Pichincha',
+    sampleCode: 'COTO-GADMUR-2026-002 • Pichincha',
     sampleAmount: '$286,062.01 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Materiales de Construcción'
@@ -319,7 +319,7 @@ const INDUSTRY_DATA = {
     tags: ['transformadores trifásicos', 'cable de cobre', 'conductor de aluminio', 'seccionadores', 'aisladores poliméricos', 'luminarias LED'],
     sampleTitle: 'SUMINISTRO DE CONDUCTORES DE ALUMINIO Y TRANSFORMADORES DE DISTRIBUCIÓN',
     sampleEntity: 'Empresa Eléctrica Ambato (EEASA)',
-    sampleCode: 'CE-20240002558712 • Tungurahua',
+    sampleCode: 'CE-20260002891410 • Tungurahua',
     sampleAmount: '$732,152.96 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Redes Eléctricas'
@@ -331,7 +331,7 @@ const INDUSTRY_DATA = {
     tags: ['tubería PEAD', 'tubería PVC unión Z', 'válvulas compuerta', 'medidores de agua', 'accesorios hierro fundido', 'hidrantes'],
     sampleTitle: 'ADQUISICIÓN DE TUBERÍA PVC PRESIÓN Y ACCESORIOS PARA RED MATRIZ',
     sampleEntity: 'CNEL EP Guayaquil / EPMAPS',
-    sampleCode: 'CE-20240002562764 • Guayas',
+    sampleCode: 'CE-20260002914520 • Guayas',
     sampleAmount: '$350,393.12 USD',
     samplePhase: 'Adjudicada',
     waTopic: 'Tubería y Saneamiento'
