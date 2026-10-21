@@ -448,43 +448,110 @@
   <section class="industries-section" id="rubros">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Cobertura Especializada</span>
-        <h2 class="section-title">Calibrado a la Línea Comercial de su Negocio</h2>
-        <p class="section-subtitle">Filtramos por código clasificador central de productos (CPC) y palabras técnicas para que reciba únicamente pliegos afines.</p>
+        <h2 class="section-title">Calibrado a la línea comercial <span class="text-accent">exacta de su negocio</span></h2>
+        <p class="section-subtitle">Filtrado quirúrgico por clasificador central de productos (CPC) del SERCOP y palabras técnicas. Cero ruido: reciba únicamente pliegos afines donde su empresa sí cotiza y gana.</p>
       </div>
 
       <!-- Rubros Navigation Tabs -->
-      <div class="industries-nav">
-        <button class="industry-btn active" data-industry="ferreteria">Ferretería Industrial</button>
-        <button class="industry-btn" data-industry="construccion">Materiales de Construcción</button>
-        <button class="industry-btn" data-industry="electrico">Redes Eléctricas</button>
-        <button class="industry-btn" data-industry="sanitario">Tubería y Saneamiento</button>
+      <div class="industries-nav-wrapper">
+        <div class="industries-nav" role="tablist" aria-label="Sectores comerciales disponibles">
+          <button class="industry-btn active" data-industry="ferreteria" role="tab" aria-selected="true">
+            <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span>Ferretería Industrial</span>
+          </button>
+          <button class="industry-btn" data-industry="construccion" role="tab" aria-selected="false">
+            <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            <span>Materiales de Construcción</span>
+          </button>
+          <button class="industry-btn" data-industry="electrico" role="tab" aria-selected="false">
+            <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Redes Eléctricas</span>
+          </button>
+          <button class="industry-btn" data-industry="sanitario" role="tab" aria-selected="false">
+            <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            <span>Tubería y Saneamiento</span>
+          </button>
+        </div>
       </div>
 
       <!-- Dynamic Industry Card -->
       <div class="industry-card" id="industry-active-card">
-        <div class="industry-info">
-          <div class="industry-cpc-badge">CPC 42921 • Herramientas y Artículos de Ferretería</div>
-          <h3 class="industry-title">Ferretería Industrial y Suministros Mecánicos</h3>
-          <p class="industry-desc">
-            Monitoreo de adquisiciones para talleres del Estado, Fuerzas Armadas, empresas públicas de agua y mantenimiento municipal.
-          </p>
-          <div class="industry-tags">
-            <span class="industry-tag">pernos alta resistencia</span>
-            <span class="industry-tag">discos de corte</span>
-            <span class="industry-tag">soldadura 7018</span>
-            <span class="industry-tag">herramientas eléctricas</span>
-            <span class="industry-tag">rodamientos</span>
-            <span class="industry-tag">seguridad industrial</span>
+        <!-- Top Status Bar -->
+        <div class="industry-card-topbar">
+          <div class="radar-live-pill">
+            <span class="live-dot-pulse"></span>
+            <span class="live-radar-text">PERFIL DE MONITOREO ACTIVO &middot; SERCOP OCDS 2026</span>
           </div>
+          <div class="radar-category-meta" id="industry-top-sector">Ferretería Industrial y Suministros</div>
         </div>
 
-        <div class="industry-sample-box">
-          <span class="sample-box-label">Licitación de Referencia SERCOP</span>
-          <h4 class="sample-tender-title">ADQUISICIÓN DE HERRAMIENTAS, PERFILES Y SUMINISTROS DE TALLER</h4>
-          <div class="sample-tender-meta">
-            <span class="sample-entity-text">Cuerpo de Ingenieros del Ejército • LICO-CEE-2026-004 • Pichincha</span>
-            <span class="sample-amount">$994,289.69 USD</span>
+        <div class="industry-card-body">
+          <!-- Left Column: Search Vectors & Calibration -->
+          <div class="industry-info">
+            <div class="industry-cpc-badge">
+              <span class="cpc-badge-tag">CÓDIGO CPC</span>
+              <span class="cpc-badge-content" id="cpc-badge-text">42921 &middot; Herramientas y Artículos de Ferretería</span>
+            </div>
+
+            <h3 class="industry-title">Ferretería Industrial y Suministros Mecánicos</h3>
+            <p class="industry-desc">
+              Monitoreo de adquisiciones para talleres del Estado, Fuerzas Armadas, empresas públicas de agua y mantenimiento municipal.
+            </p>
+
+            <div class="industry-keywords-container">
+              <span class="keywords-heading">Términos técnicos y descriptores calibrados en su filtro:</span>
+              <div class="industry-tags">
+                <span class="industry-tag">pernos alta resistencia</span>
+                <span class="industry-tag">discos de corte</span>
+                <span class="industry-tag">soldadura 7018</span>
+                <span class="industry-tag">herramientas eléctricas</span>
+                <span class="industry-tag">rodamientos</span>
+                <span class="industry-tag">seguridad industrial</span>
+              </div>
+            </div>
+
+            <div class="industry-calibration-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Personalizamos hasta 30 términos técnicos y filtros negativos para su empresa</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Live SERCOP Reference Tender Card -->
+          <div class="industry-sample-box">
+            <div class="sample-dossier-top">
+              <div class="sample-source-pill">
+                <span class="sercop-tag">SERCOP</span>
+                <span class="pliego-text">Pliego Oficial Verificado</span>
+              </div>
+              <span class="sample-phase-pill" id="sample-phase-badge">
+                <span class="dot-indicator dot-open"></span>
+                <span id="sample-phase-text">Convocatoria Abierta</span>
+              </span>
+            </div>
+
+            <div class="sample-code-container">
+              <span class="sample-code-lbl">PROCESO:</span>
+              <span class="sample-code-val font-mono" id="sample-code-text">LICO-CEE-2026-004</span>
+            </div>
+
+            <h4 class="sample-tender-title">ADQUISICIÓN DE HERRAMIENTAS, PERFILES Y SUMINISTROS DE TALLER</h4>
+
+            <div class="sample-tender-meta">
+              <div class="sample-meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M6 11v6M10 11v6M14 11v6M18 11v6M12 3l9 4H3l9-4z"/></svg>
+                <span class="sample-entity-text" id="sample-entity-text">Cuerpo de Ingenieros del Ejército &middot; Pichincha</span>
+              </div>
+            </div>
+
+            <div class="sample-amount-block">
+              <span class="sample-amount-label">PRESUPUESTO REFERENCIAL</span>
+              <div class="sample-amount" id="sample-amount-text">$994,289.69 USD</div>
+            </div>
+
+            <a href="https://wa.me/593979116551?text=Hola%2C%20quisiera%20recibir%20alertas%20de%20licitaciones%20de%20Ferreter%C3%ADa%20Industrial%20en%20SERCOP%20Ecuador" class="btn-sample-wa" id="sample-wa-btn" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              <span>Recibir alertas de este rubro en WhatsApp</span>
+            </a>
           </div>
         </div>
       </div>
@@ -495,8 +562,7 @@
   <section class="demo-section" id="entregables">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Entregables Ejecutivos</span>
-        <h2 class="section-title">Información quirúrgica en sus manos</h2>
+        <h2 class="section-title">Información quirúrgica <span class="text-accent">en sus manos</span></h2>
         <p class="section-subtitle">Reciba exclusivamente licitaciones pertinentes en los canales donde se toman las decisiones comerciales.</p>
       </div>
 
@@ -620,8 +686,7 @@
   <section class="comparison-section" id="comparativa">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Eficiencia Operativa</span>
-        <h2 class="section-title">Búsqueda Manual vs. Monitoreo Automatizado</h2>
+        <h2 class="section-title">Búsqueda manual vs. <span class="text-accent">monitoreo automatizado</span></h2>
         <p class="section-subtitle">Por qué las empresas proveedoras reemplazan la navegación manual en el portal por inteligencia automatizada.</p>
       </div>
 
@@ -670,8 +735,7 @@
   <section class="steps-section" id="metodologia">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Metodología de Trabajo</span>
-        <h2 class="section-title">Cómo funciona el servicio</h2>
+        <h2 class="section-title">Cómo funciona <span class="text-accent">el servicio</span></h2>
         <p class="section-subtitle">Su equipo comercial se enfoca en cotizar; nuestra plataforma vigila las licitaciones 24/7.</p>
       </div>
 
@@ -722,8 +786,7 @@
   <section class="calculator-section" id="calculadora">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Simulador Financiero</span>
-        <h2 class="section-title">Calcule su Retorno de Inversión (ROI)</h2>
+        <h2 class="section-title">Calcule su retorno de inversión <span class="text-accent">(ROI)</span></h2>
         <p class="section-subtitle">Estime el impacto financiero de detectar compras públicas afines a su inventario a tiempo.</p>
       </div>
 
@@ -787,8 +850,7 @@
   <section class="pricing-section" id="precios">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Tarifas Transparentes</span>
-        <h2 class="section-title">Inversión clara para su empresa</h2>
+        <h2 class="section-title">Inversión transparente <span class="text-accent">para su empresa</span></h2>
         <p class="section-subtitle">Una fracción mínima del margen que produce un solo contrato adjudicado por el Estado.</p>
       </div>
 
@@ -856,8 +918,7 @@
   <section class="faq-section" id="faq">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Inquietudes Frecuentes</span>
-        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <h2 class="section-title">Preguntas frecuentes de <span class="text-accent">proveedores y directores</span></h2>
       </div>
 
       <div class="faq-container">

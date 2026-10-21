@@ -289,49 +289,65 @@ function initExcelSheetTabs() {
  */
 const INDUSTRY_DATA = {
   ferreteria: {
+    sectorName: 'Ferretería Industrial y Suministros',
     title: 'Ferretería Industrial y Suministros Mecánicos',
     description: 'Monitoreo de adquisiciones para talleres del Estado, Fuerzas Armadas, empresas públicas de agua y mantenimiento municipal.',
+    cpcCode: '42921',
+    cpcName: 'Herramientas y Artículos de Ferretería',
     cpc: 'CPC 42921 • Herramientas y Artículos de Ferretería',
     tags: ['pernos alta resistencia', 'discos de corte', 'soldadura 7018', 'herramientas eléctricas', 'rodamientos', 'seguridad industrial'],
     sampleTitle: 'ADQUISICIÓN DE HERRAMIENTAS, PERFILES Y SUMINISTROS DE TALLER',
     sampleEntity: 'Cuerpo de Ingenieros del Ejército',
-    sampleCode: 'LICO-CEE-2026-004 • Pichincha',
+    sampleProvince: 'Pichincha',
+    sampleCode: 'LICO-CEE-2026-004',
     sampleAmount: '$994,289.69 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Ferretería Industrial'
   },
   construccion: {
+    sectorName: 'Materiales de Construcción y Obra',
     title: 'Materiales de Construcción y Obra Civil',
     description: 'Detección de procesos de pavimentación, muros de contención, infraestructura vial y edificaciones públicas de GADs y ministerios.',
+    cpcCode: '37510',
+    cpcName: 'Cemento, Áridos y Hormigón',
     cpc: 'CPC 37510 • Cemento, Áridos y Hormigón',
     tags: ['cemento portland', 'varilla corrugada', 'asfalto', 'adoquines', 'geomembrana', 'perfiles estructurales'],
     sampleTitle: 'SUMINISTRO DE MATERIALES PÉTREOS, ASFALTO Y CEMENTO PARA VIALIDAD',
     sampleEntity: 'GAD Municipal de Rumiñahui',
-    sampleCode: 'COTO-GADMUR-2026-002 • Pichincha',
+    sampleProvince: 'Pichincha',
+    sampleCode: 'COTO-GADMUR-2026-002',
     sampleAmount: '$286,062.01 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Materiales de Construcción'
   },
   electrico: {
+    sectorName: 'Redes Eléctricas y Transformadores',
     title: 'Redes Eléctricas, Distribución y Transformadores',
     description: 'Alertas de licitaciones de CNEL, CELEC y empresas eléctricas provinciales para líneas de media y baja tensión.',
+    cpcCode: '46211',
+    cpcName: 'Conductores, Cables y Transformadores',
     cpc: 'CPC 46211 • Conductores, Cables y Transformadores',
     tags: ['transformadores trifásicos', 'cable de cobre', 'conductor de aluminio', 'seccionadores', 'aisladores poliméricos', 'luminarias LED'],
     sampleTitle: 'SUMINISTRO DE CONDUCTORES DE ALUMINIO Y TRANSFORMADORES DE DISTRIBUCIÓN',
     sampleEntity: 'Empresa Eléctrica Ambato (EEASA)',
-    sampleCode: 'CE-20260002891410 • Tungurahua',
+    sampleProvince: 'Tungurahua',
+    sampleCode: 'CE-20260002891410',
     sampleAmount: '$732,152.96 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Redes Eléctricas'
   },
   sanitario: {
+    sectorName: 'Tubería y Saneamiento',
     title: 'Tubería, Válvulas y Saneamiento de Agua Potable',
     description: 'Monitoreo de compras públicas para empresas municipales de agua potable (EPMAPS, EMAPAG, etc.) y juntas parroquiales.',
+    cpcCode: '36320',
+    cpcName: 'Tuberías de Plástico y Válvulas',
     cpc: 'CPC 36320 • Tuberías de Plástico y Válvulas',
     tags: ['tubería PEAD', 'tubería PVC unión Z', 'válvulas compuerta', 'medidores de agua', 'accesorios hierro fundido', 'hidrantes'],
     sampleTitle: 'ADQUISICIÓN DE TUBERÍA PVC PRESIÓN Y ACCESORIOS PARA RED MATRIZ',
     sampleEntity: 'CNEL EP Guayaquil / EPMAPS',
-    sampleCode: 'CE-20260002914520 • Guayas',
+    sampleProvince: 'Guayas',
+    sampleCode: 'CE-20260002914520',
     sampleAmount: '$350,393.12 USD',
     samplePhase: 'Adjudicada',
     waTopic: 'Tubería y Saneamiento'
@@ -344,13 +360,19 @@ function initIndustrySelector() {
 
   if (!buttons.length || !card) return;
 
+  const topSectorEl = card.querySelector('#industry-top-sector');
   const titleEl = card.querySelector('.industry-title');
   const descEl = card.querySelector('.industry-desc');
-  const cpcEl = card.querySelector('.industry-cpc-badge');
+  const cpcTextEl = card.querySelector('#cpc-badge-text');
+  const cpcBadgeEl = card.querySelector('.industry-cpc-badge');
   const tagsContainer = card.querySelector('.industry-tags');
   const sampleTitleEl = card.querySelector('.sample-tender-title');
-  const sampleEntityEl = card.querySelector('.sample-entity-text');
-  const sampleAmountEl = card.querySelector('.sample-amount');
+  const sampleEntityEl = card.querySelector('#sample-entity-text') || card.querySelector('.sample-entity-text');
+  const sampleCodeEl = card.querySelector('#sample-code-text');
+  const samplePhaseBadge = card.querySelector('#sample-phase-badge');
+  const samplePhaseTextEl = card.querySelector('#sample-phase-text');
+  const sampleAmountEl = card.querySelector('#sample-amount-text') || card.querySelector('.sample-amount');
+  const waBtnEl = card.querySelector('#sample-wa-btn');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -359,19 +381,53 @@ function initIndustrySelector() {
 
       if (!data) return;
 
-      // Update button active state
-      buttons.forEach(b => b.classList.remove('active'));
+      // Update button active states and ARIA
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
 
-      // Update card content
+      // Update card content with subtle animation
+      if (topSectorEl && data.sectorName) topSectorEl.textContent = data.sectorName;
       if (titleEl) titleEl.textContent = data.title;
       if (descEl) descEl.textContent = data.description;
-      if (cpcEl) cpcEl.textContent = data.cpc;
+      
+      if (cpcTextEl) {
+        cpcTextEl.textContent = `${data.cpcCode} · ${data.cpcName}`;
+      } else if (cpcBadgeEl) {
+        cpcBadgeEl.textContent = data.cpc;
+      }
+
       if (sampleTitleEl) sampleTitleEl.textContent = data.sampleTitle;
-      if (sampleEntityEl) sampleEntityEl.textContent = `${data.sampleEntity} • ${data.sampleCode}`;
+      if (sampleCodeEl && data.sampleCode) sampleCodeEl.textContent = data.sampleCode;
+      
+      if (sampleEntityEl) {
+        sampleEntityEl.textContent = `${data.sampleEntity} · ${data.sampleProvince || 'Ecuador'}`;
+      }
+      
       if (sampleAmountEl) sampleAmountEl.textContent = data.sampleAmount;
 
-      // Update tags
+      // Update phase badge styling & indicator
+      if (samplePhaseBadge && samplePhaseTextEl) {
+        samplePhaseTextEl.textContent = data.samplePhase;
+        if (data.samplePhase === 'Adjudicada') {
+          samplePhaseBadge.className = 'sample-phase-pill phase-adjudicada';
+          samplePhaseBadge.innerHTML = `<span class="dot-indicator dot-adjudicada"></span><span id="sample-phase-text">${data.samplePhase}</span>`;
+        } else {
+          samplePhaseBadge.className = 'sample-phase-pill';
+          samplePhaseBadge.innerHTML = `<span class="dot-indicator dot-open"></span><span id="sample-phase-text">${data.samplePhase}</span>`;
+        }
+      }
+
+      // Update WhatsApp action link with tailored rubro message
+      if (waBtnEl) {
+        const text = encodeURIComponent(`Hola, quisiera recibir alertas de licitaciones del rubro ${data.waTopic} en SERCOP Ecuador`);
+        waBtnEl.href = `https://wa.me/593979116551?text=${text}`;
+      }
+
+      // Update keyword tags
       if (tagsContainer) {
         tagsContainer.innerHTML = '';
         data.tags.forEach(tag => {
@@ -384,3 +440,4 @@ function initIndustrySelector() {
     });
   });
 }
+

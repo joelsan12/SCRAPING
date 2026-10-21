@@ -102,6 +102,7 @@ body {
 .text-success { color: var(--brand-green); }
 .text-gold { color: var(--accent-gold); }
 .text-blue { color: var(--brand-blue); }
+.text-accent { color: var(--brand-blue); }
 .text-navy { color: var(--brand-navy); }
 
 /* Corporate Trust & Metrics Strip */
