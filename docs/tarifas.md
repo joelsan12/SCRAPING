@@ -55,7 +55,7 @@ Si el prospecto muestra interés real tras la prueba gratis de 15 días pero fre
 #### Táctica C: La Cláusula Flexible en el Contrato
 El contrato de servicio (`docs/contrato_servicio.md`) y los términos en web (`landing/legal/terminos.html`) ya cuentan con la redacción flexible unificada:
 
-> *"Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el Plan Estándar B2B: configuración inicial de USD 200.00 única y suscripción mensual de USD 80.00 más impuestos de ley."*
+> *"Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el Plan Estándar B2B: configuración inicial de USD 200.00 única y suscripción mensual de USD 80.00 más el IVA vigente a la fecha de facturación y otras retenciones de ley aplicables."*
 
 **Ventaja:** Si negocias $49 o descuentas el setup a $100 para cerrar a un cliente clave, **no necesitas modificar el contrato marco**. Solo colocas el valor acordado en el Anexo de Onboarding y el contrato sigue siendo 100% válido.
 

@@ -3,7 +3,7 @@
 
 Conste por el presente documento privado de prestación de servicios, celebrado entre las partes que se detallan a continuación:
 
-* **EL PROVEEDOR:** [NOMBRE O RAZÓN SOCIAL DEL PRESTADOR], con RUC N° [RUC DEL PRESTADOR], domiciliado en la ciudad de [CIUDAD], Ecuador.
+* **EL PROVEEDOR:** Joel Jeremias Sancan Sosa (J2S Dynamics / LicitaciónYa Ecuador), con RUC N° [RUC DEL PRESTADOR], domiciliado en la ciudad de Guayaquil, Ecuador.
 * **EL CLIENTE:** [NOMBRE DE LA EMPRESA CLIENTE], con RUC N° [RUC CLIENTE], debidamente representada por su Representante Legal [NOMBRE DEL REPRESENTANTE], con cédula de ciudadanía N° [NÚMERO CÉDULA], con domicilio en la ciudad de [CIUDAD], Ecuador.
 
 Las partes convienen libre y voluntariamente en celebrar el presente contrato al tenor de las siguientes cláusulas:
@@ -20,7 +20,7 @@ EL PROVEEDOR prestará a favor de EL CLIENTE el servicio de monitoreo e intelige
 ---
 
 ### Cláusula Segunda: Tarifas, Facturación y Forma de Pago (Cláusula Flexible)
-1. **Régimen Tarifario:** Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el **Plan Estándar B2B: configuración inicial de USD 200.00 única y suscripción mensual de USD 80.00 más impuestos de ley.**
+1. **Régimen Tarifario:** Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el **Plan Estándar B2B: configuración inicial de USD 200.00 única y suscripción mensual de USD 80.00 más el IVA vigente a la fecha de facturación y otras retenciones de ley aplicables.**
 2. **Facturación Electrónica SRI:** EL PROVEEDOR emitirá y remitirá a EL CLIENTE el respectivo Comprobante Electrónico (Factura) debidamente autorizado por el Servicio de Rentas Internas (SRI), constituyendo gasto operativo 100% deducible.
 3. **Periodo de Pago:** La suscripción mensual se abonará por mes anticipado dentro de los primeros cinco (5) días hábiles de cada ciclo mediante transferencia bancaria a la cuenta corporativa designada por EL PROVEEDOR.
 
@@ -62,13 +62,13 @@ EL PROVEEDOR prestará a favor de EL CLIENTE el servicio de monitoreo e intelige
 ---
 
 ### Cláusula Octava: Jurisdicción y Competencia
-Para cualquier controversia derivada del presente contrato, las partes acuerdan procurar una solución amigable directa en un plazo de quince (15) días. En caso de no alcanzarse un acuerdo, las partes renuncian fuero y domicilio y se someten a los jueces y tribunales competentes de la ciudad de [CIUDAD PACTADA], República del Ecuador.
+Para cualquier controversia derivada del presente contrato, las partes acuerdan procurar una solución amigable directa en un plazo de quince (15) días. En caso de no alcanzarse un acuerdo, las partes renuncian fuero y domicilio y se someten a los jueces y tribunales competentes de la ciudad de Guayaquil, República del Ecuador.
 
 Para constancia de lo acordado, las partes suscriben el presente contrato en dos ejemplares de igual contenido y valor.
 
 Por **EL PROVEEDOR:**  
 Firma: ___________________________  
-Nombre: [NOMBRE PRESTADOR]  
+Nombre: Joel Jeremias Sancan Sosa (J2S Dynamics / LicitaciónYa Ecuador)  
 RUC: [RUC PRESTADOR]  
 
 Por **EL CLIENTE:**  
