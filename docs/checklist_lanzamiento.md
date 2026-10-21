@@ -76,10 +76,10 @@ Antes de enviar el primer mensaje a un tomador de decisiones:
      * **Oportunidades Semanales** (con enlaces oficiales y montos formateados en USD).
      * **Resumen por Región** (agrupación provincial).
    * Verifique los contratos de muestra para su pitch:
-     * *Cuerpo de Ingenieros del Ejército:* **$994,289.69 USD** (Pichincha)
-     * *Empresa Eléctrica Ambato (EEASA):* **$732,152.96 USD** (Tungurahua)
-     * *CNEL EP:* **$350,393.12 USD** (Guayas)
-     * *Municipio de Rumiñahui:* **$286,062.01 USD** (Pichincha)
+     * *CELEC EP (Termopichincha):* **$1,750,208.57 USD** (Pichincha) — `SIE-CELECEP-2026-04070-238940`
+     * *Empresa Eléctrica Ambato (EEASA):* **$115,753.64 USD** (Tungurahua) — `LICO-EEASA-2026-010-3233`
+     * *CNEL EP:* **$785,783.20 USD** (Guayas) — `LICS-CNELEP-2026-006-462114`
+     * *EPMMOP (Quito):* **$97,324.98 USD** (Pichincha) — `CE-20260002974757-741823`
 
 ---
 

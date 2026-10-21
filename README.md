@@ -1,6 +1,6 @@
 # LicitaciónYa — Pipeline de Monitoreo de Compras Públicas (SERCOP Ecuador)
 
-Arquitectura de inteligencia de datos profesional y resiliente para monitoreo de contrataciones estatales en tiempo real con costo operativo de **$0–$3/mes**, orientada al modelo **Intelligence as a Service (B2B)** bajo la marca comercial **LicitaciónYa**.
+Arquitectura de inteligencia de datos profesional y resiliente para el monitoreo de contrataciones estatales con ciclos automáticos de auditoría cada seis horas y costo operativo de **$0–$3/mes**, orientada al modelo **Intelligence as a Service (B2B)** bajo la marca comercial **LicitaciónYa**.
 
 ---
 

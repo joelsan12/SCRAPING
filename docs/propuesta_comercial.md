@@ -64,9 +64,9 @@ Para presentar el servicio a un tomador de decisiones (Gerente General, Director
    python -m src.main --rubro ferreteria_construccion --pages 1
    ```
    Mostrar la detección automatizada y el despacho de la alerta en WhatsApp con su etiqueta de fase (🟢 Abierta o ⚪ Adjudicada).
-3. **Apertura del Excel Ejecutivo (3 min):** Abrir en pantalla el archivo generado (`downloads/Reporte_SERCOP_Semana_XX_YYYY.xlsx`) mostrando contratos millonarios reales recientemente detectados:
-   * *Cuerpo de Ingenieros del Ejército:* Materiales de construcción por **$994,289.69 USD** (Pichincha).
-   * *Empresa Eléctrica Ambato (EEASA):* Materiales y conductores por **$732,152.96 USD** (Tungurahua).
-   * *CNEL EP:* Ferretería y suministros eléctricos por **$350,393.12 USD** (Guayas).
-   * *Municipio de Rumiñahui:* Cemento y materiales viales por **$286,062.01 USD** (Pichincha).
+3. **Apertura del Excel Ejecutivo (3 min):** Abrir en pantalla el archivo generado (`downloads/Reporte_SERCOP_Semana_XX_YYYY.xlsx`) mostrando procesos reales detectados en el año 2026:
+   * *CELEC EP (Termopichincha):* Materiales de ferretería por **$1,750,208.57 USD** (Pichincha).
+   * *Empresa Eléctrica Ambato (EEASA):* Mantenimiento de obras civiles en subestaciones por **$115,753.64 USD** (Tungurahua).
+   * *CNEL EP:* Mantenimiento de líneas y redes de distribución por **$785,783.20 USD** (Guayas).
+   * *EPMMOP (Quito):* Tapa con cerco de hierro dúctil por **$97,324.98 USD** (Pichincha).
 4. **Cierre de Piloto (2 min):** *"Permíteme conectar el número de WhatsApp de tu gerente de ventas y tu correo. Te activo las 2 semanas de prueba gratis hoy mismo."*

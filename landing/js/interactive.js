@@ -210,32 +210,31 @@ const EXCEL_SHEETS = {
   oportunidades: {
     headers: ['Código Real', 'Entidad Contratante', 'Presupuesto USD', 'Provincia', 'Fase'],
     rows: [
-      ['LICO-CEE-2026-004', 'Cuerpo de Ingenieros del Ejército', '$994,289.69', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>'],
-      ['CE-20260002891410', 'Empresa Eléctrica Ambato', '$732,152.96', 'Tungurahua', '<span class="badge-phase badge-open">Abierta</span>'],
-      ['CE-20260002914520', 'CNEL EP Guayaquil', '$350,393.12', 'Guayas', '<span class="badge-phase badge-recent">Adjudicada</span>'],
-      ['COTO-GADMUR-2026-002', 'GAD Municipal de Rumiñahui', '$286,062.01', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>']
+      ['SIE-CELECEP-2026-04070-238940', 'CELEC EP — Termopichincha', '$1,750,208.57', 'Pichincha', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['LICO-EEASA-2026-010-3233', 'Empresa Eléctrica Ambato (EEASA)', '$115,753.64', 'Tungurahua', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['LICS-CNELEP-2026-006-462114', 'CNEL EP — Guayaquil', '$785,783.20', 'Guayas', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['CE-20260002974757-741823', 'EPMMOP — Quito', '$97,324.98', 'Pichincha', '<span class="badge-phase badge-recent">Adjudicada</span>']
     ],
     footer: 'Incluye hoja adicional de <strong>Resumen Geográfico y Análisis por Entidad</strong> para planificar despachos.'
   },
   geografico: {
     headers: ['Provincia', 'Procesos Detectados', 'Monto Acumulado USD', 'Entidad Principal', 'Estado Predominante'],
     rows: [
-      ['Pichincha', '3 procesos', '$1,475,782.20', 'Cuerpo de Ingenieros', '<span class="badge-phase badge-open">Convocatoria Abierta</span>'],
-      ['Tungurahua', '1 proceso', '$732,152.96', 'Empresa Eléctrica Ambato', '<span class="badge-phase badge-open">Convocatoria Abierta</span>'],
-      ['Guayas', '2 procesos', '$513,143.12', 'CNEL EP Guayaquil', '<span class="badge-phase badge-open">1 Abierta / 1 Adj.</span>'],
-      ['Azuay', '1 proceso', '$845,610.20', 'CELEC EP Termopichincha', '<span class="badge-phase badge-recent">Adjudicada</span>']
+      ['Pichincha', '2 procesos', '$1,847,533.55', 'CELEC EP', '<span class="badge-phase badge-open">1 Abierta / 1 Adj.</span>'],
+      ['Tungurahua', '1 proceso', '$115,753.64', 'Empresa Eléctrica Ambato', '<span class="badge-phase badge-open">Convocatoria Abierta</span>'],
+      ['Guayas', '1 proceso', '$785,783.20', 'CNEL EP', '<span class="badge-phase badge-open">Convocatoria Abierta</span>']
     ],
     footer: 'Filtro territorial para optimizar viáticos, logística de entrega técnica y cobertura de su fuerza comercial.'
   },
   entidad: {
-    headers: ['Entidad Contratante', 'Sector Institucional', 'Frecuencia de Compra', 'Presupuesto Promedio', 'Historial SERCOP'],
+    headers: ['Entidad Contratante', 'Sector Institucional', 'Código del Proceso', 'Monto del Proceso', 'Fase'],
     rows: [
-      ['Cuerpo de Ingenieros', 'Defensa / Infraestructura', 'Mensual', '$850,000 USD', '<span class="badge-phase badge-open">Alta Confiabilidad</span>'],
-      ['EEASA Ambato', 'Empresa Pública Eléctrica', 'Trimestral', '$680,000 USD', '<span class="badge-phase badge-open">Pago Oportuno</span>'],
-      ['CNEL EP Guayaquil', 'Distribución Energética', 'Quincenal', '$420,000 USD', '<span class="badge-phase badge-open">Gran Volumen</span>'],
-      ['GAD Rumiñahui', 'Municipal / Vialidad', 'Bimestral', '$285,000 USD', '<span class="badge-phase badge-open">Obras Locales</span>']
+      ['CELEC EP — Termopichincha', 'Empresa Pública Eléctrica', 'SIE-CELECEP-2026-04070-238940', '$1,750,208.57', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['EEASA', 'Empresa Pública Eléctrica', 'LICO-EEASA-2026-010-3233', '$115,753.64', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['CNEL EP — Guayaquil', 'Distribución Energética', 'LICS-CNELEP-2026-006-462114', '$785,783.20', '<span class="badge-phase badge-open">Abierta</span>'],
+      ['EPMMOP — Quito', 'Movilidad y Obras Públicas', 'CE-20260002974757-741823', '$97,324.98', '<span class="badge-phase badge-recent">Adjudicada</span>']
     ],
-    footer: 'Perfil de comprador del Estado: historial de pliegos, presupuestos anuales y adjudicaciones previas.'
+    footer: 'Ficha verificable de la entidad y del proceso de referencia publicado en el registro OCDS del SERCOP.'
   }
 };
 
@@ -266,11 +265,17 @@ function initExcelSheetTabs() {
       const tbody = table.querySelector('tbody');
       if (tbody) {
         tbody.innerHTML = data.rows.map(row => {
+          const thirdCell = sheetKey === 'entidad'
+            ? `<td class="font-mono">${row[2]}</td>`
+            : `<td class="text-right font-bold text-success">${row[2]}</td>`;
+          const fourthCell = sheetKey === 'entidad'
+            ? `<td class="text-right font-bold text-success">${row[3]}</td>`
+            : `<td>${row[3]}</td>`;
           return `<tr>
             <td class="font-mono text-link">${row[0]}</td>
             <td>${row[1]}</td>
-            <td class="text-right font-bold text-success">${row[2]}</td>
-            <td>${row[3]}</td>
+            ${thirdCell}
+            ${fourthCell}
             <td>${row[4]}</td>
           </tr>`;
         }).join('');
@@ -296,11 +301,11 @@ const INDUSTRY_DATA = {
     cpcName: 'Herramientas y Artículos de Ferretería',
     cpc: 'CPC 42921 • Herramientas y Artículos de Ferretería',
     tags: ['pernos alta resistencia', 'discos de corte', 'soldadura 7018', 'herramientas eléctricas', 'rodamientos', 'seguridad industrial'],
-    sampleTitle: 'ADQUISICIÓN DE HERRAMIENTAS, PERFILES Y SUMINISTROS DE TALLER',
-    sampleEntity: 'Cuerpo de Ingenieros del Ejército',
+    sampleTitle: 'ADQUISICIÓN DE MATERIALES DE FERRETERÍA PARA LA UNIDAD DE NEGOCIO TERMOPICHINCHA',
+    sampleEntity: 'CELEC EP (Termopichincha)',
     sampleProvince: 'Pichincha',
-    sampleCode: 'LICO-CEE-2026-004',
-    sampleAmount: '$994,289.69 USD',
+    sampleCode: 'SIE-CELECEP-2026-04070-238940',
+    sampleAmount: '$1,750,208.57 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Ferretería Industrial'
   },
@@ -312,12 +317,12 @@ const INDUSTRY_DATA = {
     cpcName: 'Cemento, Áridos y Hormigón',
     cpc: 'CPC 37510 • Cemento, Áridos y Hormigón',
     tags: ['cemento portland', 'varilla corrugada', 'asfalto', 'adoquines', 'geomembrana', 'perfiles estructurales'],
-    sampleTitle: 'SUMINISTRO DE MATERIALES PÉTREOS, ASFALTO Y CEMENTO PARA VIALIDAD',
-    sampleEntity: 'GAD Municipal de Rumiñahui',
+    sampleTitle: 'ADOQUINES HEXAGONALES DE CONCRETO 400 KG/CM2 DE RESISTENCIA',
+    sampleEntity: 'EPMMOP',
     sampleProvince: 'Pichincha',
-    sampleCode: 'COTO-GADMUR-2026-002',
-    sampleAmount: '$286,062.01 USD',
-    samplePhase: 'Convocatoria Abierta',
+    sampleCode: 'CE-20260002970891-741823',
+    sampleAmount: '$231,000.00 USD',
+    samplePhase: 'Adjudicada',
     waTopic: 'Materiales de Construcción'
   },
   electrico: {
@@ -328,11 +333,11 @@ const INDUSTRY_DATA = {
     cpcName: 'Conductores, Cables y Transformadores',
     cpc: 'CPC 46211 • Conductores, Cables y Transformadores',
     tags: ['transformadores trifásicos', 'cable de cobre', 'conductor de aluminio', 'seccionadores', 'aisladores poliméricos', 'luminarias LED'],
-    sampleTitle: 'SUMINISTRO DE CONDUCTORES DE ALUMINIO Y TRANSFORMADORES DE DISTRIBUCIÓN',
-    sampleEntity: 'Empresa Eléctrica Ambato (EEASA)',
-    sampleProvince: 'Tungurahua',
-    sampleCode: 'CE-20260002891410',
-    sampleAmount: '$732,152.96 USD',
+    sampleTitle: 'MANTENIMIENTO DE LÍNEAS Y REDES DE DISTRIBUCIÓN 2026 — GD',
+    sampleEntity: 'CNEL EP',
+    sampleProvince: 'Guayas',
+    sampleCode: 'LICS-CNELEP-2026-006-462114',
+    sampleAmount: '$785,783.20 USD',
     samplePhase: 'Convocatoria Abierta',
     waTopic: 'Redes Eléctricas'
   },
@@ -344,12 +349,12 @@ const INDUSTRY_DATA = {
     cpcName: 'Tuberías de Plástico y Válvulas',
     cpc: 'CPC 36320 • Tuberías de Plástico y Válvulas',
     tags: ['tubería PEAD', 'tubería PVC unión Z', 'válvulas compuerta', 'medidores de agua', 'accesorios hierro fundido', 'hidrantes'],
-    sampleTitle: 'ADQUISICIÓN DE TUBERÍA PVC PRESIÓN Y ACCESORIOS PARA RED MATRIZ',
-    sampleEntity: 'CNEL EP Guayaquil / EPMAPS',
-    sampleProvince: 'Guayas',
-    sampleCode: 'CE-20260002914520',
-    sampleAmount: '$350,393.12 USD',
-    samplePhase: 'Adjudicada',
+    sampleTitle: 'ADQUISICIÓN DE TUBERÍAS Y ACCESORIOS PARA ALCANTARILLADO PLUVIAL',
+    sampleEntity: 'GAD San Miguel de Ibarra',
+    sampleProvince: 'Imbabura',
+    sampleCode: 'SIE-GADM-IBARRA-2026-002-2783',
+    sampleAmount: '$129,000.00 USD',
+    samplePhase: 'Convocatoria Abierta',
     waTopic: 'Tubería y Saneamiento'
   }
 };

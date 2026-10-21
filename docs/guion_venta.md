@@ -45,7 +45,7 @@ Antes de hablar de características técnicas o algoritmos, realiza estas pregun
 ## 3. Secuencia de Cierre en WhatsApp (Con Excel en Mano)
 
 ### Mensaje 1: Primer Contacto Directo (Con Dato Real Extraído)
-> *«Estimado [Nombre del Gerente], le saluda [Tu Nombre]. Estuve revisando las compras públicas de insumos de construcción de esta semana en [Provincia/Ciudad] y vi que [Entidad, ej. Municipio de Rumiñahui] acaba de publicar un proceso por [$286,062 USD] en materiales de ferretería.*  
+> *«Estimado [Nombre del Gerente], le saluda [Tu Nombre]. Estuve revisando las compras públicas de insumos de construcción en [Provincia/Ciudad] y vi que [Entidad, ej. CELEC EP — Termopichincha] publicó un proceso por [$1,750,208.57 USD] en materiales de ferretería.*  
 >  
 > *Le comparto adjunto el reporte ejecutivo en Excel con el desglose y el enlace directo al pliego oficial. Nosotros monitoreamos SERCOP de forma continua para alertar a distribuidores de ferretería apenas se liberan las compras públicas con fase clasificada (convocatorias abiertas y adjudicaciones).*  
 >  

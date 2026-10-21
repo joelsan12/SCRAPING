@@ -480,10 +480,11 @@
   color: #64748b;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.4rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .code-pill {
@@ -495,6 +496,8 @@
   border: 1px solid var(--border-subtle);
   padding: 0.05rem 0.35rem;
   border-radius: 4px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .cpc-pill {
