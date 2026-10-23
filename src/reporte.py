@@ -8,6 +8,8 @@ import sys
 import os
 import argparse
 import logging
+import smtplib
+from email.message import EmailMessage
 from datetime import datetime, timezone, timedelta
 from typing import List, Dict, Any
 from dotenv import load_dotenv
@@ -29,6 +31,42 @@ from src.models import ProcesoSercop
 
 logger = logging.getLogger("sercop.reporte")
 
+# CONFIGURACIÓN DE EMAIL
+# Correo institucional para envío de reportes y notificaciones
+CORREO_REMITENTE = os.getenv("CORREO_REMITENTE", "contacto@j2sdynamics.com")
+CONTRASENA_SMTP = os.getenv("CONTRASENA_SMTP", "")
+SMTP_SERVIDOR = os.getenv("SMTP_SERVIDOR", "smtp.gmail.com")
+SMTP_PUERTO = int(os.getenv("SMTP_PUERTO", "587"))
+
+def enviar_email(para: str, asunto: str, cuerpo_html: str, adjunto_ruta: str = None):
+    """
+    Envía un email usando SMTP institucional.
+    Usa las variables de entorno: CORREO_REMITENTE, CONTRASENA_SMTP, SMTP_SERVIDOR, SMTP_PUERTO.
+    """
+    try:
+        msg = EmailMessage()
+        msg["From"] = CORREO_REMITENTE
+        msg["To"] = para
+        msg["Subject"] = asunto
+        msg.set_content(cuerpo_html, subtype="html")
+        
+        if adjunto_ruta:
+            with open(adjunto_ruta, "rb") as f:
+                adjunto = f.read()
+                msg.add_attachment(adjunto.main.filename, data=adjunto.content, mime_type="application/octet-stream")
+        
+        with smtplib.SMTP(SMTP_SERVIDOR, SMTP_PUERTO) as server:
+            server.starttls()
+            if CONTRASENA_SMTP:
+                server.login(CORREO_REMITENTE, CONTRASENA_SMTP)
+            server.send_message(msg)
+        
+        logger.info(f"📧 Email enviado a {para} desde {CORREO_REMITENTE}")
+        return True
+    except Exception as e:
+        logger.error(f"Error enviando email a {para}: {e}")
+        return False
+
 def generar_excel_semanal(
     procesos_coincidentes: List[Dict[str, Any]],
     rubro_nombre: str,
@@ -46,7 +84,7 @@ def generar_excel_semanal(
     ruta_archivo = os.path.join(output_dir, archivo_nombre)
 
     wb = openpyxl.Workbook()
-    # Pestaña 1: Oportunidades
+    # Pestaña 1: Detalle de Procesos
     ws1 = wb.active
     ws1.title = "Oportunidades Semanales"
     ws1.views.sheetView[0].showGridLines = True
@@ -221,6 +259,7 @@ def generar_excel_semanal(
     logger.info(f"📊 Archivo Excel generado: {ruta_archivo} ({os.path.getsize(ruta_archivo):,} bytes)")
     return ruta_archivo
 
+
 def generar_y_despachar_reporte(
     rubro_key: str = "ferreteria_construccion",
     dias: int = 7,
@@ -240,7 +279,7 @@ def generar_y_despachar_reporte(
     procesos_db = storage.obtener_procesos_recientes(dias=dias)
     logger.info(f"Registros recuperados de persistencia ({storage.__class__.__name__}): {len(procesos_db)}")
 
-    # 2. Filtrar y emparejar según keywords del rubro
+    # 3. Filtrar y emparejar según keywords del rubro
     procesos_coincidentes = []
     monto_acumulado = 0.0
 
@@ -260,7 +299,7 @@ def generar_y_despachar_reporte(
 
     logger.info(f"Oportunidades filtradas para {rubro_nombre}: {len(procesos_coincidentes)} (Monto: ${monto_acumulado:,.2f})")
 
-    # 3. Solo en modo demo (--demo): si no hay coincidencias en la ventana, usar registros para muestra comercial
+    # 4. Solo en modo demo (--demo): si no hay coincidencias en la ventana, usar registros para muestra comercial
     if demo and not procesos_coincidentes and procesos_db:
         logger.warning("MODO DEMO ACTIVO: Inyectando registros de muestra para presentación de ventas.")
         for p in procesos_db[:15]:
@@ -269,19 +308,62 @@ def generar_y_despachar_reporte(
             procesos_coincidentes.append(p_dict)
             monto_acumulado += float(p.get("amount") or 0.0)
 
-    # 4. Generar archivo Excel
+    # 5. Generar archivo Excel
     excel_path = generar_excel_semanal(
         procesos_coincidentes=procesos_coincidentes,
         rubro_nombre=rubro_nombre
     )
 
-    # 5. Despachar reporte por los canales activos
+    # 6. Despachar reporte por los canales activos
     notifier.enviar_reporte_semanal(
         filepath=excel_path,
         total_procesos=len(procesos_coincidentes),
         monto_total=monto_acumulado,
         rubro=rubro_nombre
     )
+
+    # 7. ENVIAR EMAIL AL CLIENTE CON EL REPORTE (NUEVO)
+    # Usar correo institucional configurado en .env
+    correo_cliente = os.getenv("CONTACTO_EMAIL", "contacto@j2sdynamics.com")
+    semana_num = datetime.now().isocalendar()[1]
+    rubro = rubro_nombre
+    monto_fmt = f"${monto_acumulado:,.2f}"
+    
+    cuerpo_html = f"""
+    <html>
+    <body>
+    <h3>LicitaciónYa Ecuador - Reporte Semanal</h3>
+    <p>Hola,</p>
+    <p>Adjunto encontrarás el reporte semanal de compras públicas detectadas en los últimos 7 días.</p>
+    <p><strong>Rubro:</strong> {rubro_nombre}</p>
+    <p><strong>Oportunidades detectadas:</strong> {len(procesos_coincidentes)}</p>
+    <p><strong>Monto total:</strong> {monto_fmt}</p>
+    <p>El reporte incluye:<br/>
+    • Procesos SERCOP con códigos OCID oficiales<br/>
+    • Fechas y presupuestos referenciales<br/>
+    • Palabras clave filtradas a tu rubro<br/>
+    • Próxima alerta automática en 6 horas</p>
+    <p>Puedes consultar tu panel de cliente para configurar filtros y ver todas las alertas.</p>
+    <p>Saludos cordiales,<br/>
+    <strong>LicitaciónYa Ecuador</strong><br/>
+    <a href="mailto:{CORREO_REMITENTE}">contacto@j2sdynamics.com</a></p>
+    </body>
+    </html>
+    """
+    
+    # Intentar enviar email (puede fallar si no hay configuración SMTP, pero no debe romper el reporte)
+    try:
+        exito = enviar_email(para=correo_cliente, asunto=f"Reporte Semanal LicitaciónYa - Semana {semana_num}", cuerpo_html=cuerpo_html, adjunto_ruta=excel_path)
+        if exito:
+            logger.info(f"📧 Reporte semanal enviado a {correo_cliente}")
+        else:
+            logger.warning("No se pudo enviar el email, pero el Excel fue generado correctamente")
+    except Exception as e:
+        logger.error(f"Error crítico en envío de email: {e}")
+        # No interrumpimos el flujo principal - el Excel ya fue generado
+    
+    logger.info(f"✅ Reporte semanal procesado: {len(procesos_coincidentes)} oportunidades, ${monto_acumulado:,.2f} total")
+
 
 def main():
     parser = argparse.ArgumentParser(description="Generador de Reporte Semanal SERCOP")

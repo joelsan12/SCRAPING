@@ -3,7 +3,7 @@
 
 Conste por el presente documento privado de prestación de servicios, celebrado entre las partes que se detallan a continuación:
 
-* **EL PROVEEDOR:** Joel Jeremias Sancan Sosa (J2S Dynamics / LicitaciónYa Ecuador), con RUC N° 1799888777001, domiciliado en la ciudad de Guayaquil, Ecuador.
+* **EL PROVEEDOR:** Joel Jeremias Sancan Sosa (J2S Dynamics / LicitaciónYa Ecuador), con RUC N° 0941822801001, domiciliado en la ciudad de Guayaquil, Ecuador.
 * **EL CLIENTE:** [NOMBRE DE LA EMPRESA CLIENTE], con RUC N° [RUC CLIENTE], debidamente representada por su Representante Legal [NOMBRE DEL REPRESENTANTE], con cédula de ciudadanía N° [NÚMERO CÉDULA], con domicilio en la ciudad de [CIUDAD], Ecuador.
 
 Las partes convienen libre y voluntariamente en celebrar el presente contrato al tenor de las siguientes cláusulas:
