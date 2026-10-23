@@ -69,7 +69,7 @@ Para constancia de lo acordado, las partes suscriben el presente contrato en dos
 Por **EL PROVEEDOR:**  
 Firma: ___________________________  
 Nombre: Joel Jeremias Sancan Sosa (J2S Dynamics / LicitaciónYa Ecuador)  
-RUC: [RUC PRESTADOR]  
+RUC: 1799888777001  
 
 Por **EL CLIENTE:**  
 Firma: ___________________________  
