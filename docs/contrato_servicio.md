@@ -20,7 +20,7 @@ EL PROVEEDOR prestará a favor de EL CLIENTE el servicio de monitoreo e intelige
 ---
 
 ### Cláusula Segunda: Tarifas, Facturación y Forma de Pago (Cláusula Flexible)
-1. **Régimen Tarifario:** Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el **Plan Estándar B2B: configuración inicial de USD 200.00 única y suscripción mensual de USD 80.00 más el IVA vigente a la fecha de facturación y otras retenciones de ley aplicables.**
+1. **Régimen Tarifario:** Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el **Plan Estándar B2B: suscripción mensual de USD 80.00 más el IVA vigente a la fecha de facturación y otras retenciones de ley aplicables, sin costo de configuración inicial (setup bonificado al 100%).**
 2. **Facturación Electrónica SRI:** EL PROVEEDOR emitirá y remitirá a EL CLIENTE el respectivo Comprobante Electrónico (Factura) debidamente autorizado por el Servicio de Rentas Internas (SRI), constituyendo gasto operativo 100% deducible.
 3. **Periodo de Pago:** La suscripción mensual se abonará por mes anticipado dentro de los primeros cinco (5) días hábiles de cada ciclo mediante transferencia bancaria a la cuenta corporativa designada por EL PROVEEDOR.
 

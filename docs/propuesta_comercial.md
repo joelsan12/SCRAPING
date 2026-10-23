@@ -38,8 +38,8 @@ Las empresas proveedoras de ferretería, materiales de construcción y suministr
 
 | Concepto | Inversión (USD) | Detalle |
 | :--- | :---: | :--- |
-| **Setup y Calibración Inicial** | **$200.00** *(pago único)* | Configuración del catálogo de búsqueda (hasta 30 términos técnicos), umbrales presupuestarios, filtros provinciales e integración de canales (WhatsApp / Email). |
-| **Suscripción Mensual** | **$80.00** */ mes* | Operación ininterrumpida 24/7, monitoreo cada 6 horas, alertas automatizadas ilimitadas en cada ciclo de monitoreo de 6 horas y entrega de reportes semanales. |
+| **Calibración y Setup Inicial** | **$0.00** *(bonificado 100%)* | Configuración del catálogo de búsqueda (hasta 30 términos técnicos), umbrales presupuestarios, filtros provinciales e integración de canales (WhatsApp / Email). |
+| **Suscripción Mensual** | **$80.00** */ mes + IVA* | Operación ininterrumpida 24/7, monitoreo cada 6 horas, alertas automatizadas ilimitadas en cada ciclo de monitoreo de 6 horas y entrega de reportes semanales sin permanencia mínima. |
 
 > **Facturación Formal:** Todos los valores se emiten con Factura Electrónica autorizada por el SRI (válida como gasto deducible para su empresa).
 

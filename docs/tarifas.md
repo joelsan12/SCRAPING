@@ -1,7 +1,7 @@
 # Hoja Táctica Interna de Tarifas y Precios (Tactic Sheet)
 ## Estrategia Comercial de Negociación por WhatsApp — LicitaciónYa Ecuador
 > **DOCUMENTO CONFIDENCIAL PARA USO INTERNO EXCLUSIVO DEL EQUIPO COMERCIAL**  
-> **REGLA DE ORO:** Estos 3 planes se utilizan **exclusivamente como herramienta de conversación telefónica / WhatsApp** para anclaje y rescate de ventas. **NO PUBLICAR EN LA LANDING PAGE** hasta que la arquitectura multi-cliente (S5) esté construida y probada en producción. La web mantiene de forma coherente el **Plan Estándar B2B ($80/mes + $200 setup)**.
+> **REGLA DE ORO:** Estos 3 planes se utilizan **exclusivamente como herramienta de conversación telefónica / WhatsApp** para anclaje y rescate de ventas. **NO PUBLICAR EN LA LANDING PAGE** hasta que la arquitectura multi-cliente (S5) esté construida y probada en producción. La web mantiene de forma coherente el **Plan Estándar B2B ($80/mes sin setup)**.
 
 ---
 
@@ -9,9 +9,9 @@
 
 | Nivel | Plan Comercial | Cuota Setup (Única) | Suscripción Mensual | Destinatarios | Alcance de Keywords | Canales de Despacho | Rol en Negociación |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Básico** | **Plan Esencial** | **$150 USD** | **$49 USD / mes** | 1 contacto | Hasta 10 keywords / 1 provincia | Matriz Excel semanal + Canal Telegram / Email | **Salvavidas** (Evita perder al prospecto con poco presupuesto) |
-| **Estándar ⭐** | **Plan Profesional B2B** *(Público en Web)* | **$200 USD** | **$80 USD / mes** | 1 número directo | Hasta 30 keywords / Cobertura provincial | Alertas WhatsApp cada 6h + Matriz Excel lunes 8 AM | **Núcleo de Negocio** (Máxima rentabilidad operativa concierge) |
-| **Avanzado** | **Plan Corporativo** | **$350 USD** | **$149 USD / mes** | Hasta 3 números | Hasta 60 keywords / Nacional completa | WhatsApp multi-agente + Excel semanal + Soporte prioritario | **Anclaje Psicológico** (Hace ver $80 como una ganga) |
+| **Básico** | **Plan Esencial** | **$0 USD** *(Bonificado)* | **$49 USD / mes** | 1 contacto | Hasta 10 keywords / 1 provincia | Matriz Excel semanal + Canal Telegram / Email | **Salvavidas** (Evita perder al prospecto con poco presupuesto) |
+| **Estándar ⭐** | **Plan Profesional B2B** *(Público en Web)* | **$0 USD** *(Sin Setup)* | **$80 USD / mes** | 1 número directo | Hasta 30 keywords / Cobertura provincial | Alertas WhatsApp cada 6h + Matriz Excel lunes 8 AM | **Núcleo de Negocio** (Máxima rentabilidad operativa concierge) |
+| **Avanzado** | **Plan Corporativo** | **$0 USD** *(Bonificado)* | **$149 USD / mes** | Hasta 3 números | Hasta 60 keywords / Nacional completa | WhatsApp multi-agente + Excel semanal + Soporte prioritario | **Anclaje Psicológico** (Hace ver $80 como una ganga) |
 
 *Todos los valores son más IVA según normativa del SRI (15% en Ecuador). Factura electrónica deducible al 100%.*
 
@@ -24,7 +24,7 @@
 3. **Plan $149 ("múltiples números de WhatsApp"):** El envío actual despacha al canal configurado de forma unitaria. Enviar a 3 destinatarios simultáneos de forma segmentada requiere cola de mensajería multi-destino.
 4. **Plan $149 ("histórico de adjudicaciones de competencia"):** Los datos brutos están en Turso libSQL, pero la plantilla analítica comparativa no está paquetizada como producto autónomo.
 
-> **Conclusión Estratégica:** Prometer 3 columnas en la web hoy violaría el principio de veracidad técnica de S4.2. La web muestra el Plan Estándar ($80 + $200), respaldado al 100% por nuestra infraestructura actual.
+> **Conclusión Estratégica:** Prometer 3 columnas en la web hoy violaría el principio de veracidad técnica de S4.2. La web muestra el Plan Estándar ($80/mes sin setup), respaldado al 100% por nuestra infraestructura actual.
 
 ---
 
@@ -55,9 +55,9 @@ Si el prospecto muestra interés real tras la prueba gratis de 15 días pero fre
 #### Táctica C: La Cláusula Flexible en el Contrato
 El contrato de servicio (`docs/contrato_servicio.md`) y los términos en web (`landing/legal/terminos.html`) ya cuentan con la redacción flexible unificada:
 
-> *"Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el Plan Estándar B2B: configuración inicial de USD 200.00 única y suscripción mensual de USD 80.00 más el IVA vigente a la fecha de facturación y otras retenciones de ley aplicables."*
+> *"Las tarifas aplicables se regirán según el Plan Comercial vigente, seleccionado por EL CLIENTE en su Propuesta Comercial o Anexo de Onboarding, siendo el Plan Estándar B2B: suscripción mensual de USD 80.00 más el IVA vigente a la fecha de facturación y otras retenciones de ley aplicables, sin costo de configuración inicial (setup bonificado al 100%)."*
 
-**Ventaja:** Si negocias $49 o descuentas el setup a $100 para cerrar a un cliente clave, **no necesitas modificar el contrato marco**. Solo colocas el valor acordado en el Anexo de Onboarding y el contrato sigue siendo 100% válido.
+**Ventaja:** Si negocias $49 para cerrar a un cliente clave con menor presupuesto, **no necesitas modificar el contrato marco**. Solo colocas el valor acordado en el Anexo de Onboarding y el contrato sigue siendo 100% válido.
 
 ---
 

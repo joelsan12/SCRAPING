@@ -22,7 +22,7 @@ flowchart TD
 
 ## 💼 Paquete Comercial "LicitaciónYa" (Semana 4)
 
-El proyecto incluye la documentación y activos completos para comercializar el servicio a distribuidores ferreteros, importadoras y constructoras en Ecuador ($200 setup + $80/mes):
+El proyecto incluye la documentación y activos completos para comercializar el servicio a distribuidores ferreteros, importadoras y constructoras en Ecuador ($80/mes + IVA, sin costo de setup):
 
 * 📄 **[Propuesta Comercial B2B](docs/propuesta_comercial.md):** One-pager de venta con desglose de dolor, entregables, pricing, piloto de 15 días gratis, SLA de 24h y checklist de demo en vivo.
 * 🎯 **[Guion de Ventas y Cierre](docs/guion_venta.md):** 5 preguntas de discovery comercial, manejo de las 3 objeciones típicas ("no tengo tiempo", "¿es legal?", "¿por qué pagar si SERCOP es público?") y secuencias de WhatsApp con Excel en mano.

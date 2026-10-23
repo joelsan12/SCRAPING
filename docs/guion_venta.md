@@ -66,4 +66,4 @@ Antes de hablar de características técnicas o algoritmos, realiza estas pregun
 ### Mensaje 4: Cierre del Piloto al Día 14
 > *«Estimado [Nombre], hoy se cumplen los 15 días del piloto gratuito. Durante este periodo su radar detectó [X] oportunidades por un valor superior a $[Monto Acumulado] USD.*  
 >  
-> *Para mantener el monitoreo activo y que no se corte el servicio a partir del lunes, le preparo la factura electrónica con los datos de su empresa ($200 setup único + $80 del primer mes). ¿Me comparte su RUC y razón social para emitírsela hoy?»*
+> *Para mantener el monitoreo activo y que no se corte el servicio a partir del lunes, le preparo la factura electrónica con los datos de su empresa (solo la mensualidad de $80 + IVA, sin ningún costo de setup). ¿Me comparte su RUC y razón social para emitírsela hoy?»*

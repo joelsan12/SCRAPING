@@ -1,38 +1,42 @@
 /* ==========================================================================
    LicitaciónYa — Interactive FAQ Accordion Component
-   Compact & Direct
+   Spacious, Executive & Modern Architecture
    ========================================================================== */
 
 .faq-section {
-  padding: 3.5rem 0 4rem;
+  padding: 4.5rem 0 5rem;
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
+  position: relative;
 }
 
 .faq-container {
-  max-width: 720px;
+  max-width: 980px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .faq-item {
   background: #ffffff;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-xs);
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-normal);
 }
 
 .faq-item:hover {
   border-color: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .faq-item.active {
   border-color: var(--brand-blue);
+  box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.15);
 }
 
 .faq-question-btn {
@@ -40,17 +44,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.75rem;
   background: none;
   border: none;
   color: var(--brand-navy);
   font-family: var(--font-sans);
-  font-size: 0.94rem;
+  font-size: 1.05rem;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
   user-select: none;
-  gap: 0.75rem;
+  gap: 1.25rem;
+  transition: color var(--transition-fast);
+}
+
+.faq-item:hover .faq-question-btn {
+  color: var(--brand-blue);
 }
 
 .faq-item.active .faq-question-btn {
@@ -58,15 +67,31 @@
 }
 
 .faq-icon {
-  font-size: 1.15rem;
-  transition: transform 0.25s ease;
-  color: var(--text-dim);
-  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-subtle);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
   font-weight: 400;
+  color: var(--text-dim);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.faq-item:hover .faq-icon {
+  border-color: var(--border-medium);
+  color: var(--brand-navy);
 }
 
 .faq-item.active .faq-icon {
   transform: rotate(45deg);
+  background: var(--brand-blue-soft);
+  border-color: rgba(37, 99, 235, 0.25);
   color: var(--brand-blue);
 }
 
@@ -82,14 +107,73 @@
 }
 
 .faq-answer-content {
-  padding: 0 1.25rem 1rem;
+  padding: 0 1.75rem 1.4rem;
   color: var(--text-muted);
-  font-size: 0.88rem;
-  line-height: 1.55;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  border-top: 1px dashed rgba(226, 232, 240, 0.7);
+  padding-top: 1rem;
 }
 
-@media (max-width: 640px) {
+/* Bottom Assistance Prompt */
+.faq-footer-help {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: #ffffff;
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.faq-footer-help p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.faq-footer-help p strong {
+  color: var(--brand-navy);
+}
+
+.faq-help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--brand-whatsapp);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.faq-help-link:hover {
+  color: var(--brand-whatsapp-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
   .faq-section {
-    padding: 2.25rem 0 3rem;
+    padding: 3rem 0;
+  }
+
+  .faq-question-btn {
+    padding: 1.1rem 1.25rem;
+    font-size: 0.98rem;
+  }
+
+  .faq-answer-content {
+    padding: 0 1.25rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .faq-footer-help {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
   }
 }

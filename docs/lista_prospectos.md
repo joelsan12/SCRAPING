@@ -61,7 +61,7 @@ Semana 3: Demostración de Impacto
   • Refuerzo de montos acumulados detectados durante su prueba.
 
 Semana 4: Cierre Comercial
-  • Presentación de propuesta formal de suscripción ($200 setup + $80/mes).
+  • Presentación de propuesta formal de suscripción pura ($80/mes + IVA, setup bonificado $0).
   • Facturación electrónica autorizada por SRI.
   • Meta mínima: Convertir 3 de los 6 pilotos en clientes recurrentes ($240/mes MRR inicial).
 ```
