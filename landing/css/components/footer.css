@@ -1,70 +1,61 @@
 /* ==========================================================================
-   LicitaciónYa — Executive Enterprise Footer Component
-   Corporate, Authoritative & Specific to Ecuador B2B
+   LicitaciónYa — Compact Executive Footer Component
+   Clean, Streamlined & Authoritative B2B Ecuador
    ========================================================================== */
 
 .footer {
   background: linear-gradient(180deg, #091322 0%, #060c16 100%);
   color: #94a3b8;
-  padding: 4.5rem 0 2.25rem;
+  padding: 2.75rem 0 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   position: relative;
-  overflow: hidden;
 }
 
-/* --- Banner CTA Superior del Footer --- */
+/* --- Banner CTA Horizontal Compacto --- */
 .footer-cta-wrapper {
-  position: relative;
-  background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.35) 0%, rgba(15, 23, 42, 0.95) 75%), #0b1528;
-  border: 1px solid rgba(59, 130, 246, 0.28);
-  border-radius: 18px;
-  padding: 3.25rem 2.25rem;
-  margin-bottom: 4rem;
-  text-align: center;
-  overflow: hidden;
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.footer-cta-glow {
-  position: absolute;
-  top: -50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-  pointer-events: none;
+  background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.28) 0%, rgba(15, 23, 42, 0.95) 100%), #0b1528;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .footer-cta-content {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
 }
 
 .footer-cta-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.28);
   color: #34d399;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.4rem 1rem;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
   border-radius: 9999px;
-  margin-bottom: 1.25rem;
+  width: fit-content;
 }
 
 .footer-cta-wrapper h2 {
-  font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 0.85rem;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
 .footer-cta-highlight {
@@ -73,113 +64,98 @@
   -webkit-text-fill-color: transparent;
 }
 
-.footer-cta-wrapper p {
-  color: #94a3b8;
-  font-size: 1.02rem;
-  margin-bottom: 2rem;
-  max-width: 620px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.65;
-}
-
 .footer-cta-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-shrink: 0;
 }
 
 .btn-footer-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  gap: 0.55rem;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff !important;
-  font-size: 1.02rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
-  padding: 0.95rem 2.25rem;
-  border-radius: 10px;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+  box-shadow: 0 6px 18px -4px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-footer-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.55);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 
 .btn-footer-cta svg {
   transition: transform 0.2s ease;
 }
 
-.btn-footer-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 32px -4px rgba(16, 185, 129, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  color: #ffffff !important;
-}
-
 .btn-footer-cta:hover svg {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
-/* --- Grid Principal del Footer (4 Columnas Equilibradas) --- */
+/* --- Grid Principal Compacto (4 Columnas) --- */
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.7fr 1.15fr 1.15fr 1.4fr;
-  gap: 3rem;
-  padding-bottom: 3.5rem;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 2rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   align-items: start;
 }
 
 .footer-col-title {
   color: #ffffff;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  margin-bottom: 1.25rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem;
 }
 
 .title-bar {
   width: 3px;
-  height: 14px;
+  height: 12px;
   background: #38bdf8;
   border-radius: 2px;
   display: inline-block;
 }
 
-/* Columna 1: Marca & Tax Carrier */
+/* Columna 1: Marca & RUC */
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.65rem;
 }
 
 .footer-brand-header {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
 }
 
 .footer-symbol {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
 }
 
 .footer-brand-title {
-  font-size: 1.35rem;
+  font-size: 1.18rem;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.02em;
@@ -193,42 +169,40 @@
   background: rgba(56, 189, 248, 0.15);
   border: 1px solid rgba(56, 189, 248, 0.3);
   color: #38bdf8;
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 4px;
   letter-spacing: 0.06em;
 }
 
 .footer-tagline {
   color: #94a3b8;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  margin: 0.2rem 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
-/* Indicador de Estado del Sistema */
-.footer-system-status {
+.footer-meta-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  padding: 0.45rem 0.85rem;
-  border-radius: 8px;
-  font-size: 0.76rem;
-  color: #e2e8f0;
-  font-weight: 500;
+  gap: 0.45rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  color: #cbd5e1;
   width: fit-content;
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background-color: #10b981;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 10px #10b981;
+  box-shadow: 0 0 8px #10b981;
   animation: pulse-dot 2s infinite ease-in-out;
 }
 
@@ -237,189 +211,153 @@
   50% { opacity: 0.45; transform: scale(0.85); }
 }
 
-/* Ficha Legal / Tributaria */
-.footer-legal-card {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 8px;
-  padding: 0.75rem 0.95rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.76rem;
-  margin-top: 0.25rem;
-}
-
-.legal-card-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.legal-label {
+.footer-ruc-info {
+  font-size: 0.73rem;
   color: #64748b;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  line-height: 1.45;
 }
 
-.legal-val {
-  color: #cbd5e1;
-  font-weight: 500;
+.footer-ruc-info strong {
+  color: #94a3b8;
 }
 
-/* Enlaces y Navegación */
+/* Enlaces Compactos (Columnas 2 y 3) */
 .footer-nav-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.5rem;
 }
 
 .footer-nav-list li a {
   color: #94a3b8;
   text-decoration: none;
-  font-size: 0.86rem;
+  font-size: 0.8rem;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.15rem 0;
+  gap: 0.35rem;
 }
 
 .footer-nav-list li a:hover {
   color: #38bdf8;
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
-/* Columna 4: Operaciones y Entregables */
-.footer-ops-cards {
+/* Columna 4: Operaciones Compactas */
+.footer-ops-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.6rem;
+  font-size: 0.78rem;
 }
 
-.ops-card {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  padding: 0.65rem 0.85rem;
+.footer-ops-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  transition: all 0.2s ease;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  line-height: 1.4;
 }
 
-.ops-card:hover {
-  border-color: rgba(56, 189, 248, 0.25);
-  background: rgba(255, 255, 255, 0.04);
-  transform: translateY(-1px);
-}
-
-.ops-icon {
+.footer-ops-item svg {
   color: #38bdf8;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-.ops-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+.footer-ops-item a {
+  color: #38bdf8;
+  text-decoration: none;
 }
 
-.ops-title {
-  color: #ffffff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+.footer-ops-item a:hover {
+  text-decoration: underline;
 }
 
-.ops-desc {
-  color: #94a3b8;
-  font-size: 0.74rem;
-  line-height: 1.4;
+.footer-ops-sub {
+  display: block;
+  font-size: 0.71rem;
+  color: #64748b;
 }
 
-/* --- Barra Inferior (Bottom Bar) --- */
+/* --- Barra Inferior Compacta --- */
 .footer-bottom {
-  padding-top: 2rem;
+  padding-top: 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.footer-bottom-legal {
-  flex: 1 1 500px;
+  gap: 1rem;
+  font-size: 0.73rem;
+  color: #64748b;
 }
 
 .footer-disclaimer {
-  color: #64748b;
-  font-size: 0.76rem;
-  line-height: 1.6;
+  max-width: 580px;
+  line-height: 1.5;
   margin: 0;
 }
 
 .footer-trust-pills {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .trust-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.35rem 0.7rem;
-  border-radius: 6px;
-  font-size: 0.72rem;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.25rem 0.55rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
   color: #cbd5e1;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .trust-tag svg {
   color: #38bdf8;
 }
 
-.trust-tag:hover {
-  border-color: rgba(56, 189, 248, 0.3);
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.06);
-}
-
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
+  .footer-cta-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+  .footer-cta-actions {
+    width: 100%;
+  }
+  .btn-footer-cta {
+    width: 100%;
+    justify-content: center;
+  }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 640px) {
   .footer {
-    padding: 3rem 0 1.5rem;
-  }
-  .footer-cta-wrapper {
-    padding: 2.25rem 1.25rem;
-    margin-bottom: 2.5rem;
+    padding: 2rem 0 1.25rem;
   }
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.25rem;
+    gap: 1.5rem;
   }
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
   }
 }
