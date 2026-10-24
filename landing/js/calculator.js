@@ -16,7 +16,7 @@ export function initCalculator() {
 
   if (!marginSlider || !contractsSlider) return;
 
-  const ANNUAL_SERVICE_COST = 200 + (12 * 80); // $200 setup + 12 * $80 = $1,160 USD
+  const ANNUAL_SERVICE_COST = 12 * 80; // 12 * $80 = $960 USD (sin costo de setup)
 
   function formatCurrency(amount) {
     return new Intl.NumberFormat('en-US', {
