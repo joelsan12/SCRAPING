@@ -19,7 +19,8 @@ coverage/
 
 # Logs y descargas
 logs/
-data/
+/data/
+!landing/js/data/
 downloads/
 *.csv
 *.xlsx

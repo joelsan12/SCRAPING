@@ -1,0 +1,21 @@
+{
+  "name": "licitacionya-sercop",
+  "version": "1.0.0",
+  "description": "Plataforma B2B de monitoreo e inteligencia comercial de contratación pública SERCOP Ecuador",
+  "main": "landing/index.html",
+  "scripts": {
+    "build": "node scripts/build_landing.js",
+    "dev": "python -m http.server 8000 --directory landing",
+    "test": "pytest -q"
+  },
+  "keywords": [
+    "sercop",
+    "b2b",
+    "ecuador",
+    "licitaciones",
+    "scraping"
+  ],
+  "author": "J2S Dynamics",
+  "license": "UNLICENSED",
+  "private": true
+}

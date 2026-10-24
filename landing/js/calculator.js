@@ -43,12 +43,9 @@ export function initCalculator() {
     if (resultCost) resultCost.textContent = formatCurrency(ANNUAL_SERVICE_COST);
     if (resultRoi) resultRoi.textContent = `+${roiMultiplier.toLocaleString()}%`;
 
-    // Dynamically update WhatsApp CTA message
+    // Action button opens the onboarding modal
     if (calcCtaBtn) {
-      const waText = encodeURIComponent(
-        `Hola LicitaciónYa, calculé en su web un retorno estimado de ${formatCurrency(totalProfit)} con ${contracts} contrato(s). Quisiera activar mi prueba gratis de 15 días para mi empresa.`
-      );
-      calcCtaBtn.href = `https://wa.me/593979116551?text=${waText}`;
+      calcCtaBtn.classList.add('btn-open-trial');
     }
   }
 

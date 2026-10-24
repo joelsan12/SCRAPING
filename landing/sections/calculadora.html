@@ -1,0 +1,59 @@
+<!-- Interactive ROI Calculator Section -->
+<section class="calculator-section" id="calculadora">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Calcule su retorno de inversión <span class="text-accent">(ROI)</span></h2>
+      <p class="section-subtitle">Estime el impacto financiero de detectar compras públicas afines a su inventario a tiempo.</p>
+    </div>
+
+    <div class="calculator-wrapper">
+      <div class="calculator-grid">
+        <!-- Controls -->
+        <div class="calc-controls">
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calc-margin-slider">Margen promedio por contrato ganado:</label>
+              <span class="calc-badge" id="calc-margin-badge">$15,000 USD</span>
+            </div>
+            <input type="range" id="calc-margin-slider" class="calc-slider" min="3000" max="60000" step="1000" value="15000">
+            <div class="calc-slider-scale">
+              <span>$3,000</span>
+              <span>$30,000</span>
+              <span>$60,000+</span>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calc-contracts-slider">Contratos adicionales al año con alertas tempranas:</label>
+              <span class="calc-badge" id="calc-contracts-badge">2 contratos</span>
+            </div>
+            <input type="range" id="calc-contracts-slider" class="calc-slider" min="1" max="10" step="1" value="2">
+            <div class="calc-slider-scale">
+              <span>1 contrato</span>
+              <span>5 contratos</span>
+              <span>10 contratos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Box -->
+        <div class="calc-results">
+          <div class="calc-result-header">Beneficio Bruto Estimado Anual</div>
+          <div class="calc-result-main" id="calc-result-profit">$30,000</div>
+
+          <div class="calc-result-stats">
+            <div class="stat-item">
+              <small>Costo anual LicitaciónYa</small>
+              <strong id="calc-result-cost">$960</strong>
+            </div>
+            <div class="stat-item">
+              <small>Retorno Neto Estimado (ROI)</small>
+              <strong class="roi-tag" id="calc-result-roi">+3,025%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
