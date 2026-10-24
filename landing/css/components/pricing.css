@@ -126,6 +126,53 @@
   margin-top: 2px;
 }
 
+.pricing-cta-box {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-pricing-cta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn-pricing-cta:hover {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(5, 150, 105, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.btn-pricing-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.btn-pricing-cta svg {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-pricing-cta:hover svg {
+  transform: translateX(4px);
+}
+
 .guarantee-text {
   display: block;
   text-align: center;
