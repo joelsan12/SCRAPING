@@ -3,40 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Clientes | LicitaciónYa Ecuador</title>
-  <meta name="description" content="Panel corporativo de gestión de radar SERCOP y canales de notificación para proveedores en Ecuador.">
+  <title>Portal de Clientes B2B | LicitaciónYa Ecuador</title>
+  <meta name="description" content="Panel de administración y gestión de alertas SERCOP para clientes corporativos de LicitaciónYa.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/portal.css?v=20261023_v1">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css?v=20261023_v2">
+  <link rel="stylesheet" href="css/base.css?v=20261023_v2">
+  <link rel="stylesheet" href="css/portal.css?v=20261023_v2">
 </head>
 <body class="portal-body">
 
-  <!-- Header -->
+  <!-- Executive Portal Header -->
   <header class="portal-header">
     <div class="portal-nav-container">
       <a href="index.html" class="portal-brand">
-        <div class="portal-symbol">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="portal-brand-symbol">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M5 12a7 7 0 0 1 14 0"></path>
             <path d="M2 12a10 10 0 0 1 20 0"></path>
           </svg>
         </div>
-        <span class="portal-brand-text">Licitación<strong>Ya</strong> Portal</span>
+        <span class="portal-brand-text">Licitación<strong>Ya</strong></span>
+        <span class="portal-badge">PORTAL CLIENTES</span>
       </a>
 
-      <div class="portal-header-right">
-        <div class="portal-status-pill">
-          <span class="status-dot"></span>
-          <span>Radar SERCOP Operativo (24/7)</span>
-        </div>
-
-        <div class="portal-user-tag" id="header-user-tag" style="display: none;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span class="user-company-name">Mi Empresa</span>
+      <div class="portal-user-actions">
+        <div class="portal-live-indicator" id="portal-live-status">
+          <span class="live-pulse"></span>
+          <span>Radar Activo (24/7)</span>
         </div>
 
         <button type="button" class="portal-logout-btn" id="portal-logout-btn" style="display: none;">Cerrar Sesión</button>
@@ -48,23 +43,36 @@
   <!-- Main Content Area -->
   <main class="portal-main">
     
-    <!-- View 1: Simple B2B Login (Only if no active session) -->
+    <!-- View 1: B2B Login (RUC + Últimos 4 dígitos del celular) -->
     <div class="portal-login-wrap" id="portal-login-view">
       <div class="login-icon-box">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
       </div>
       <h2 class="portal-login-title">Acceso a su Panel de Radar</h2>
-      <p class="portal-login-desc">Ingrese el RUC de su empresa o número de WhatsApp registrado para gestionar sus canales y reportes.</p>
+      <p class="portal-login-desc">Ingrese el RUC de su empresa y los últimos 4 dígitos de su celular para validar su identidad sin contraseñas.</p>
+
+      <div id="portal-login-error" class="login-error-box" style="display: none;"></div>
 
       <form id="portal-login-form" class="portal-login-form">
         <div class="form-group">
-          <label for="portal-login-id">RUC Oficial o WhatsApp <span class="required">*</span></label>
-          <input type="text" id="portal-login-id" class="form-input font-mono" placeholder="Ej. 0941822801001 o 0991234567" required>
+          <label for="portal-login-ruc">RUC Oficial (13 dígitos) <span class="required">*</span></label>
+          <input type="text" id="portal-login-ruc" class="form-input font-mono" placeholder="0941822801001" maxlength="13" required>
         </div>
-        <button type="submit" class="btn-modal-submit" style="margin-top: 0.5rem;">
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label for="portal-login-phone4">Últimos 4 dígitos de su WhatsApp <span class="required">*</span></label>
+          <input type="text" id="portal-login-phone4" class="form-input font-mono" placeholder="4567" maxlength="4" pattern="[0-9]{4}" required>
+          <span style="font-size: 0.75rem; color: #64748b; margin-top: 4px; display: block;">Los últimos 4 dígitos del número registrado al activar el piloto.</span>
+        </div>
+
+        <button type="submit" class="btn-modal-submit" id="btn-submit-portal-login" style="margin-top: 1.25rem;">
           <span>Ingresar a Mi Panel</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
+
+        <div style="text-align: center; margin-top: 1.25rem; font-size: 0.82rem; color: #64748b;">
+          ¿Aún no tiene piloto activado? <a href="index.html#precios" style="color: #059669; font-weight: 600;">Active su prueba de 15 días gratis</a>
+        </div>
       </form>
     </div>
 
@@ -74,19 +82,19 @@
       <!-- Top Account Hero Banner -->
       <section class="dashboard-hero">
         <div class="hero-company-info">
-          <h1 id="dash-empresa">Distribuidora Ferretera del Guayas S.A.</h1>
+          <h1 id="dash-empresa">Cargando empresa...</h1>
           <div class="hero-company-meta">
-            <span>RUC: <strong id="dash-ruc" class="font-mono">0941822801001</strong></span>
+            <span>RUC: <strong id="dash-ruc" class="font-mono">-</strong></span>
             <span>&middot;</span>
-            <span class="hero-meta-badge" id="dash-rubro">Ferretería Industrial & Acero</span>
+            <span class="hero-meta-badge" id="dash-rubro">-</span>
             <span>&middot;</span>
-            <span>Guayaquil, Ecuador</span>
+            <span>Ecuador (24 Provincias)</span>
           </div>
         </div>
 
         <div class="hero-plan-card">
           <span class="plan-label">Plan Activo</span>
-          <div class="plan-name" id="dash-plan">Suscripción B2B ($80/mes)</div>
+          <div class="plan-name" id="dash-plan">Piloto 15 Días Gratuitos</div>
           <span class="plan-status-tag" id="dash-trial-days">15 Días Restantes</span>
         </div>
       </section>
@@ -108,7 +116,7 @@
               <span class="channel-label">WhatsApp para Alertas Diarias (Cada 6h):</span>
             </div>
             <div class="channel-input-group">
-              <input type="text" id="channel-whatsapp" class="form-input font-mono" value="+593 099 123 4567">
+              <input type="text" id="channel-whatsapp" class="form-input font-mono" value="">
               <button type="button" class="btn-inline-save" id="btn-save-wa">Actualizar</button>
             </div>
             <span class="save-feedback" id="feedback-wa">✓ WhatsApp guardado en su radar</span>
@@ -119,7 +127,7 @@
               <span class="channel-label">Correo para Matriz Excel (Lunes 8:00 AM):</span>
             </div>
             <div class="channel-input-group">
-              <input type="email" id="channel-email" class="form-input" value="ventas@ferreteraguayas.com">
+              <input type="email" id="channel-email" class="form-input" value="">
               <button type="button" class="btn-inline-save" id="btn-save-email">Actualizar</button>
             </div>
             <span class="save-feedback" id="feedback-email">✓ Correo actualizado para despacho</span>
@@ -168,65 +176,69 @@
         </div>
       </div>
 
-      <!-- Historical Excel Reports Download Section -->
+      <!-- Real State Reports Section: Zero Fake Numbers -->
       <div class="portal-card">
         <div class="card-header">
           <h3 class="card-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-            Historial de Matrices Ejecutivas en Excel (.xlsx)
+            Entregas de Matrices Ejecutivas en Excel (.xlsx)
           </h3>
-          <span style="font-size: 0.75rem; color: #34d399; font-weight: 600;">Emisión Semanal Oficial</span>
+          <span style="font-size: 0.75rem; color: #34d399; font-weight: 600;">Despacho Automatizado</span>
         </div>
 
-        <table class="reports-table">
-          <thead>
-            <tr>
-              <th>Periodo Semanal</th>
-              <th>Procesos Detectados</th>
-              <th>Monto Total Licitado</th>
-              <th>Formato</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Semana 43 — Octubre 2026 (Actual)</strong></td>
-              <td><span class="text-success font-bold">42 convocatorias</span></td>
-              <td>$3,172,630.50 USD</td>
-              <td>Excel (.xlsx)</td>
-              <td>
-                <a href="downloads/Reporte_SERCOP_Semana_43_2026.xlsx" download="Reporte_SERCOP_Semana_43_2026.xlsx" class="btn-download-excel">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  Descargar
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Semana 42 — Octubre 2026</td>
-              <td>38 convocatorias</td>
-              <td>$2,450,110.00 USD</td>
-              <td>Excel (.xlsx)</td>
-              <td>
-                <a href="downloads/Reporte_SERCOP_Semana_43_2026.xlsx" download="Reporte_SERCOP_Semana_42_2026.xlsx" class="btn-download-excel">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  Descargar
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Semana 41 — Octubre 2026</td>
-              <td>29 convocatorias</td>
-              <td>$1,890,500.00 USD</td>
-              <td>Excel (.xlsx)</td>
-              <td>
-                <a href="downloads/Reporte_SERCOP_Semana_43_2026.xlsx" download="Reporte_SERCOP_Semana_41_2026.xlsx" class="btn-download-excel">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  Descargar
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Clean Real Status for New Subscribers -->
+        <div class="real-status-box" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="background: rgba(5, 150, 105, 0.15); color: #34d399; padding: 10px; border-radius: 8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div>
+              <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: #f8fafc;">Primer Reporte Semanal en Preparación</h4>
+              <p style="margin: 0; font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+                Su cuenta se encuentra en su ciclo de monitoreo continuo. El primer archivo consolidado en Excel con las compras públicas de la <strong>Semana 44</strong> será generado y entregado automáticamente el <strong>próximo lunes a las 08:00 AM</strong> en esta tabla y a su correo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Reference Excel Matrix (Clearly Labeled Sample) -->
+        <div class="sample-download-section">
+          <h4 style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 0.75rem;">Archivo de Demostración y Referencia Oficial:</h4>
+          <table class="reports-table">
+            <thead>
+              <tr>
+                <th>Archivo de Muestra</th>
+                <th>Tipo de Contenido</th>
+                <th>Formato</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Reporte_SERCOP_Semana_43_2026.xlsx</strong></td>
+                <td><span class="hero-meta-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Ejemplo de Estructura OCDS</span></td>
+                <td>Excel (.xlsx)</td>
+                <td>
+                  <a href="downloads/Reporte_SERCOP_Semana_43_2026.xlsx" download="Reporte_SERCOP_Semana_43_2026.xlsx" class="btn-download-excel">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Descargar Muestra
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Reporte_SERCOP_Semana_42_2026.xlsx</strong></td>
+                <td><span class="hero-meta-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Ejemplo Histórico SERCOP</span></td>
+                <td>Excel (.xlsx)</td>
+                <td>
+                  <a href="downloads/Reporte_SERCOP_Semana_42_2026.xlsx" download="Reporte_SERCOP_Semana_42_2026.xlsx" class="btn-download-excel">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Descargar Muestra
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </main>
@@ -238,6 +250,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261023_v1"></script>
+  <script src="js/portal.js?v=20261023_v2"></script>
 </body>
 </html>

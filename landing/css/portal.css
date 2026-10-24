@@ -483,6 +483,17 @@ input:checked + .slider:before {
   color: #ffffff;
 }
 
+.login-error-box {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
 /* Portal Footer */
 .portal-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
