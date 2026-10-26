@@ -8,6 +8,7 @@ import sys
 import os
 import argparse
 import logging
+import json
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime, timezone, timedelta
@@ -50,10 +51,16 @@ def enviar_email(para: str, asunto: str, cuerpo_html: str, adjunto_ruta: str = N
         msg["Subject"] = asunto
         msg.set_content(cuerpo_html, subtype="html")
         
-        if adjunto_ruta:
+        if adjunto_ruta and os.path.exists(adjunto_ruta):
             with open(adjunto_ruta, "rb") as f:
-                adjunto = f.read()
-                msg.add_attachment(adjunto.main.filename, data=adjunto.content, mime_type="application/octet-stream")
+                adjunto_data = f.read()
+                filename = os.path.basename(adjunto_ruta)
+                msg.add_attachment(
+                    adjunto_data,
+                    maintype="application",
+                    subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    filename=filename
+                )
         
         with smtplib.SMTP(SMTP_SERVIDOR, SMTP_PUERTO) as server:
             server.starttls()
@@ -284,9 +291,15 @@ def generar_y_despachar_reporte(
     monto_acumulado = 0.0
 
     for p in procesos_db:
-        # Reconstruir modelo para validación y normalización
+        # Reconstruir modelo para validación y normalización desde raw_json
         try:
-            proceso_obj = ProcesoSercop.model_validate(p)
+            if p.get("raw_json"):
+                data_dict = json.loads(p["raw_json"]) if isinstance(p["raw_json"], str) else p["raw_json"]
+            else:
+                data_dict = dict(p)
+                data_dict.setdefault("id", 0)
+                data_dict.setdefault("year", datetime.now().year)
+            proceso_obj = ProcesoSercop.model_validate(data_dict)
         except Exception:
             continue
 
@@ -294,6 +307,8 @@ def generar_y_despachar_reporte(
         if alerta:
             p_dict = dict(p)
             p_dict["keywords_str"] = ", ".join(alerta.keywords_detectadas)
+            p_dict["description"] = alerta.description
+            p_dict["title"] = alerta.title
             procesos_coincidentes.append(p_dict)
             monto_acumulado += alerta.amount
 
