@@ -1,6 +1,7 @@
 /**
- * LicitaciónYa — B2B Fast Onboarding Modal Controller
- * Conecta con /api/register para persistencia en Turso y despacho con Resend
+ * LicitaciónYa — Onboarding
+ * Valida, envía a /api/register y solo muestra éxito cuando el backend confirma.
+ * No modifica el contrato de la API.
  */
 
 export function initTrialModal() {
@@ -11,216 +12,416 @@ export function initTrialModal() {
   const form = document.getElementById('trial-form');
   const formView = document.getElementById('modal-form-view');
   const successView = document.getElementById('modal-success-view');
+  const errorBox = document.getElementById('modal-error');
 
-  // Trigger buttons
-  const triggers = document.querySelectorAll(
-    '#btn-activate-trial, #btn-open-modal-pricing, #btn-open-modal-footer, #footer-action-btn, .btn-open-trial, a[href="#registro"]'
-  );
+  let lastFocused = null;
 
-  function openModal(e) {
-    if (e) e.preventDefault();
-    modal.classList.add('active');
+  const focusableSelector = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
+
+  function showError(message) {
+    if (!errorBox) return;
+    errorBox.textContent = message;
+    errorBox.classList.add('is-visible');
+    errorBox.setAttribute('tabindex', '-1');
+    errorBox.focus();
+  }
+
+  function hideError() {
+    if (!errorBox) return;
+    errorBox.textContent = '';
+    errorBox.classList.remove('is-visible');
+  }
+
+  function setFieldError(input, isError) {
+    if (!input) return;
+    const group = input.closest('.form-group');
+    if (group) group.classList.toggle('has-error', isError);
+  }
+
+  function clearFieldErrors() {
+    form?.querySelectorAll('.form-group.has-error').forEach((group) => {
+      group.classList.remove('has-error');
+    });
+  }
+
+  function openModal(event) {
+    if (event) event.preventDefault();
+    lastFocused = document.activeElement;
+
+    if (formView && successView && !successView.hidden) {
+      form?.reset();
+      clearFieldErrors();
+    }
+
+    hideError();
+    modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Reset views if previously completed
-    if (formView && successView) {
-      formView.style.display = 'block';
-      successView.style.display = 'none';
+    if (formView) formView.hidden = false;
+    if (successView) successView.hidden = true;
+
+    if (successPasswordInput) {
+      successPasswordInput.value = '';
+      successPasswordInput.type = 'password';
+    }
+    if (btnToggleSuccessPw) {
+      const iconEye = btnToggleSuccessPw.querySelector('.icon-eye');
+      const iconEyeOff = btnToggleSuccessPw.querySelector('.icon-eye-off');
+      if (iconEye) iconEye.hidden = false;
+      if (iconEyeOff) iconEyeOff.hidden = true;
+    }
+    if (successPasswordFeedback) {
+      successPasswordFeedback.textContent = '';
+      successPasswordFeedback.className = 'password-feedback';
+      successPasswordFeedback.hidden = true;
+    }
+    if (btnSaveSuccessPw) {
+      btnSaveSuccessPw.disabled = false;
+      btnSaveSuccessPw.textContent = 'Guardar clave';
     }
 
-    const firstInput = document.getElementById('trial-empresa');
-    if (firstInput) {
-      setTimeout(() => firstInput.focus(), 150);
-    }
+    window.setTimeout(() => {
+      document.getElementById('trial-empresa')?.focus();
+    }, 90);
   }
 
   function closeModal() {
-    modal.classList.remove('active');
+    modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
   }
 
-  triggers.forEach(btn => {
-    btn.addEventListener('click', openModal);
+  document.querySelectorAll('.js-open-trial, a[href="#registro"], a[href="#piloto"]').forEach((trigger) => {
+    trigger.addEventListener('click', openModal);
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
+  closeBtn?.addEventListener('click', closeModal);
+  document.querySelectorAll('.js-close-modal').forEach((button) => {
+    button.addEventListener('click', closeModal);
+  });
 
-  // Close on backdrop click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!modal.classList.contains('is-open')) return;
+
+    if (event.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusable = Array.from(modal.querySelectorAll(focusableSelector)).filter(
+      (element) => element.offsetParent !== null
+    );
+
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  // Check URL hash for #registro or #piloto
   if (window.location.hash === '#registro' || window.location.hash === '#piloto') {
     openModal();
   }
 
-  function setFieldError(inputEl, isError) {
-    if (!inputEl) return;
-    const parent = inputEl.closest('.form-group');
-    if (parent) {
-      if (isError) {
-        parent.classList.add('has-error');
-      } else {
-        parent.classList.remove('has-error');
-      }
+  const successPasswordInput = document.getElementById('success-password');
+  const btnToggleSuccessPw = document.getElementById('btn-toggle-success-pw');
+  const btnSaveSuccessPw = document.getElementById('btn-save-success-pw');
+  const successPasswordFeedback = document.getElementById('success-password-feedback');
+  const successHintPhone4 = document.getElementById('success-hint-phone4');
+  const portalLink = document.getElementById('btn-go-to-portal');
+
+  let currentClientData = null;
+
+  async function persistPassword(pwd) {
+    if (!currentClientData) return false;
+    currentClientData.password = pwd;
+
+    try {
+      localStorage.setItem('licitacionya_current_client', JSON.stringify(currentClientData));
+      const existing = JSON.parse(localStorage.getItem('licitacionya_clients_db') || '[]');
+      const filtered = existing.filter((client) => client.ruc !== currentClientData.ruc);
+      filtered.push(currentClientData);
+      localStorage.setItem('licitacionya_clients_db', JSON.stringify(filtered));
+    } catch (storageError) {
+      console.warn('No se pudo guardar la clave en almacenamiento local:', storageError);
     }
+
+    try {
+      await fetch('/api/password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ruc: currentClientData.ruc, password: pwd })
+      });
+    } catch (apiError) {
+      console.warn('No se pudo sincronizar la clave con el servidor:', apiError);
+    }
+
+    return true;
   }
 
-  // Form Validation & Submission
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  btnToggleSuccessPw?.addEventListener('click', () => {
+    if (!successPasswordInput) return;
+    const isPassword = successPasswordInput.type === 'password';
+    successPasswordInput.type = isPassword ? 'text' : 'password';
+    const iconEye = btnToggleSuccessPw.querySelector('.icon-eye');
+    const iconEyeOff = btnToggleSuccessPw.querySelector('.icon-eye-off');
+    if (iconEye) iconEye.hidden = isPassword;
+    if (iconEyeOff) iconEyeOff.hidden = !isPassword;
+  });
 
-      const empresaEl = document.getElementById('trial-empresa');
-      const rucEl = document.getElementById('trial-ruc');
-      const rubroEl = document.getElementById('trial-rubro');
-      const whatsappEl = document.getElementById('trial-whatsapp');
-      const emailEl = document.getElementById('trial-email');
-      const submitBtn = document.getElementById('btn-submit-trial');
+  async function handleSavePassword() {
+    if (!successPasswordInput || !successPasswordFeedback) return;
+    const pwd = successPasswordInput.value.trim();
 
-      let isValid = true;
+    if (!pwd) {
+      successPasswordFeedback.textContent = 'Ingrese una contraseña para su cuenta (mínimo 6 caracteres).';
+      successPasswordFeedback.className = 'password-feedback is-error';
+      successPasswordFeedback.hidden = false;
+      successPasswordInput.focus();
+      return;
+    }
 
-      // 1. Validate Empresa
-      const empresaVal = empresaEl ? empresaEl.value.trim() : '';
-      if (!empresaVal || empresaVal.length < 3) {
-        setFieldError(empresaEl, true);
-        isValid = false;
-      } else {
-        setFieldError(empresaEl, false);
+    if (pwd.length < 6) {
+      successPasswordFeedback.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+      successPasswordFeedback.className = 'password-feedback is-error';
+      successPasswordFeedback.hidden = false;
+      successPasswordInput.focus();
+      return;
+    }
+
+    if (btnSaveSuccessPw) {
+      btnSaveSuccessPw.disabled = true;
+      btnSaveSuccessPw.textContent = 'Guardando…';
+    }
+
+    await persistPassword(pwd);
+
+    if (btnSaveSuccessPw) {
+      btnSaveSuccessPw.disabled = false;
+      btnSaveSuccessPw.textContent = '✓ Guardada';
+    }
+
+    successPasswordFeedback.textContent = '✓ Contraseña guardada correctamente para su portal.';
+    successPasswordFeedback.className = 'password-feedback is-success';
+    successPasswordFeedback.hidden = false;
+  }
+
+  btnSaveSuccessPw?.addEventListener('click', handleSavePassword);
+
+  successPasswordInput?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSavePassword();
+    }
+  });
+
+  portalLink?.addEventListener('click', async (event) => {
+    const pwd = successPasswordInput?.value.trim() || '';
+    if (pwd) {
+      if (pwd.length < 6) {
+        event.preventDefault();
+        if (successPasswordFeedback) {
+          successPasswordFeedback.textContent = 'La contraseña debe tener al menos 6 caracteres antes de ingresar.';
+          successPasswordFeedback.className = 'password-feedback is-error';
+          successPasswordFeedback.hidden = false;
+        }
+        successPasswordInput?.focus();
+        return;
       }
-
-      // 2. Validate RUC (13 digits in Ecuador + provincial check)
-      const rucVal = rucEl ? rucEl.value.trim().replace(/\D/g, '') : '';
-      const prov = parseInt(rucVal.substring(0, 2), 10);
-      if (rucVal.length !== 13 || prov < 1 || (prov > 24 && prov !== 30)) {
-        setFieldError(rucEl, true);
-        isValid = false;
-      } else {
-        setFieldError(rucEl, false);
+      if (!currentClientData?.password || currentClientData.password !== pwd) {
+        await persistPassword(pwd);
       }
+    }
+  });
 
-      // 3. Validate WhatsApp (9-10 digits)
-      const waVal = whatsappEl ? whatsappEl.value.trim().replace(/\D/g, '') : '';
-      if (waVal.length < 9) {
-        setFieldError(whatsappEl, true);
-        isValid = false;
-      } else {
-        setFieldError(whatsappEl, false);
-      }
+  if (!form) return;
 
-      // 4. Validate Email
-      const emailVal = emailEl ? emailEl.value.trim() : '';
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailVal || !emailRegex.test(emailVal)) {
-        setFieldError(emailEl, true);
-        isValid = false;
-      } else {
-        setFieldError(emailEl, false);
-      }
+  form.querySelectorAll('input, select').forEach((input) => {
+    input.addEventListener('input', () => setFieldError(input, false));
+    input.addEventListener('change', () => setFieldError(input, false));
+  });
 
-      if (!isValid) return;
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    hideError();
 
-      const rubroVal = rubroEl ? rubroEl.options[rubroEl.selectedIndex].text : 'Ferretería Industrial & Acero';
-      const phoneLast4 = waVal.slice(-4);
+    const empresaEl = document.getElementById('trial-empresa');
+    const rucEl = document.getElementById('trial-ruc');
+    const rubroEl = document.getElementById('trial-rubro');
+    const whatsappEl = document.getElementById('trial-whatsapp');
+    const emailEl = document.getElementById('trial-email');
+    const submitBtn = document.getElementById('btn-submit-trial');
 
-      const requestPayload = {
-        empresa: empresaVal,
-        ruc: rucVal,
-        whatsapp: '+593 ' + waVal,
-        phoneLast4: phoneLast4,
-        email: emailVal,
-        rubro: rubroVal
-      };
+    const empresa = empresaEl?.value.trim() || '';
+    const ruc = (rucEl?.value || '').replace(/\D/g, '');
+    const whatsapp = (whatsappEl?.value || '').replace(/\D/g, '');
+    const email = emailEl?.value.trim() || '';
+    const province = Number.parseInt(ruc.slice(0, 2), 10);
 
-      // Set Loading State
-      const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = `
-          <span>Conectando radar...</span>
-          <svg class="spin-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
-        `;
-      }
+    let isValid = true;
 
-      let clientData = {
-        empresa: empresaVal,
-        ruc: rucVal,
-        whatsapp: '+593 ' + waVal,
-        phoneLast4: phoneLast4,
-        email: emailVal,
-        rubro: rubroVal,
-        plan: 'Suscripción Integral B2B ($80 USD/mes + IVA)',
-        trialDaysRemaining: 15,
-        registeredAt: new Date().toISOString()
-      };
+    if (empresa.length < 3) {
+      setFieldError(empresaEl, true);
+      isValid = false;
+    }
 
+    if (ruc.length !== 13 || province < 1 || (province > 24 && province !== 30)) {
+      setFieldError(rucEl, true);
+      isValid = false;
+    }
+
+    if (whatsapp.length < 9 || whatsapp.length > 10) {
+      setFieldError(whatsappEl, true);
+      isValid = false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setFieldError(emailEl, true);
+      isValid = false;
+    }
+
+    if (!rubroEl || !rubroEl.value) {
+      setFieldError(rubroEl, true);
+      isValid = false;
+    }
+
+    if (!isValid) {
+      const firstInvalid = form.querySelector('.form-group.has-error .input');
+      firstInvalid?.focus();
+      return;
+    }
+
+    const rubro = rubroEl.options[rubroEl.selectedIndex].text;
+    const phoneLast4 = whatsapp.slice(-4);
+    const payload = {
+      empresa,
+      ruc,
+      whatsapp: `+593 ${whatsapp}`,
+      phoneLast4,
+      email,
+      rubro
+    };
+
+    const originalButton = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.textContent = 'Conectando radar…';
+    }
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      let data = {};
       try {
-        // Enviar a Cloudflare Pages Function
-        const res = await fetch('/api/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(requestPayload)
-        });
-
-        if (res.ok) {
-          const resData = await res.json();
-          if (resData.client) {
-            clientData = { ...clientData, ...resData.client };
-          }
-        } else {
-          console.info('API local / offline fallback en ejecución.');
-        }
-      } catch (netErr) {
-        console.info('Petición de registro en modo estático/local:', netErr.message);
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-        }
+        data = await response.json();
+      } catch {
+        data = {};
       }
 
-      // Persist active client locally for instant session
+      if (!response.ok || data.success === false) {
+        throw new Error(data.error || 'No pudimos registrar la solicitud. Intente de nuevo.');
+      }
+
+      const clientData = {
+        empresa,
+        ruc,
+        whatsapp: payload.whatsapp,
+        phoneLast4,
+        email,
+        rubro,
+        plan: 'Plan Proveedor B2B · USD 80 + IVA / mes',
+        trialDaysRemaining: 15,
+        registeredAt: new Date().toISOString(),
+        ...(data.client || {})
+      };
+
+      currentClientData = clientData;
+
       try {
         localStorage.setItem('licitacionya_current_client', JSON.stringify(clientData));
-        const existingDb = JSON.parse(localStorage.getItem('licitacionya_clients_db') || '[]');
-        const filtered = existingDb.filter(c => c.ruc !== clientData.ruc);
+        const existing = JSON.parse(localStorage.getItem('licitacionya_clients_db') || '[]');
+        const filtered = existing.filter((client) => client.ruc !== clientData.ruc);
         filtered.push(clientData);
         localStorage.setItem('licitacionya_clients_db', JSON.stringify(filtered));
-      } catch (err) {
-        console.warn('Storage error:', err);
+      } catch (storageError) {
+        console.warn('No se pudo guardar la sesión local:', storageError);
       }
 
-      // Populate Success View
       document.getElementById('success-empresa').textContent = clientData.empresa;
       document.getElementById('success-ruc').textContent = clientData.ruc;
       document.getElementById('success-whatsapp').textContent = clientData.whatsapp;
       document.getElementById('success-email').textContent = clientData.email;
 
-      // Update link to Portal with RUC
-      const portalBtn = document.getElementById('btn-go-to-portal');
-      if (portalBtn) {
-        portalBtn.href = `portal.html?ruc=${encodeURIComponent(clientData.ruc)}`;
+      if (successHintPhone4) {
+        successHintPhone4.textContent = clientData.phoneLast4 || phoneLast4;
+      }
+      if (successPasswordInput) {
+        successPasswordInput.value = '';
+        successPasswordInput.type = 'password';
+      }
+      if (btnSaveSuccessPw) {
+        btnSaveSuccessPw.disabled = false;
+        btnSaveSuccessPw.textContent = 'Guardar clave';
+      }
+      if (successPasswordFeedback) {
+        successPasswordFeedback.textContent = '';
+        successPasswordFeedback.className = 'password-feedback';
+        successPasswordFeedback.hidden = true;
       }
 
-      // Transition Views
-      if (formView && successView) {
-        formView.style.display = 'none';
-        successView.style.display = 'block';
+      if (portalLink) {
+        portalLink.href = `portal.html?ruc=${encodeURIComponent(clientData.ruc)}`;
       }
-    });
-  }
+
+      if (formView) formView.hidden = true;
+      if (successView) successView.hidden = false;
+
+      const successTitle = successView?.querySelector('.modal-title');
+      if (successTitle) {
+        successTitle.setAttribute('tabindex', '-1');
+        successTitle.focus();
+      }
+    } catch (error) {
+      const message = error instanceof TypeError
+        ? 'No pudimos conectar con el servidor. Intente de nuevo o escriba a contacto@j2sdynamics.com.'
+        : error.message;
+      showError(message);
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.innerHTML = originalButton;
+      }
+    }
+  });
 }

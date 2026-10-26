@@ -117,12 +117,14 @@ def ejecutar_pipeline(
 
             for raw in items_raw:
                 total_procesados += 1
+                # 3. Validación estricta con Pydantic v2
                 try:
-                    # 3. Validación estricta con Pydantic v2
                     proceso = ProcesoSercop.model_validate(raw)
                 except Exception as val_err:
                     total_errores_validacion += 1
-                    logger.warning(f"  ⚠️ Error de validación en registro {raw.get('id')}: {val_err}")
+                    # Loguear solo el OCID, no todo el dict raw, para evitar filtrar datos sensibles
+                    ocid_raw = raw.get('ocid', 'desconocido')
+                    logger.warning(f"  ⚠️ Error de validación en registro ocid={ocid_raw}: {val_err}")
                     continue
 
                 # 4. Hash determinista

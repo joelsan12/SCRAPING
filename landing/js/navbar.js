@@ -1,37 +1,49 @@
 /**
- * LicitaciónYa — Navbar Interaction Module
+ * LicitaciónYa — Navigation
+ * Menú móvil, estado de scroll y cierre accesible.
  */
 
 export function initNavbar() {
-  const navbar = document.getElementById('navbar');
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const links = document.getElementById('nav-links');
 
-  if (!navbar) return;
+  if (!header) return;
 
-  // 1. Header background blur on scroll
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  }, { passive: true });
+  function setMenu(open) {
+    if (!toggle || !links) return;
+    links.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+  }
 
-  // 2. Mobile Menu Toggle
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      const isExpanded = navLinks.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      setMenu(!links.classList.contains('is-open'));
     });
 
-    // Close mobile menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!links.classList.contains('is-open')) return;
+      if (links.contains(event.target) || toggle.contains(event.target)) return;
+      setMenu(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && links.classList.contains('is-open')) {
+        setMenu(false);
+        toggle.focus();
+      }
     });
   }
+
+  function updateHeader() {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  }
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 }

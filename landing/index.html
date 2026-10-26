@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-EC">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LicitaciónYa | Monitoreo B2B de Contratación Pública SERCOP Ecuador</title>
+  <title>LicitaciónYa | Radar de compras públicas SERCOP Ecuador</title>
   <meta name="description"
-    content="Servicio corporativo de monitoreo y analítica de compras públicas SERCOP en Ecuador. Alertas a WhatsApp por rubro exacto y reporte ejecutivo en Excel cada lunes a las 8:00 AM.">
+    content="Monitoreo de compras públicas SERCOP cada 6 horas. Fichas con código, entidad, monto, provincia y enlace al pliego. Reporte Excel los lunes a las 08:00 ECT.">
+  <meta name="theme-color" content="#F7F5EF">
 
   <!-- Favicon & Canonical Link -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -15,37 +16,24 @@
   <!-- Open Graph / WhatsApp Rich Preview Metadata -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://licitacionya.pages.dev">
-  <meta property="og:title" content="LicitaciónYa | Monitoreo B2B de Contratación Pública SERCOP Ecuador">
+  <meta property="og:title" content="LicitaciónYa | Radar de compras públicas SERCOP Ecuador">
   <meta property="og:description"
-    content="Auditoría continua de compras públicas SERCOP en Ecuador cada 6 horas. Alertas a WhatsApp por rubro exacto y reporte en Excel los lunes a las 8:00 AM.">
+    content="Auditoría de compras públicas SERCOP cada 6 horas. Fichas con fuente y enlace al pliego, alertas por WhatsApp y Excel consolidado los lunes a las 08:00 ECT.">
   <meta property="og:image" content="https://licitacionya.pages.dev/og-image.png">
   <meta property="og:locale" content="es_EC">
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LicitaciónYa | Monitoreo B2B SERCOP Ecuador">
+  <meta name="twitter:title" content="LicitaciónYa | Radar de compras públicas SERCOP Ecuador">
   <meta name="twitter:description"
-    content="Alertas automatizadas a WhatsApp y matriz ejecutiva en Excel semanal con licitaciones afines a su inventario.">
+    content="Fichas de procesos con código, entidad, monto, provincia y enlace al pliego. Monitoreo cada 6 horas y reporte Excel semanal.">
   <meta name="twitter:image" content="https://licitacionya.pages.dev/og-image.png">
 
   <!-- Self-Hosted Local Fonts (Zero External Dependencies) -->
   <link rel="stylesheet" href="css/fonts.css">
 
-  <!-- Parallel Modular CSS -->
-  <link rel="stylesheet" href="css/tokens.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/base.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/buttons.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/navbar.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/hero.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/industries.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/demo-cards.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/comparison.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/steps.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/calculator.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/pricing.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/faq.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/footer.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/modal.css?v=20261023_v1">
+  <!-- Landing Design System -->
+  <link rel="stylesheet" href="css/landing.css?v=20261025_v4">
 
   <!-- Structured Data: Organization & FAQPage Schema -->
   <script type="application/ld+json">
@@ -70,34 +58,42 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "¿Es legal este servicio de monitoreo?",
+            "name": "¿Cada cuánto se actualiza el radar?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Totalmente legal y transparente. Consumimos exclusivamente la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública bajo el estándar internacional OCDS. No intervenimos en los sistemas del Estado ni usamos credenciales privadas."
+              "text": "La auditoría se ejecuta cada 6 horas: 00:00, 06:00, 12:00 y 18:00 ECT. No prometemos alertas en 15 minutos."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Por qué pagar si el portal del SERCOP es público?",
+            "name": "¿De dónde salen los datos?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "El portal es público pero buscar manualmente consume horas, suele ralentizarse y las licitaciones cierran etapas de preguntas con plazos perentorios. Dedicar a un colaborador a buscar a mano cuesta más de $500/mes y se escapan procesos. LicitaciónYa inspecciona cada 6 horas y le avisa directo a su WhatsApp."
+              "text": "De la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública, bajo el estándar OCDS. No usamos credenciales del SERCOP ni intervenimos en el portal público."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Cómo funciona la prueba gratis de 15 días?",
+            "name": "¿Qué recibo con el piloto?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Configuramos sus palabras clave y su WhatsApp sin costo inicial. Durante dos semanas recibe alertas reales y dos reportes en Excel. Si al terminar no comprueba valor comercial, el servicio concluye sin compromiso."
+              "text": "Un perfil de búsqueda calibrado con su equipo, alertas por WhatsApp y correo, y un reporte consolidado en Excel los lunes a las 08:00 ECT."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Emiten factura autorizada por el SRI?",
+            "name": "¿Qué pasa al terminar los 15 días?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sí. Todos los pagos se facturan electrónicamente con autorización del SRI, siendo 100% deducibles de impuestos como gasto operativo de inteligencia comercial."
+              "text": "Le confirmamos si desea continuar. No hay permanencia mínima ni cobro automático. Si no continúa, el servicio se detiene."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Garantizan adjudicaciones?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. El servicio reduce el tiempo de detección y ordena la información. La decisión de cotizar, la oferta y la adjudicación dependen de su empresa y del proceso."
             }
           }
         ]
@@ -107,572 +103,515 @@
   </script>
 </head>
 
-<body>
+<body class="landing-page">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
 
-  <!-- Main Navigation Bar -->
-<header class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="#" class="brand-link" id="brand-logo">
-      <div class="brand-symbol">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+  <header class="site-header" id="site-header">
+  <div class="container nav-shell">
+    <a href="#hero" class="brand" id="brand-logo" aria-label="LicitaciónYa, ir al inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
           stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
           <path d="M5 12a7 7 0 0 1 14 0"></path>
           <path d="M2 12a10 10 0 0 1 20 0"></path>
         </svg>
-      </div>
-      <span class="brand-text">Licitación<strong>Ya</strong></span>
-      <span class="brand-badge">ECUADOR</span>
+      </span>
+      <span class="brand-text">Licitación<span>Ya</span></span>
+      <span class="brand-tag">SERCOP · EC</span>
     </a>
 
-    <nav class="nav-menu" id="nav-links">
-      <a href="#hero" class="nav-item">Radar SERCOP</a>
-      <a href="#rubros" class="nav-item">Rubros B2B</a>
-      <a href="#comparativa" class="nav-item">Comparativa</a>
-      <a href="#calculadora" class="nav-item">Calculadora ROI</a>
-      <a href="#precios" class="nav-item">Precios</a>
-      <a href="#faq" class="nav-item">Preguntas</a>
+    <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+      <a href="#metodologia" class="nav-link">Cómo funciona</a>
+      <a href="#rubros" class="nav-link">Rubros</a>
+      <a href="#precios" class="nav-link">Precio</a>
+      <a href="#faq" class="nav-link">Preguntas</a>
+      <a href="portal.html" class="nav-link nav-link-portal">Portal clientes</a>
     </nav>
 
     <div class="nav-actions">
-      <a href="portal.html" class="nav-portal-btn" id="nav-portal-btn" title="Acceso al panel con su RUC">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-        <span>Portal Clientes</span>
-      </a>
-      <button type="button" class="nav-trial-btn btn-open-trial" id="nav-trial-btn">
-        <span>Probar Gratis</span>
+      <a href="portal.html" class="btn btn-quiet btn-sm nav-portal-desktop">Portal clientes</a>
+      <button type="button" class="btn btn-primary btn-sm js-open-trial" id="nav-trial-btn">
+        Iniciar piloto
       </button>
-
-      <!-- Mobile Hamburger Toggle -->
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación"
+        aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </div>
 </header>
 
-  <!-- Split Hero Section -->
-<section class="hero-section" id="hero">
+  <main id="main">
+
+  <section class="hero" id="hero">
   <div class="container hero-grid">
-    <!-- Left: Value Proposition -->
-    <div class="hero-content">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="eyebrow-mark" aria-hidden="true"></span>
+        Monitoreo de compras públicas · Ecuador
+      </p>
+
       <h1 class="hero-title">
-        Sepa de cada licitación SERCOP <span class="hero-promise-text">antes que su competencia</span>
+        Las licitaciones de su rubro que importan, antes de que cierre el plazo.
       </h1>
 
-      <p class="hero-subtitle">
-        Auditoría algorítmica continua de compras públicas cada 6 horas. Reciba alertas directas por WhatsApp por
-        rubro exacto y una matriz consolidada en Excel cada lunes a las 8:00 AM.
+      <p class="hero-lead">
+        Auditamos la API oficial del SERCOP cada 6 horas. Reciba una ficha con código, entidad, monto,
+        provincia y enlace al pliego; y un Excel consolidado cada lunes a las 08:00 ECT.
       </p>
 
       <div class="hero-actions">
-        <button type="button" class="btn-hero-trial btn-open-trial" id="hero-trial-btn">
-          <span>Comenzar Prueba Gratuita (15 Días)</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+        <button type="button" class="btn btn-primary btn-lg js-open-trial" id="hero-trial-btn">
+          Iniciar piloto de 15 días
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
-        <a href="#calculadora" class="btn-hero-calc" id="hero-calc-btn">
-          <span>Calcular retorno (ROI)</span>
+        <a href="#metodologia" class="btn btn-secondary btn-lg">
+          Ver cómo funciona
+          <span class="btn-arrow" aria-hidden="true">↓</span>
         </a>
       </div>
 
-      <div class="hero-trust">
-        <div class="trust-pill">
-          <svg class="trust-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+      <div class="hero-proof" aria-label="Condiciones del servicio">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
-          <span>Sin tarjeta de crédito</span>
-        </div>
-        <div class="trust-pill">
-          <svg class="trust-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          Sin tarjeta
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
-          <span>Datos oficiales OCDS</span>
-        </div>
-        <div class="trust-pill">
-          <svg class="trust-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          Sin permanencia mínima
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
-          <span>Factura electrónica SRI</span>
-        </div>
+          Factura electrónica SRI
+        </span>
       </div>
+
+      <p class="hero-source">
+        Fuente: API oficial de Datos Abiertos · Estándar OCDS ·
+        <a href="https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/" target="_blank" rel="noopener">
+          Portal SERCOP
+        </a>
+      </p>
     </div>
 
-    <!-- Right: Live Executive Procurement Radar Card with Floating WhatsApp Alert Overlay -->
-    <div class="hero-radar-wrapper">
-      <div class="hero-radar-card" id="radar">
-        <div class="radar-header">
-          <div class="radar-header-left">
-            <span class="radar-header-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 3a9 9 0 0 1 9 9"></path>
-                <line x1="12" y1="12" x2="19" y2="5"></line>
-                <circle cx="12" cy="12" r="2"></circle>
-              </svg>
-            </span>
-            <span class="radar-window-title">Radar de Contrataciones SERCOP</span>
-          </div>
-          <span class="radar-live-badge">
-            <span class="pulse-dot"></span>
-            <span>Actualizado cada 6h</span>
-          </span>
+    <aside class="radar-panel" aria-label="Ejemplo de ficha de oportunidad del radar">
+      <div class="radar-panel-head">
+        <div class="radar-id">
+          <span class="radar-dot" aria-hidden="true"></span>
+          <strong>Radar SERCOP</strong>
+          <span>Auditoría cada 6 h</span>
         </div>
+        <span class="radar-cycle">Ciclos 00 · 06 · 12 · 18</span>
+      </div>
 
-        <!-- Radar Filter Tabs: Modern Segmented Control -->
-        <div class="radar-tabs-wrapper">
-          <div class="radar-tabs">
-            <button type="button" class="radar-tab active" data-filter="all">Todos</button>
-            <button type="button" class="radar-tab" data-filter="open">Convocatoria abierta</button>
-            <button type="button" class="radar-tab" data-filter="recent">Adjudicadas</button>
+      <div class="radar-panel-body">
+        <article class="ficha">
+          <div class="ficha-top">
+            <span class="ficha-status ficha-status--open">Convocatoria abierta</span>
+            <span class="ficha-badge">Muestra</span>
           </div>
-        </div>
 
-        <!-- Radar Quick Search Bar -->
-        <div class="radar-search-wrapper">
-          <div class="radar-search-box">
-            <svg class="radar-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text" id="radar-search-input" class="radar-search-input"
-              placeholder="Filtrar por entidad, provincia o CPC..." aria-label="Filtrar procesos SERCOP">
-            <button type="button" class="radar-search-clear" id="radar-search-clear" style="display:none;"
-              title="Limpiar filtro">&times;</button>
-          </div>
-        </div>
+          <p class="ficha-code">SIE-CELECEP-2026-04070-238940</p>
+          <p class="ficha-entity">CELEC EP — Termopichincha · Pichincha</p>
+          <h2 class="ficha-title">
+            Adquisición de materiales de ferretería para la Unidad de Negocio Termopichincha
+          </h2>
 
-        <!-- Radar Process List (Populated via radar.js & rendered for initial paint) -->
-        <div class="radar-list" id="radar-items-container">
-          <div class="radar-item" data-phase="open"
-            data-keywords="celec ep termopichincha sie-celecep-2026-04070-238940 pichincha quito ferreteria materiales suministros subasta inversa">
-            <div class="radar-item-main">
-              <div class="radar-item-left">
-                <span class="radar-entity">CELEC EP — Termopichincha</span>
-                <div class="radar-meta">
-                  <span class="code-pill">SIE-CELECEP-2026-04070-238940</span>
-                  <span>• Pichincha</span>
-                  <span class="cpc-pill">Subasta Inversa Electrónica</span>
-                </div>
-              </div>
-              <div class="radar-item-right">
-                <span class="radar-amount">$1,750,208.57 USD</span>
-                <div class="badge-wrapper">
-                  <span class="badge-phase badge-open"><span class="dot-indicator dot-open"></span> Abierta</span>
-                  <a href="#" class="link-pliego">Ver pliego &rarr;</a>
-                </div>
-              </div>
+          <div class="ficha-amount-row">
+            <div>
+              <span class="ficha-amount-label">Presupuesto referencial</span>
+              <span class="ficha-amount">USD 1.750.208,57</span>
             </div>
+            <a class="ficha-link" href="https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/"
+              target="_blank" rel="noopener">
+              Abrir en SERCOP <span aria-hidden="true">↗</span>
+            </a>
           </div>
-        </div>
 
-        <div class="radar-footer">
-          <span>Auditoría continua de compras públicas OCDS</span>
-          <strong>Ecuador 2026</strong>
-        </div>
+          <div class="ficha-foot">
+            <span>Verificado: dato de muestra</span>
+            <span>Provincia: Pichincha</span>
+          </div>
+        </article>
+
+        <p class="radar-caption">
+          La misma ficha llega por WhatsApp y se consolida en el Excel del lunes.
+        </p>
       </div>
 
-      <!-- Floating WhatsApp Notification Card (Superposed Product Differentiator) -->
-      <div class="wa-floating-notification" id="wa-alert-demo">
-        <div class="wa-notif-header">
-          <div class="wa-sender-info">
-            <span class="wa-sender-avatar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.102-.115.434-.506.549-.68.116-.173.232-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z" />
-              </svg>
-            </span>
-            <span class="wa-sender-name">
-              LicitaciónYa Radar Bot
-              <svg class="wa-verified-badge" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-              </svg>
-            </span>
-          </div>
-          <span class="wa-notif-timestamp">hace 12 min</span>
-        </div>
-        <div class="wa-notif-balloon">
-          <div class="wa-notif-lead">Nueva licitación SERCOP en su rubro</div>
-          <div class="wa-notif-contract">
-            <strong>CELEC EP — Termopichincha</strong><br>
-            SIE-CELECEP-2026-04070-238940 • Pichincha<br>
-            Monto: <strong>$1,750,208.57 USD</strong> • Subasta Inversa<br>
-            Publicado: <strong>13 Agosto 2026</strong>
-          </div>
-        </div>
-        <div class="wa-notif-actions">
-          <span>Descargar Pliego Oficial (PDF)</span>
-          <span class="wa-notif-status">Despacho automático por WhatsApp</span>
-        </div>
+      <div class="radar-panel-foot">
+        <span>Fuente: SERCOP OCDS</span>
+        <span>Datos de muestra</span>
       </div>
+    </aside>
+  </div>
+</section>
+
+  <section class="data-strip" aria-label="Datos operativos del servicio">
+  <div class="container data-grid">
+    <div class="data-item">
+      <span class="data-value">06 h</span>
+      <span class="data-label">Ciclos de auditoría</span>
+      <span class="data-desc">00:00 · 06:00 · 12:00 · 18:00 ECT</span>
+    </div>
+    <div class="data-item">
+      <span class="data-value">24</span>
+      <span class="data-label">Provincias cubiertas</span>
+      <span class="data-desc">Cobertura nacional</span>
+    </div>
+    <div class="data-item">
+      <span class="data-value">Lunes 08:00</span>
+      <span class="data-label">Reporte Excel</span>
+      <span class="data-desc">Consolidado semanal</span>
+    </div>
+    <div class="data-item">
+      <span class="data-value">USD 80 + IVA</span>
+      <span class="data-label">Suscripción mensual</span>
+      <span class="data-desc">Sin setup ni permanencia</span>
     </div>
   </div>
 </section>
 
-  <!-- Metrics Strip: Customer Outcomes -->
-<section class="metrics-strip">
+  <section class="section section--surface" id="entregables">
   <div class="container">
-    <div class="metrics-grid">
-      <div class="metric-item">
-        <span class="metric-value">+4,200</span>
-        <span class="metric-label">Licitaciones monitoreadas / mes</span>
-        <span class="metric-desc">En todo el catálogo de compras públicas</span>
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Qué recibe</p>
+        <h2 class="section-title">Una alerta para actuar. Un Excel para planificar.</h2>
       </div>
-      <div class="metric-item">
-        <span class="metric-value">+$18.5M USD</span>
-        <span class="metric-label">Monto en compras detectado</span>
-        <span class="metric-desc">En convocatorias activas para el sector privado</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-value">&lt; 15 min</span>
-        <span class="metric-label">Tiempo promedio de alerta</span>
-        <span class="metric-desc">Desde la publicación oficial del pliego</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-value">12 Horas</span>
-        <span class="metric-label">Ahorradas por semana</span>
-        <span class="metric-desc">Por equipo comercial al eliminar la búsqueda manual</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- Interactive Industry / Rubro Selector Section -->
-<section class="industries-section" id="rubros">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Calibrado a la línea comercial <span class="text-accent">exacta de su negocio</span></h2>
-      <p class="section-subtitle">Filtrado quirúrgico por clasificador central de productos (CPC) del SERCOP y
-        palabras técnicas. Cero ruido: reciba únicamente pliegos afines donde su empresa sí cotiza y gana.</p>
+      <p class="section-lead">
+        La ficha llega por WhatsApp cuando el proceso entra en su perfil. El consolidado semanal le permite
+        comparar, priorizar y asignar el trabajo comercial.
+      </p>
     </div>
 
-    <!-- Rubros Navigation Tabs -->
-    <div class="industries-nav-wrapper">
-      <div class="industries-nav" role="tablist" aria-label="Sectores comerciales disponibles">
-        <button class="industry-btn active" data-industry="ferreteria" role="tab" aria-selected="true">
-          <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-          </svg>
-          <span>Ferretería Industrial</span>
-        </button>
-        <button class="industry-btn" data-industry="construccion" role="tab" aria-selected="false">
-          <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <path d="M3 9h18" />
-            <path d="M9 21V9" />
-          </svg>
-          <span>Materiales de Construcción</span>
-        </button>
-        <button class="industry-btn" data-industry="electrico" role="tab" aria-selected="false">
-          <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-          </svg>
-          <span>Redes Eléctricas</span>
-        </button>
-        <button class="industry-btn" data-industry="sanitario" role="tab" aria-selected="false">
-          <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-          </svg>
-          <span>Tubería y Saneamiento</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Dynamic Industry Card -->
-    <div class="industry-card" id="industry-active-card">
-      <div class="industry-card-topbar">
-        <div class="radar-live-pill">
-          <span class="live-dot-pulse"></span>
-          <span class="live-radar-text">PERFIL DE MONITOREO ACTIVO &middot; SERCOP OCDS 2026</span>
+    <div class="deliverables-grid">
+      <article class="deliverable">
+        <div class="deliverable-head">
+          <span class="deliverable-label">Alerta WhatsApp</span>
+          <span class="deliverable-badge">Ejemplo de mensaje</span>
         </div>
-        <div class="radar-category-meta" id="industry-top-sector">Ferretería Industrial y Suministros</div>
-      </div>
 
-      <div class="industry-card-body">
-        <!-- Left Column: Search Vectors & Calibration -->
-        <div class="industry-info">
-          <div class="industry-cpc-badge">
-            <span class="cpc-badge-tag">CÓDIGO CPC</span>
-            <span class="cpc-badge-content" id="cpc-badge-text">42921 &middot; Herramientas y Artículos de Ferretería</span>
+        <div class="alert-preview">
+          <div class="alert-bubble">
+            <div class="alert-bubble-head">
+              <strong>LicitaciónYa Radar</strong>
+              <span class="mono">06:00 ECT</span>
+            </div>
+
+            <span class="status status--open">Convocatoria abierta</span>
+
+            <h3 class="alert-title">
+              Adquisición de materiales de ferretería para Termopichincha
+            </h3>
+
+            <dl class="alert-rows">
+              <div class="alert-row">
+                <dt>Código</dt>
+                <dd class="mono">SIE-CELECEP-2026-04070-238940</dd>
+              </div>
+              <div class="alert-row">
+                <dt>Entidad</dt>
+                <dd>CELEC EP — Termopichincha</dd>
+              </div>
+              <div class="alert-row">
+                <dt>Monto</dt>
+                <dd class="mono">USD 1.750.208,57</dd>
+              </div>
+              <div class="alert-row">
+                <dt>Provincia</dt>
+                <dd>Pichincha</dd>
+              </div>
+              <div class="alert-row">
+                <dt>Fuente</dt>
+                <dd>SERCOP · OCDS</dd>
+              </div>
+            </dl>
+
+            <a class="alert-link" href="https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/"
+              target="_blank" rel="noopener">
+              Abrir ficha en SERCOP <span aria-hidden="true">↗</span>
+            </a>
           </div>
 
-          <h3 class="industry-title">Ferretería Industrial y Suministros Mecánicos</h3>
-          <p class="industry-desc">
-            Monitoreo de adquisiciones para talleres del Estado, Fuerzas Armadas, empresas públicas de agua y
-            mantenimiento municipal.
+          <p class="preview-note">
+            Contenido de muestra. El texto real se genera con los datos del proceso y su perfil.
           </p>
+        </div>
 
-          <div class="industry-keywords-container">
-            <span class="keywords-heading">Términos técnicos y descriptores calibrados en su filtro:</span>
-            <div class="industry-tags">
-              <span class="industry-tag">pernos alta resistencia</span>
-              <span class="industry-tag">discos de corte</span>
-              <span class="industry-tag">soldadura 7018</span>
-              <span class="industry-tag">herramientas eléctricas</span>
-              <span class="industry-tag">rodamientos</span>
-              <span class="industry-tag">seguridad industrial</span>
-            </div>
+        <div class="deliverable-foot">
+          Se envía al WhatsApp registrado. El canal de correo queda disponible para el reporte semanal.
+        </div>
+      </article>
+
+      <article class="deliverable">
+        <div class="deliverable-head">
+          <span class="deliverable-label">Reporte semanal</span>
+          <span class="deliverable-badge">Ejemplo de estructura</span>
+        </div>
+
+        <div class="excel-preview">
+          <div class="excel-toolbar">
+            <span class="excel-file">LicitacionYa_Reporte_Semanal.xlsx</span>
+            <span class="excel-tab">Oportunidades</span>
           </div>
 
-          <div class="industry-calibration-badge">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>Personalizamos hasta 30 términos técnicos y filtros negativos para su empresa</span>
+          <p class="table-hint">Deslice la tabla para ver todas las columnas <span aria-hidden="true">→</span></p>
+
+          <div class="table-wrap" tabindex="0" role="region"
+            aria-label="Ejemplo de reporte semanal. Desplace horizontalmente para ver todas las columnas.">
+            <table class="data-table">
+              <caption class="sr-only">Ejemplo de reporte semanal de oportunidades SERCOP</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Entidad</th>
+                  <th scope="col" class="text-right">Monto</th>
+                  <th scope="col">Provincia</th>
+                  <th scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono">SIE-CELECEP-2026-04070-238940</td>
+                  <td>CELEC EP — Termopichincha</td>
+                  <td class="text-right mono">USD 1.750.208,57</td>
+                  <td>Pichincha</td>
+                  <td><span class="status status--open">Abierta</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">LICO-EEASA-2026-010-3233</td>
+                  <td>Empresa Eléctrica Ambato</td>
+                  <td class="text-right mono">USD 115.753,64</td>
+                  <td>Tungurahua</td>
+                  <td><span class="status status--open">Abierta</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">LICS-CNELEP-2026-006-462114</td>
+                  <td>CNEL EP — Guayaquil</td>
+                  <td class="text-right mono">USD 785.783,20</td>
+                  <td>Guayas</td>
+                  <td><span class="status status--open">Abierta</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">CE-20260002974757-741823</td>
+                  <td>EPMMOP — Quito</td>
+                  <td class="text-right mono">USD 97.324,98</td>
+                  <td>Pichincha</td>
+                  <td><span class="status status--awarded">Adjudicada</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="excel-footer">
+            <span>Hojas: Oportunidades · Resumen por provincia · Análisis por entidad.</span>
+            <span>Datos de muestra</span>
           </div>
         </div>
 
-        <!-- Right Column: Live SERCOP Reference Tender Card -->
-        <div class="industry-sample-box">
-          <div class="sample-dossier-top">
-            <div class="sample-source-pill">
-              <span class="sercop-tag">SERCOP</span>
-              <span class="pliego-text">Pliego Oficial Verificado</span>
-            </div>
-            <span class="sample-phase-pill" id="sample-phase-badge">
-              <span class="dot-indicator dot-open"></span>
-              <span id="sample-phase-text">Convocatoria Abierta</span>
-            </span>
-          </div>
+        <div class="deliverable-foot">
+          El archivo se envía al correo registrado cada lunes a las 08:00 ECT.
+        </div>
+      </article>
+    </div>
 
-          <div class="sample-code-container">
-            <span class="sample-code-lbl">PROCESO:</span>
-            <span class="sample-code-val font-mono" id="sample-code-text">SIE-CELECEP-2026-04070-238940</span>
-          </div>
+    <p class="section-note">
+      Los ejemplos no representan convocatorias vigentes. Cada ficha real incluye fuente y enlace al proceso.
+    </p>
+  </div>
+</section>
 
-          <h4 class="sample-tender-title">ADQUISICIÓN DE MATERIALES DE FERRETERÍA PARA LA UNIDAD DE NEGOCIO TERMOPICHINCHA</h4>
+  <section class="section" id="rubros">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Cobertura</p>
+        <h2 class="section-title">Un perfil por rubro, no una búsqueda genérica.</h2>
+      </div>
+      <p class="section-lead">
+        Seleccione un sector para ver cómo se traduce en términos de búsqueda y en qué se enfoca el
+        monitoreo. El catálogo final se acuerda con su equipo.
+      </p>
+    </div>
 
-          <div class="sample-tender-meta">
-            <div class="sample-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 21h18M3 7v14M21 7v14M6 11v6M10 11v6M14 11v6M18 11v6M12 3l9 4H3l9-4z" />
-              </svg>
-              <span class="sample-entity-text" id="sample-entity-text">CELEC EP (Termopichincha) &middot; Pichincha</span>
-            </div>
-          </div>
+    <div class="coverage-grid">
+      <div class="sector-tabs" role="tablist" aria-label="Sectores comerciales">
+        <button type="button" class="sector-tab" id="sector-tab-ferreteria" data-sector="ferreteria"
+          role="tab" aria-selected="true" aria-controls="sector-panel">
+          <span class="sector-tab-name">Ferretería y suministros</span>
+          <span class="sector-tab-num">01</span>
+        </button>
+        <button type="button" class="sector-tab" id="sector-tab-construccion" data-sector="construccion"
+          role="tab" aria-selected="false" aria-controls="sector-panel" tabindex="-1">
+          <span class="sector-tab-name">Construcción y obra</span>
+          <span class="sector-tab-num">02</span>
+        </button>
+        <button type="button" class="sector-tab" id="sector-tab-electrico" data-sector="electrico"
+          role="tab" aria-selected="false" aria-controls="sector-panel" tabindex="-1">
+          <span class="sector-tab-name">Redes eléctricas</span>
+          <span class="sector-tab-num">03</span>
+        </button>
+        <button type="button" class="sector-tab" id="sector-tab-sanitario" data-sector="sanitario"
+          role="tab" aria-selected="false" aria-controls="sector-panel" tabindex="-1">
+          <span class="sector-tab-name">Tubería y saneamiento</span>
+          <span class="sector-tab-num">04</span>
+        </button>
+      </div>
 
-          <div class="sample-amount-block">
-            <span class="sample-amount-label">PRESUPUESTO REFERENCIAL</span>
-            <div class="sample-amount" id="sample-amount-text">$1,750,208.57 USD</div>
+      <div class="sector-panel" id="sector-panel" role="tabpanel" aria-labelledby="sector-tab-ferreteria">
+        <p class="sector-index" id="sector-index">Sector 01 / 04</p>
+        <h3 class="sector-title" id="sector-title">Ferretería y suministros industriales</h3>
+        <p class="sector-desc" id="sector-desc">
+          Tornillería, herramienta, soldadura, seguridad industrial y materiales de mantenimiento para
+          entidades públicas, talleres y empresas de servicios.
+        </p>
+
+        <div class="sector-block">
+          <span class="sector-label">Términos de ejemplo</span>
+          <div class="tag-list" id="sector-tags">
+            <span class="tag">pernos alta resistencia</span>
+            <span class="tag">discos de corte</span>
+            <span class="tag">soldadura 7018</span>
+            <span class="tag">herramientas eléctricas</span>
+            <span class="tag">rodamientos</span>
+            <span class="tag">seguridad industrial</span>
           </div>
         </div>
+
+        <dl class="sector-meta">
+          <div>
+            <dt>Cobertura</dt>
+            <dd id="sector-coverage">Nacional, con priorización por provincia acordada.</dd>
+          </div>
+          <div>
+            <dt>Entrega</dt>
+            <dd>WhatsApp + Excel semanal.</dd>
+          </div>
+          <div>
+            <dt>Calibración</dt>
+            <dd>Acordada con su equipo.</dd>
+          </div>
+        </dl>
+
+        <p class="sector-note">
+          Los términos son ejemplos de calibración, no una lista cerrada. El perfil se valida antes de
+          la primera corrida.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Deliverables Demo Section: WhatsApp & Excel -->
-<section class="demo-section" id="entregables">
+  <section class="section section--surface" id="metodologia">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Información quirúrgica <span class="text-accent">en sus manos</span></h2>
-      <p class="section-subtitle">Reciba exclusivamente licitaciones pertinentes en los canales donde se toman las decisiones comerciales.</p>
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Cómo funciona</p>
+        <h2 class="section-title">Tres pasos. Ninguno depende de que usted esté mirando el portal.</h2>
+      </div>
+      <p class="section-lead">
+        El sistema audita, filtra y entrega. Su equipo decide a qué proceso vale la pena dedicarle una
+        cotización.
+      </p>
     </div>
 
-    <div class="demo-grid">
-      <!-- Mockup WhatsApp Alert -->
-      <article class="mockup-card whatsapp-card" id="card-whatsapp">
-        <div class="mockup-header">
-          <div class="mockup-header-left">
-            <div class="wa-avatar">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-                <circle cx="12" cy="5" r="2"></circle>
-                <path d="M12 7v4"></path>
-                <line x1="8" y1="16" x2="8" y2="16"></line>
-                <line x1="16" y1="16" x2="16" y2="16"></line>
-              </svg>
-            </div>
-            <div>
-              <strong>LicitaciónYa Radar Bot</strong>
-              <small class="online-status">Alertas Automatizadas</small>
-            </div>
-          </div>
-          <span class="pill pill-wa">Alerta WhatsApp</span>
-        </div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">01</span>
+        <h3>Calibramos el perfil</h3>
+        <p>
+          Acordamos rubro, términos, provincia y monto mínimo. Si un proceso no coincide, no genera
+          alerta.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <h3>Auditamos cada 6 horas</h3>
+        <p>
+          Consultamos la API oficial OCDS a las 00:00, 06:00, 12:00 y 18:00 ECT. Registramos cada
+          proceso y su estado.
+        </p>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <h3>Enviamos la señal</h3>
+        <p>
+          La ficha llega a WhatsApp y el consolidado a su correo el lunes a las 08:00 ECT. Sin ruido y
+          con enlace a la fuente.
+        </p>
+      </li>
+    </ol>
 
-        <div class="wa-container-box">
-          <div class="wa-message-bubble">
-            <div class="wa-message-title">OPORTUNIDAD DETECTADA EN SERCOP</div>
-            <span class="wa-phase-badge"><span class="dot-indicator dot-open"></span> FASE: CONVOCATORIA ABIERTA</span>
-            <div class="wa-message-body">
-              <p><strong>Entidad:</strong> CELEC EP — TERMOPICHINCHA</p>
-              <p><strong>Código:</strong> SIE-CELECEP-2026-04070-238940</p>
-              <p><strong>Objeto:</strong> ADQUISICIÓN DE MATERIALES DE FERRETERÍA PARA TERMOPICHINCHA</p>
-              <p><strong>Presupuesto:</strong> <span class="highlight-amount">$1,750,208.57 USD</span></p>
-              <p><strong>Provincia:</strong> Pichincha / Quito</p>
-              <p><strong>Palabras clave:</strong> <code>ferretería</code>, <code>materiales</code>, <code>suministros</code></p>
-            </div>
-            <div class="wa-message-footer">
-              <span class="wa-link">Ver Pliego Oficial en SERCOP &rarr;</span>
-              <span class="wa-time">10:14 AM</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Mockup Excel Sheet -->
-      <article class="mockup-card excel-card" id="card-excel">
-        <div class="mockup-header">
-          <div class="mockup-header-left">
-            <div class="excel-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="8" y1="13" x2="16" y2="13"></line>
-                <line x1="8" y1="17" x2="16" y2="17"></line>
-              </svg>
-            </div>
-            <div>
-              <strong>Reporte_SERCOP_Semana_43_2026.xlsx</strong>
-              <small>Entregado cada lunes a las 08:00 AM</small>
-            </div>
-          </div>
-          <span class="pill pill-excel">Excel Semanal</span>
-        </div>
-
-        <!-- Formula Bar -->
-        <div class="excel-formula-bar">
-          <span class="excel-formula-fx">fx</span>
-          <span class="excel-formula-val">=SUMA(C2:C5) &rarr; $2,749,070.39 USD</span>
-        </div>
-
-        <div class="excel-table-wrapper">
-          <table class="excel-preview-table">
-            <thead>
-              <tr>
-                <th>Código Real</th>
-                <th>Entidad Contratante</th>
-                <th>Presupuesto USD</th>
-                <th>Provincia</th>
-                <th>Fase</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-link">SIE-CELECEP-2026-04070-238940</td>
-                <td>CELEC EP — Termopichincha</td>
-                <td class="text-right font-bold text-success">$1,750,208.57</td>
-                <td>Pichincha</td>
-                <td><span class="badge-phase badge-open">Abierta</span></td>
-              </tr>
-              <tr>
-                <td class="font-mono text-link">LICO-EEASA-2026-010-3233</td>
-                <td>Empresa Eléctrica Ambato (EEASA)</td>
-                <td class="text-right font-bold text-success">$115,753.64</td>
-                <td>Tungurahua</td>
-                <td><span class="badge-phase badge-open">Abierta</span></td>
-              </tr>
-              <tr>
-                <td class="font-mono text-link">LICS-CNELEP-2026-006-462114</td>
-                <td>CNEL EP — Guayaquil</td>
-                <td class="text-right font-bold text-success">$785,783.20</td>
-                <td>Guayas</td>
-                <td><span class="badge-phase badge-open">Abierta</span></td>
-              </tr>
-              <tr>
-                <td class="font-mono text-link">CE-20260002974757-741823</td>
-                <td>EPMMOP — Quito</td>
-                <td class="text-right font-bold">$97,324.98</td>
-                <td>Pichincha</td>
-                <td><span class="badge-phase badge-recent">Adjudicada</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Bottom Sheet Tabs -->
-        <div class="excel-sheet-tabs">
-          <button type="button" class="excel-sheet-tab active" data-sheet="oportunidades">Oportunidades_SERCOP</button>
-          <button type="button" class="excel-sheet-tab" data-sheet="geografico">Resumen_Geografico</button>
-          <button type="button" class="excel-sheet-tab" data-sheet="entidad">Analisis_Entidad</button>
-        </div>
-
-        <div class="excel-card-footer">
-          <span>Incluye hoja adicional de <strong>Resumen Geográfico y Análisis por Entidad</strong> para planificar despachos.</span>
-        </div>
-      </article>
-    </div>
+    <p class="section-note">
+      No usamos credenciales del SERCOP ni intervenimos en el portal público. El servicio se apoya en
+      datos abiertos y en el estándar OCDS.
+    </p>
   </div>
 </section>
 
-  <!-- Comparison Section: Manual Search vs. LicitaciónYa -->
-<section class="comparison-section" id="comparativa">
+  <section class="section" id="comparativa">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Búsqueda manual vs. <span class="text-accent">monitoreo automatizado</span></h2>
-      <p class="section-subtitle">Por qué las empresas proveedoras reemplazan la navegación manual en el portal por inteligencia automatizada.</p>
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Por qué cambia</p>
+        <h2 class="section-title">La diferencia no es ver más. Es enterarse a tiempo.</h2>
+      </div>
+      <p class="section-lead">
+        La búsqueda manual depende de que alguien tenga tiempo y memoria. El radar convierte esa tarea
+        en un ciclo programado y trazable.
+      </p>
     </div>
 
-    <div class="comparison-table-wrapper">
+    <div class="comparison-wrap">
       <table class="comparison-table">
+        <caption class="sr-only">Comparación entre búsqueda manual y LicitaciónYa</caption>
         <thead>
           <tr>
-            <th class="col-feature">Criterio Operativo</th>
-            <th class="col-manual">Búsqueda Manual en Portal</th>
-            <th class="col-service">Con LicitaciónYa</th>
+            <th scope="col">Criterio</th>
+            <th scope="col">Búsqueda manual</th>
+            <th scope="col" class="col-service">Con LicitaciónYa</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="cell-feature">Frecuencia de inspección</td>
-            <td class="cell-manual">1 vez al día o esporádica (sujeto al tiempo del colaborador)</td>
-            <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Cada 6 horas continuas</span></td>
+            <td>Frecuencia</td>
+            <td>Cuando alguien tiene tiempo o se acuerda.</td>
+            <td class="col-service">Cada 6 horas, de forma programada.</td>
           </tr>
           <tr>
-            <td class="cell-feature">Tiempo semanal invertido</td>
-            <td class="cell-manual"><span class="compare-badge-negative">10 a 15 horas / semana</span> navegando tablas lentas</td>
-            <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> 0 horas</span> (reportes directos a WhatsApp y Excel)</td>
+            <td>Registro</td>
+            <td>Notas, capturas y enlaces dispersos.</td>
+            <td class="col-service">Ficha con código, entidad, monto, provincia y fuente.</td>
           </tr>
           <tr>
-            <td class="cell-feature">Riesgo de perder pliegos</td>
-            <td class="cell-manual"><span class="compare-badge-negative">Alto</span> (etapas de preguntas vencen en 3-5 días hábiles)</td>
-            <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Nulo</span> (alertas tempranas en convocatoria abierta)</td>
+            <td>Filtro</td>
+            <td>Palabras sueltas en el buscador del portal.</td>
+            <td class="col-service">Perfil acordado por rubro, territorio y monto mínimo.</td>
           </tr>
           <tr>
-            <td class="cell-feature">Filtrado por catálogo</td>
-            <td class="cell-manual">Palabras sueltas en buscador genérico con saturación de ruido</td>
-            <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Calibración exacta</span> hasta 30 términos y códigos CPC</td>
+            <td>Reporte</td>
+            <td>Se arma al final de la semana, si alcanza el tiempo.</td>
+            <td class="col-service">Excel consolidado los lunes a las 08:00 ECT.</td>
           </tr>
           <tr>
-            <td class="cell-feature">Costo operativo mensual</td>
-            <td class="cell-manual">+$500 USD (tiempo productivo de personal comercial)</td>
-            <td class="cell-service"><span class="compare-badge-positive"><svg width="14" height="14"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> $80 USD / mes</span> (100% deducible SRI)</td>
+            <td>Riesgo</td>
+            <td>Depende de la disponibilidad del equipo y de la memoria.</td>
+            <td class="col-service">
+              Reduce el tiempo de detección. No elimina el riesgo ni garantiza adjudicaciones.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -680,584 +619,590 @@
   </div>
 </section>
 
-  <!-- How it Works (3 Steps) -->
-<section class="steps-section" id="metodologia">
+  <section class="section section--surface" id="calculadora">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Cómo funciona <span class="text-accent">el servicio</span></h2>
-      <p class="section-subtitle">Su equipo comercial se enfoca en cotizar; nuestra plataforma vigila las licitaciones 24/7.</p>
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Retorno</p>
+        <h2 class="section-title">Ponga un número a la oportunidad que no está viendo.</h2>
+      </div>
+      <p class="section-lead">
+        Ajuste el margen promedio y los contratos adicionales que esperaría cerrar. El cálculo es
+        referencial y no garantiza adjudicaciones.
+      </p>
     </div>
 
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-header-row">
-          <div class="step-icon-wrapper">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <circle cx="12" cy="6"></circle>
-              <circle cx="12" cy="2"></circle>
-            </svg>
+    <div class="calculator">
+      <div class="calc-controls">
+        <div class="calc-group">
+          <div class="calc-label-row">
+            <label for="calc-margin-slider">Margen promedio por contrato</label>
+            <output class="calc-value" id="calc-margin-badge" for="calc-margin-slider">USD 15.000</output>
           </div>
-          <div class="step-number">01</div>
+          <input type="range" id="calc-margin-slider" class="calc-slider" min="3000" max="60000" step="1000"
+            value="15000">
+          <div class="calc-scale">
+            <span>USD 3.000</span>
+            <span>USD 30.000</span>
+            <span>USD 60.000+</span>
+          </div>
         </div>
-        <h3 class="step-title">Calibración de Catálogo</h3>
-        <p class="step-description">
-          Definimos con usted sus líneas de producto (acero, cemento, PVC, cables, maquinaria) y provincias objetivo
-          para eliminar el ruido.
+
+        <div class="calc-group">
+          <div class="calc-label-row">
+            <label for="calc-contracts-slider">Contratos adicionales al año con alertas tempranas</label>
+            <output class="calc-value" id="calc-contracts-badge" for="calc-contracts-slider">2 contratos</output>
+          </div>
+          <input type="range" id="calc-contracts-slider" class="calc-slider" min="1" max="10" step="1"
+            value="2">
+          <div class="calc-scale">
+            <span>1 contrato</span>
+            <span>5 contratos</span>
+            <span>10 contratos</span>
+          </div>
+        </div>
+
+        <p class="calc-note">
+          Costo anual del servicio: USD 960 + IVA. El cálculo no incluye costos de producción,
+          logística ni garantías.
         </p>
       </div>
 
-      <div class="step-card">
-        <div class="step-header-row">
-          <div class="step-icon-wrapper">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
-          </div>
-          <div class="step-number">02</div>
-        </div>
-        <h3 class="step-title">Auditoría cada 6 horas</h3>
-        <p class="step-description">
-          Nuestros servidores inspeccionan el portal oficial SERCOP bajo el estándar OCDS, detectando procesos activos sin dilación.
-        </p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-header-row">
-          <div class="step-icon-wrapper">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <div class="step-number">03</div>
-        </div>
-        <h3 class="step-title">Alertas Móviles y Excel</h3>
-        <p class="step-description">
-          Recibe avisos directos a WhatsApp al detectarse licitaciones clave y una matriz consolidada en Excel cada
-          lunes a las 8:00 AM.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- Interactive ROI Calculator Section -->
-<section class="calculator-section" id="calculadora">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Calcule su retorno de inversión <span class="text-accent">(ROI)</span></h2>
-      <p class="section-subtitle">Estime el impacto financiero de detectar compras públicas afines a su inventario a tiempo.</p>
-    </div>
-
-    <div class="calculator-wrapper">
-      <div class="calculator-grid">
-        <!-- Controls -->
-        <div class="calc-controls">
-          <div class="calc-group">
-            <div class="calc-label-row">
-              <label for="calc-margin-slider">Margen promedio por contrato ganado:</label>
-              <span class="calc-badge" id="calc-margin-badge">$15,000 USD</span>
-            </div>
-            <input type="range" id="calc-margin-slider" class="calc-slider" min="3000" max="60000" step="1000" value="15000">
-            <div class="calc-slider-scale">
-              <span>$3,000</span>
-              <span>$30,000</span>
-              <span>$60,000+</span>
-            </div>
-          </div>
-
-          <div class="calc-group">
-            <div class="calc-label-row">
-              <label for="calc-contracts-slider">Contratos adicionales al año con alertas tempranas:</label>
-              <span class="calc-badge" id="calc-contracts-badge">2 contratos</span>
-            </div>
-            <input type="range" id="calc-contracts-slider" class="calc-slider" min="1" max="10" step="1" value="2">
-            <div class="calc-slider-scale">
-              <span>1 contrato</span>
-              <span>5 contratos</span>
-              <span>10 contratos</span>
-            </div>
-          </div>
+      <div class="calc-result">
+        <div>
+          <p class="calc-result-label">Beneficio bruto estimado / año</p>
+          <output class="calc-result-value" id="calc-result-profit" aria-live="polite">USD 30.000</output>
         </div>
 
-        <!-- Results Box -->
-        <div class="calc-results">
-          <div class="calc-result-header">Beneficio Bruto Estimado Anual</div>
-          <div class="calc-result-main" id="calc-result-profit">$30,000</div>
-
-          <div class="calc-result-stats">
-            <div class="stat-item">
-              <small>Costo anual LicitaciónYa</small>
-              <strong id="calc-result-cost">$960</strong>
-            </div>
-            <div class="stat-item">
-              <small>Retorno Neto Estimado (ROI)</small>
-              <strong class="roi-tag" id="calc-result-roi">+3,025%</strong>
-            </div>
+        <dl class="calc-result-grid">
+          <div>
+            <dt>Costo anual LicitaciónYa</dt>
+            <dd class="mono" id="calc-result-cost">USD 960</dd>
           </div>
+          <div>
+            <dt>Retorno neto estimado</dt>
+            <dd class="mono" id="calc-result-roi">+3.025%</dd>
+          </div>
+        </dl>
+
+        <div class="calc-result-actions">
+          <button type="button" class="btn btn-paper btn-lg js-open-trial" id="calc-cta-btn">
+            Iniciar piloto de 15 días
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="calc-caveat">
+            Estimación referencial. La decisión de cotizar y la adjudicación dependen de su empresa y
+            del proceso.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Pricing Section -->
-<section class="pricing-section" id="precios">
+  <section class="section" id="precios">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Inversión transparente <span class="text-accent">para su empresa</span></h2>
-      <p class="section-subtitle">Una fracción mínima del margen que produce un solo contrato adjudicado por el Estado.</p>
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Precio</p>
+        <h2 class="section-title">Un solo plan. Sin letra pequeña.</h2>
+      </div>
+      <p class="section-lead">
+        El piloto dura 15 días. Al terminarlo, usted decide si continúa. No hay cobro automático ni
+        permanencia mínima.
+      </p>
     </div>
 
-    <div class="pricing-card-wrapper">
-      <div class="pricing-card">
-        <div class="pricing-badge">Plan Proveedor B2B Ecuador</div>
-        <div class="pricing-header">
-          <h3 class="plan-name">Suscripción Integral LicitaciónYa</h3>
-          <p class="plan-target">Para ferreterías, distribuidores de materiales y constructoras</p>
-        </div>
+    <div class="pricing-card">
+      <div class="pricing-main">
+        <span class="pricing-badge">Piloto de 15 días</span>
+        <h3 class="pricing-name">Plan Proveedor B2B</h3>
+        <p class="pricing-target">
+          Para ferreterías, distribuidores de materiales, contratistas y empresas de suministros.
+        </p>
 
-        <div class="price-container">
-          <div class="price-monthly">
-            <span class="currency">$</span>
-            <span class="amount">80</span>
-            <span class="period">USD / mes + IVA</span>
-          </div>
-          <div class="setup-fee">Sin costo de setup inicial · Sin permanencia mínima (cancelable cuando desee)</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">USD</span>
+          <span class="pricing-amount">80</span>
+          <span class="pricing-period">/ mes + IVA</span>
         </div>
+        <p class="pricing-note">Sin costo de setup. Sin permanencia mínima.</p>
 
-        <ul class="pricing-features">
+        <button type="button" class="btn btn-primary btn-lg js-open-trial" id="btn-activate-trial">
+          Iniciar piloto de 15 días
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <p class="pricing-fine">
+          Factura electrónica autorizada por el SRI. Si no continúa, el servicio se detiene al día 15.
+        </p>
+      </div>
+
+      <div class="pricing-features">
+        <h4>Incluye</h4>
+        <ul class="pricing-list">
           <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>15 días de prueba 100% gratuita</strong> sin compromiso inicial</span>
+            <span>Auditoría de la API oficial del SERCOP cada 6 horas.</span>
           </li>
           <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Monitoreo 24/7 de SERCOP con ciclos automáticos cada 6 horas</span>
+            <span>Perfil de búsqueda acordado con su equipo.</span>
           </li>
           <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Hasta 30 palabras clave calibradas a su catálogo exacto</span>
+            <span>Alertas por WhatsApp y correo.</span>
           </li>
           <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Filtro geográfico por provincias y cantones de cobertura</span>
+            <span>Reporte Excel consolidado los lunes a las 08:00 ECT.</span>
           </li>
           <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Canal de alertas automatizadas a WhatsApp y Telegram</span>
+            <span>Cobertura nacional con priorización por provincia.</span>
           </li>
           <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Reporte Ejecutivo en Excel (.xlsx) los lunes a las 8:00 AM</span>
-          </li>
-          <li>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>Factura electrónica autorizada por SRI (gasto deducible)</span>
+            <span>Soporte por correo y acompañamiento en la calibración.</span>
           </li>
         </ul>
 
-        <div class="pricing-cta-box">
-          <button type="button" class="btn-pricing-cta btn-open-trial" id="btn-activate-trial">
-            <span>Comenzar Prueba Gratuita (15 Días)</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-          <small class="guarantee-text">Sin contratos de permanencia. Cancele en cualquier momento con 15 días de preaviso.</small>
+        <div class="pricing-foot">
+          <strong>Qué no incluye:</strong> garantía de adjudicación, asesoría legal, elaboración de
+          ofertas ni gestión de pagos del SERCOP.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Interactive FAQ Section -->
-<section class="faq-section" id="faq">
+  <section class="section section--surface" id="faq">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Preguntas frecuentes de <span class="text-accent">proveedores y directores</span></h2>
-      <p class="section-subtitle">Respuestas directas sobre la legalidad del servicio, el retorno de inversión y las
-        garantías de confidencialidad de nuestro radar.</p>
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Preguntas</p>
+        <h2 class="section-title">Lo importante, sin rodeos.</h2>
+      </div>
+      <p class="section-lead">
+        Si algo no está claro, escríbanos a
+        <a href="mailto:contacto@j2sdynamics.com">contacto@j2sdynamics.com</a>.
+      </p>
     </div>
 
-    <div class="faq-container">
-      <!-- FAQ 1 -->
-      <div class="faq-item active">
-        <button class="faq-question-btn" aria-expanded="true">
-          <span>¿Es legal este servicio de monitoreo?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer-wrapper">
-          <div class="faq-answer-content">
-            Totalmente legal y transparente. Consumimos exclusivamente la API oficial de Datos Abiertos del Sistema
-            Nacional de Contratación Pública bajo el estándar internacional OCDS. No intervenimos en los sistemas del
-            Estado ni usamos credenciales privadas.
-          </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>
+          <span>¿Cada cuánto se actualiza el radar?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          La auditoría se ejecuta cada 6 horas: 00:00, 06:00, 12:00 y 18:00 ECT. No prometemos
+          alertas en 15 minutos. La ficha se envía cuando el proceso coincide con su perfil.
         </div>
-      </div>
+      </details>
 
-      <!-- FAQ 2 -->
-      <div class="faq-item">
-        <button class="faq-question-btn" aria-expanded="false">
-          <span>¿Por qué pagar si el portal del SERCOP es público?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer-wrapper">
-          <div class="faq-answer-content">
-            El portal es público pero buscar manualmente consume horas, suele ralentizarse y las licitaciones cierran
-            etapas de preguntas con plazos perentorios. Dedicar a un colaborador a buscar a mano cuesta más de
-            $500/mes y se escapan procesos. LicitaciónYa inspecciona cada 6 horas y le avisa directo a su WhatsApp.
-          </div>
+      <details class="faq-item">
+        <summary>
+          <span>¿De dónde salen los datos?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          De la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública, bajo el
+          estándar OCDS. No usamos credenciales del SERCOP ni intervenimos en el portal público.
+          LicitaciónYa no representa oficialmente al SERCOP.
         </div>
-      </div>
+      </details>
 
-      <!-- FAQ 3 -->
-      <div class="faq-item">
-        <button class="faq-question-btn" aria-expanded="false">
-          <span>¿Cómo funciona la prueba gratis de 15 días?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer-wrapper">
-          <div class="faq-answer-content">
-            Configuramos sus palabras clave y su WhatsApp sin costo inicial. Durante dos semanas recibe alertas reales
-            y dos reportes en Excel. Si al terminar no comprueba valor comercial, el servicio concluye sin compromiso.
-          </div>
+      <details class="faq-item">
+        <summary>
+          <span>¿Cómo se calibra mi perfil?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          Acordamos rubro, términos, provincia y monto mínimo con su equipo. El portal permite
+          mantener un borrador de preferencias; para aplicarlo al monitoreo, soporte confirma la
+          calibración antes de la siguiente corrida.
         </div>
-      </div>
+      </details>
 
-      <!-- FAQ 4 -->
-      <div class="faq-item">
-        <button class="faq-question-btn" aria-expanded="false">
+      <details class="faq-item">
+        <summary>
+          <span>¿Qué recibo con el piloto?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          Un perfil de búsqueda calibrado, alertas por WhatsApp y correo, y un reporte consolidado en
+          Excel los lunes a las 08:00 ECT. También recibe acceso al portal para revisar su cuenta,
+          canales y reportes.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>¿Qué pasa al terminar los 15 días?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          Le confirmamos si desea continuar. No hay cobro automático ni permanencia mínima. Si no
+          continúa, el servicio se detiene y no se genera un nuevo ciclo de monitoreo.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
           <span>¿Emiten factura autorizada por el SRI?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer-wrapper">
-          <div class="faq-answer-content">
-            Sí. Todos los pagos se facturan electrónicamente con autorización del SRI, siendo 100% deducibles de
-            impuestos como gasto operativo de inteligencia comercial.
-          </div>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          Sí. Al confirmar el plan, la suscripción se factura electrónicamente con autorización del
+          SRI. La factura se emite a nombre de la empresa registrada.
         </div>
-      </div>
+      </details>
 
-      <!-- FAQ Bottom Help -->
-      <div class="faq-footer-help">
-        <p>¿Tiene alguna duda específica sobre su catálogo o las compras de su provincia?</p>
-        <button type="button" class="btn-open-trial" style="background:none;border:none;color:var(--primary,#059669);font-weight:600;cursor:pointer;text-decoration:underline;">Activar piloto de 15 días y probar con sus palabras clave</button>
+      <details class="faq-item">
+        <summary>
+          <span>¿Garantizan que voy a ganar una adjudicación?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          No. El servicio reduce el tiempo de detección y ordena la información. La decisión de
+          cotizar, la oferta y la adjudicación dependen de su empresa y del proceso.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>¿Cómo protegen mis datos?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          Usamos los datos necesarios para activar y operar el servicio. No vendemos información a
+          terceros. Puede revisar el detalle en la
+          <a href="legal/privacidad.html">política de privacidad (LOPDP)</a>.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <section class="closing" id="contacto">
+  <div class="container">
+    <div class="closing-panel">
+      <div>
+        <p class="closing-kicker">Piloto de 15 días</p>
+        <h2>¿Quiere ver su perfil en el radar?</h2>
+        <p>
+          Cuéntenos qué vende y dónde opera. Calibramos el perfil y activamos el primer ciclo sin
+          tarjeta y sin permanencia.
+        </p>
+      </div>
+      <div class="closing-actions">
+        <button type="button" class="btn btn-paper btn-lg js-open-trial" id="footer-action-btn">
+          Iniciar piloto
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+        <a class="btn btn-ghost-light btn-lg" href="mailto:contacto@j2sdynamics.com">
+          Hablar con soporte
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Compact Executive B2B Footer -->
-<footer class="footer" id="contacto">
+<footer class="site-footer">
   <div class="container">
-    <!-- Slim Action Banner -->
-    <div class="footer-cta-wrapper">
-      <div class="footer-cta-content">
-        <div class="footer-cta-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-          <span>Piloto 15 Días Sin Compromiso · Factura Autorizada SRI</span>
-        </div>
-        <h2>Cotice compras públicas <span class="footer-cta-highlight">antes que su competencia</span></h2>
-      </div>
-      <div class="footer-cta-actions">
-        <button type="button" class="btn-footer-cta btn-open-trial" id="footer-action-btn">
-          <span>Activar Piloto Gratuito</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- 4-Column Compact Grid -->
     <div class="footer-grid">
-      <!-- Col 1: Identity & Legal Carrier -->
-      <div class="footer-col footer-brand">
-        <div class="footer-brand-header">
-          <div class="footer-symbol">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      <div class="footer-brand">
+        <a href="#hero" class="brand brand--footer" aria-label="LicitaciónYa, ir al inicio">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"></circle>
               <path d="M5 12a7 7 0 0 1 14 0"></path>
               <path d="M2 12a10 10 0 0 1 20 0"></path>
             </svg>
-          </div>
-          <span class="footer-brand-title">Licitación<strong>Ya</strong></span>
-          <span class="footer-brand-badge">ECUADOR</span>
-        </div>
-
+          </span>
+          <span class="brand-text">Licitación<span>Ya</span></span>
+        </a>
         <p class="footer-tagline">
-          Monitoreo algorítmico continuo de compras públicas SERCOP bajo estándar internacional OCDS.
+          Radar de compras públicas SERCOP para equipos comerciales que necesitan decidir con datos,
+          no con ruido.
         </p>
-
-        <div class="footer-meta-pill">
-          <span class="status-dot"></span>
-          <span>Radar Activo · Monitoreo cada 6h (24/7)</span>
+        <div class="footer-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Monitoreo programado cada 6 horas
         </div>
-
-        <div class="footer-ruc-info">
-          <strong>Prestador:</strong> J2S Dynamics · <strong>RUC:</strong> 0941822801001<br>
-          Guayaquil, Ecuador · Facturación Autorizada SRI
-        </div>
+        <p class="footer-company">
+          J2S Dynamics · RUC 0941822801001<br>
+          Guayaquil, Ecuador
+        </p>
       </div>
 
-      <!-- Col 2: Sectores B2B -->
       <div class="footer-col">
-        <h4 class="footer-col-title">
-          <span class="title-bar"></span>
-          Sectores B2B
-        </h4>
-        <ul class="footer-nav-list">
-          <li><a href="#rubros"><span>Ferretería & Acero Industrial</span></a></li>
-          <li><a href="#rubros"><span>Construcción & Obras Viales</span></a></li>
-          <li><a href="#rubros"><span>Distribución Eléctrica & Cables</span></a></li>
-          <li><a href="#rubros"><span>Tubería PEAD & Hidrosanitario</span></a></li>
-          <li><a href="#rubros"><span>Insumos Médicos & Fármacos</span></a></li>
+        <h3>Producto</h3>
+        <ul>
+          <li><a href="#metodologia">Cómo funciona</a></li>
+          <li><a href="#rubros">Rubros</a></li>
+          <li><a href="#precios">Precio</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+          <li><a href="portal.html">Portal clientes</a></li>
         </ul>
       </div>
 
-      <!-- Col 3: Marco Legal -->
       <div class="footer-col">
-        <h4 class="footer-col-title">
-          <span class="title-bar"></span>
-          Marco Legal
-        </h4>
-        <ul class="footer-nav-list">
-          <li><a href="legal/privacidad.html"><span>Política de Privacidad (LOPDP)</span></a></li>
-          <li><a href="legal/seguridad.html"><span>Seguridad y Resguardo Técnico</span></a></li>
-          <li><a href="legal/terminos.html"><span>Términos del Servicio (SLA 24h)</span></a></li>
-          <li><a href="legal/terminos.html#propiedad-intelectual"><span>Estándar Abierto OCDS SERCOP</span></a></li>
-          <li><a href="#precios"><span>Suscripción B2B ($80/mes)</span></a></li>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="legal/privacidad.html">Privacidad (LOPDP)</a></li>
+          <li><a href="legal/seguridad.html">Seguridad</a></li>
+          <li><a href="legal/terminos.html">Términos del servicio</a></li>
+          <li>
+            <a href="https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/" target="_blank" rel="noopener">
+              Portal SERCOP
+            </a>
+          </li>
         </ul>
       </div>
 
-      <!-- Col 4: Operaciones & Contacto -->
       <div class="footer-col">
-        <h4 class="footer-col-title">
-          <span class="title-bar"></span>
-          Operaciones & Soporte
-        </h4>
-        <ul class="footer-ops-list">
-          <li class="footer-ops-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            <div>
-              <strong>Despacho Semanal:</strong>
-              <span class="footer-ops-sub">Lunes 08:00 AM (.xlsx consolidado)</span>
-            </div>
+        <h3>Operación</h3>
+        <ul class="footer-meta-list">
+          <li>
+            <span class="footer-meta-label">Ciclos</span>
+            <span>00:00 · 06:00 · 12:00 · 18:00 ECT</span>
           </li>
-          <li class="footer-ops-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <div>
-              <strong>Contacto Directo:</strong>
-              <span class="footer-ops-sub"><a href="mailto:contacto@j2sdynamics.com">contacto@j2sdynamics.com</a></span>
-            </div>
+          <li>
+            <span class="footer-meta-label">Reporte</span>
+            <span>Lunes 08:00 ECT</span>
           </li>
-          <li class="footer-ops-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <div>
-              <strong>Cobertura:</strong>
-              <span class="footer-ops-sub">24 Provincias del Ecuador</span>
-            </div>
+          <li>
+            <span class="footer-meta-label">Cobertura</span>
+            <span>24 provincias</span>
+          </li>
+          <li>
+            <span class="footer-meta-label">Soporte</span>
+            <a href="mailto:contacto@j2sdynamics.com">contacto@j2sdynamics.com</a>
           </li>
         </ul>
       </div>
     </div>
 
-    <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <p class="footer-disclaimer">
-        © 2026 LicitaciónYa Ecuador · J2S Dynamics. Datos oficiales OCDS conforme a la LOSNCP. No representa oficialmente al SERCOP.
+      <p>
+        © 2026 LicitaciónYa Ecuador · J2S Dynamics. Datos oficiales OCDS conforme a la LOSNCP.
+        No representa oficialmente al SERCOP.
       </p>
-      <div class="footer-trust-pills">
-        <span class="trust-tag">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          SSL 256-Bit
-        </span>
-        <span class="trust-tag">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-          LOPDP Art. 60.4
-        </span>
-        <span class="trust-tag">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-          </svg>
-          Facturación SRI
-        </span>
+      <div class="footer-tags">
+        <span>LOPDP</span>
+        <span>OCDS</span>
+        <span>Factura SRI</span>
       </div>
     </div>
   </div>
 </footer>
 
-  <!-- Modal de Activación de Piloto Gratuito (15 Días) -->
-<div class="modal-backdrop" id="trial-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal-card">
-    <button type="button" class="modal-close-btn" id="modal-close" aria-label="Cerrar ventana">&times;</button>
-    
-    <!-- Paso 1: Formulario de Alta Rápida -->
-    <div class="modal-body" id="modal-form-view">
-      <div class="modal-header">
-        <div class="modal-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <span>Piloto de 15 Días 100% Gratuito</span>
-        </div>
-        <h3 id="modal-title" class="modal-title">Active su radar SERCOP</h3>
-        <p class="modal-subtitle">Configure sus canales de recepción hoy y reciba la primera matriz de licitaciones afines a su inventario.</p>
+  <div class="modal" id="trial-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card" role="document">
+    <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar ventana">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="modal-view" id="modal-form-view">
+      <div class="modal-head">
+        <p class="modal-kicker">Piloto de 15 días</p>
+        <h2 class="modal-title" id="modal-title">Active su radar SERCOP</h2>
+        <p class="modal-sub">
+          Complete los datos con los que opera su empresa. Le contactamos para calibrar el perfil
+          antes del primer ciclo.
+        </p>
       </div>
 
-      <form id="trial-form" class="trial-form" novalidate>
-        <div class="form-group">
-          <label for="trial-empresa">Nombre o Razón Social de su Empresa <span class="required">*</span></label>
-          <input type="text" id="trial-empresa" name="empresa" class="form-input" placeholder="Ej. Distribuidora Ferretera del Guayas S.A." required>
-          <span class="form-error" id="error-empresa">Por favor ingrese el nombre de su empresa.</span>
-        </div>
+      <form class="modal-form" id="trial-form" novalidate>
+        <div class="modal-error" id="modal-error" role="alert"></div>
 
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="trial-ruc">RUC Oficial (13 dígitos) <span class="required">*</span></label>
-            <input type="text" id="trial-ruc" name="ruc" class="form-input font-mono" placeholder="0941822801001" maxlength="13" pattern="[0-9]{13}" required>
-            <span class="form-error" id="error-ruc">Ingrese un RUC válido de 13 dígitos.</span>
+        <div class="form-grid">
+          <div class="form-group form-group--full">
+            <label for="trial-empresa">Nombre o razón social <span class="required">*</span></label>
+            <input type="text" id="trial-empresa" name="empresa" class="input"
+              placeholder="Ej. Distribuidora Ferretera del Guayas S.A." autocomplete="organization" required>
+            <span class="form-error" id="error-empresa">Ingrese el nombre de su empresa.</span>
           </div>
 
           <div class="form-group">
-            <label for="trial-rubro">Rubro Comercial <span class="required">*</span></label>
-            <select id="trial-rubro" name="rubro" class="form-input form-select" required>
-              <option value="ferreteria" selected>Ferretería Industrial & Acero</option>
-              <option value="construccion">Construcción & Obras Viales</option>
-              <option value="electrico">Distribución Eléctrica & Cables</option>
-              <option value="hidrosanitario">Tubería PEAD & Hidrosanitario</option>
-              <option value="medico">Insumos Médicos & Fármacos</option>
+            <label for="trial-ruc">RUC (13 dígitos) <span class="required">*</span></label>
+            <input type="text" id="trial-ruc" name="ruc" class="input mono" placeholder="Ej. 1790012345001"
+              inputmode="numeric" maxlength="13" pattern="[0-9]{13}" autocomplete="off" required>
+            <span class="form-error" id="error-ruc">Ingrese un RUC de 13 dígitos.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="trial-rubro">Rubro comercial <span class="required">*</span></label>
+            <select id="trial-rubro" name="rubro" class="input" required>
+              <option value="ferreteria" selected>Ferretería y suministros</option>
+              <option value="construccion">Construcción y obra</option>
+              <option value="electrico">Redes eléctricas</option>
+              <option value="hidrosanitario">Tubería y saneamiento</option>
               <option value="otro">Otro rubro comercial</option>
             </select>
           </div>
-        </div>
 
-        <div class="form-row-2">
           <div class="form-group">
-            <label for="trial-whatsapp">WhatsApp para Alertas Diarias <span class="required">*</span></label>
-            <div class="phone-input-wrapper">
+            <label for="trial-whatsapp">WhatsApp <span class="required">*</span></label>
+            <div class="phone-wrap">
               <span class="phone-prefix">+593</span>
-              <input type="tel" id="trial-whatsapp" name="whatsapp" class="form-input font-mono" placeholder="099 123 4567" required>
+              <input type="tel" id="trial-whatsapp" name="whatsapp" class="input mono" placeholder="099 123 4567"
+                autocomplete="tel-national" required>
             </div>
-            <span class="form-error" id="error-whatsapp">Ingrese un número celular válido para WhatsApp.</span>
+            <span class="form-hint">Sin el prefijo. Ej. 0991234567.</span>
+            <span class="form-error" id="error-whatsapp">Ingrese un número celular válido.</span>
           </div>
 
           <div class="form-group">
-            <label for="trial-email">Correo para Reporte Excel (Lunes 8 AM) <span class="required">*</span></label>
-            <input type="email" id="trial-email" name="email" class="form-input" placeholder="ventas@suempresa.com" required>
-            <span class="form-error" id="error-email">Ingrese un correo electrónico corporativo válido.</span>
+            <label for="trial-email">Correo para el reporte <span class="required">*</span></label>
+            <input type="email" id="trial-email" name="email" class="input" placeholder="ventas@suempresa.com"
+              autocomplete="email" required>
+            <span class="form-error" id="error-email">Ingrese un correo corporativo válido.</span>
           </div>
         </div>
 
-        <div class="modal-notice">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <span>Protección de datos conforme a la LOPDP Art. 60.4. Sin cobros sorpresa, no requiere tarjeta de crédito.</span>
-        </div>
+        <p class="modal-fine">
+          Al enviar, acepta la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de
+            privacidad</a>. No compartimos sus datos con terceros.
+        </p>
 
-        <button type="submit" class="btn-modal-submit" id="btn-submit-trial">
-          <span>Activar Radar en Mi WhatsApp y Correo</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit-trial">
+          Solicitar piloto
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
       </form>
     </div>
 
-    <!-- Paso 2: Estado de Éxito y Acceso Inmediato al Panel -->
-    <div class="modal-body modal-success-view" id="modal-success-view" style="display: none;">
-      <div class="success-icon-box">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <div class="modal-view success-view" id="modal-success-view" hidden>
+      <div class="success-mark" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
       </div>
-      <h3 class="modal-title">¡Piloto Activado con Éxito!</h3>
-      <p class="modal-subtitle">
-        Su radar SERCOP ha sido programado. El próximo ciclo de inspección (00h, 06h, 12h, 18h ECT) auditará compras afines a su catálogo.
+      <p class="modal-kicker">Solicitud registrada</p>
+      <h2 class="modal-title">Piloto registrado</h2>
+      <p class="modal-sub">
+        Recibimos sus datos. Nuestro equipo confirmará la calibración y el primer ciclo de monitoreo
+        a los canales registrados.
       </p>
 
-      <div class="success-summary-card">
+      <div class="success-summary">
         <div class="summary-row">
-          <span class="summary-label">Empresa:</span>
+          <span>Empresa</span>
           <strong id="success-empresa">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">RUC:</span>
-          <span id="success-ruc" class="font-mono">-</span>
+          <span>RUC</span>
+          <strong class="mono" id="success-ruc">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">Alertas WhatsApp:</span>
-          <span id="success-whatsapp" class="font-mono text-success">-</span>
+          <span>WhatsApp</span>
+          <strong class="mono" id="success-whatsapp">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">Matriz Excel (Lunes):</span>
-          <span id="success-email">-</span>
+          <span>Reporte</span>
+          <strong id="success-email">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">Plan & Costo:</span>
-          <span>15 Días Gratis (Luego $80 USD/mes + IVA)</span>
+          <span>Plan</span>
+          <strong>15 días gratis · luego USD 80 + IVA / mes</strong>
         </div>
       </div>
 
-      <div class="success-actions">
-        <a href="portal.html" class="btn-modal-submit" id="btn-go-to-portal">
-          <span>Acceder a Mi Panel de Cliente</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+      <div class="success-password-card" id="success-password-box">
+        <div class="password-card-head">
+          <div>
+            <span class="password-card-kicker">Acceso al portal</span>
+            <label for="success-password" class="password-card-label">Cree su contraseña de acceso</label>
+          </div>
+          <span class="password-badge-opt">Recomendado</span>
+        </div>
+        <p class="password-card-sub">
+          Podrá ingresar directamente al portal desde cualquier dispositivo usando su RUC y esta clave.
+        </p>
+
+        <div class="password-input-row">
+          <div class="password-input-wrap">
+            <input
+              type="password"
+              id="success-password"
+              class="input"
+              placeholder="Definir contraseña (mínimo 6 caracteres)"
+              minlength="6"
+              autocomplete="new-password"
+            >
+            <button
+              type="button"
+              class="btn-toggle-pw"
+              id="btn-toggle-success-pw"
+              aria-label="Mostrar u ocultar contraseña"
+              tabindex="-1"
+            >
+              <svg class="icon-eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="icon-eye-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden>
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <button type="button" class="btn btn-secondary" id="btn-save-success-pw">
+            Guardar clave
+          </button>
+        </div>
+
+        <p class="password-feedback" id="success-password-feedback" role="status" aria-live="polite" hidden></p>
+
+        <p class="password-card-note">
+          Alternativa de respaldo: también podrá ingresar usando su RUC y los últimos 4 dígitos de su celular (<span id="success-hint-phone4" class="mono">----</span>).
+        </p>
       </div>
+
+      <div class="success-actions">
+        <a href="portal.html" class="btn btn-primary btn-lg" id="btn-go-to-portal">
+          Ir al portal
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <button type="button" class="btn btn-secondary btn-lg js-close-modal" id="btn-success-close">
+          Cerrar
+        </button>
+      </div>
+
+      <p class="modal-fine">
+        Si no recibe confirmación, escriba a
+        <a href="mailto:contacto@j2sdynamics.com">contacto@j2sdynamics.com</a>.
+      </p>
     </div>
   </div>
 </div>
 
   <!-- Modular ES Modules Entry Point -->
-  <script type="module" src="js/main.js?v=20261023_v1"></script>
+  <script type="module" src="js/main.js?v=20261025_v4"></script>
 </body>
 
 </html>

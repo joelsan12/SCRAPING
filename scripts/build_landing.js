@@ -14,10 +14,10 @@ const SECTIONS = [
   'navbar.html',
   'hero.html',
   'metrics.html',
-  'rubros.html',
   'entregables.html',
-  'comparativa.html',
+  'rubros.html',
   'metodologia.html',
+  'comparativa.html',
   'calculadora.html',
   'precios.html',
   'faq.html',
@@ -25,32 +25,46 @@ const SECTIONS = [
   'modal.html'
 ];
 
+const HEADER_SECTIONS = new Set(['navbar.html']);
+const TAIL_SECTIONS = new Set(['footer.html', 'modal.html']);
+
 function build() {
   console.log('⚡ Iniciando compilación modular de LicitaciónYa...');
 
   const startTime = Date.now();
 
-  let bodyContent = '';
+  let headerContent = '';
+  let mainContent = '';
+  let tailContent = '';
+
   for (const file of SECTIONS) {
     const filePath = path.join(SECTIONS_DIR, file);
     if (!fs.existsSync(filePath)) {
       console.error(`❌ Error: Sección no encontrada: ${file}`);
       process.exit(1);
     }
+
     const content = fs.readFileSync(filePath, 'utf8').trim();
-    bodyContent += `\n  ${content}\n`;
+    if (HEADER_SECTIONS.has(file)) {
+      headerContent += `\n  ${content}\n`;
+    } else if (TAIL_SECTIONS.has(file)) {
+      tailContent += `\n  ${content}\n`;
+    } else {
+      mainContent += `\n  ${content}\n`;
+    }
     console.log(`  ✓ Sección cargada: ${file}`);
   }
 
   const html = `<!DOCTYPE html>
-<html lang="es">
+<html lang="es-EC">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LicitaciónYa | Monitoreo B2B de Contratación Pública SERCOP Ecuador</title>
+  <title>LicitaciónYa | Radar de compras públicas SERCOP Ecuador</title>
   <meta name="description"
-    content="Servicio corporativo de monitoreo y analítica de compras públicas SERCOP en Ecuador. Alertas a WhatsApp por rubro exacto y reporte ejecutivo en Excel cada lunes a las 8:00 AM.">
+    content="Monitoreo de compras públicas SERCOP cada 6 horas. Fichas con código, entidad, monto, provincia y enlace al pliego. Reporte Excel los lunes a las 08:00 ECT.">
+  <meta name="theme-color" content="#F7F5EF">
 
   <!-- Favicon & Canonical Link -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -59,37 +73,24 @@ function build() {
   <!-- Open Graph / WhatsApp Rich Preview Metadata -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://licitacionya.pages.dev">
-  <meta property="og:title" content="LicitaciónYa | Monitoreo B2B de Contratación Pública SERCOP Ecuador">
+  <meta property="og:title" content="LicitaciónYa | Radar de compras públicas SERCOP Ecuador">
   <meta property="og:description"
-    content="Auditoría continua de compras públicas SERCOP en Ecuador cada 6 horas. Alertas a WhatsApp por rubro exacto y reporte en Excel los lunes a las 8:00 AM.">
+    content="Auditoría de compras públicas SERCOP cada 6 horas. Fichas con fuente y enlace al pliego, alertas por WhatsApp y Excel consolidado los lunes a las 08:00 ECT.">
   <meta property="og:image" content="https://licitacionya.pages.dev/og-image.png">
   <meta property="og:locale" content="es_EC">
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LicitaciónYa | Monitoreo B2B SERCOP Ecuador">
+  <meta name="twitter:title" content="LicitaciónYa | Radar de compras públicas SERCOP Ecuador">
   <meta name="twitter:description"
-    content="Alertas automatizadas a WhatsApp y matriz ejecutiva en Excel semanal con licitaciones afines a su inventario.">
+    content="Fichas de procesos con código, entidad, monto, provincia y enlace al pliego. Monitoreo cada 6 horas y reporte Excel semanal.">
   <meta name="twitter:image" content="https://licitacionya.pages.dev/og-image.png">
 
   <!-- Self-Hosted Local Fonts (Zero External Dependencies) -->
   <link rel="stylesheet" href="css/fonts.css">
 
-  <!-- Parallel Modular CSS -->
-  <link rel="stylesheet" href="css/tokens.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/base.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/buttons.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/navbar.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/hero.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/industries.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/demo-cards.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/comparison.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/steps.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/calculator.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/pricing.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/faq.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/footer.css?v=20261023_v1">
-  <link rel="stylesheet" href="css/components/modal.css?v=20261023_v1">
+  <!-- Landing Design System -->
+  <link rel="stylesheet" href="css/landing.css?v=20261025_v4">
 
   <!-- Structured Data: Organization & FAQPage Schema -->
   <script type="application/ld+json">
@@ -114,34 +115,42 @@ function build() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "¿Es legal este servicio de monitoreo?",
+            "name": "¿Cada cuánto se actualiza el radar?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Totalmente legal y transparente. Consumimos exclusivamente la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública bajo el estándar internacional OCDS. No intervenimos en los sistemas del Estado ni usamos credenciales privadas."
+              "text": "La auditoría se ejecuta cada 6 horas: 00:00, 06:00, 12:00 y 18:00 ECT. No prometemos alertas en 15 minutos."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Por qué pagar si el portal del SERCOP es público?",
+            "name": "¿De dónde salen los datos?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "El portal es público pero buscar manualmente consume horas, suele ralentizarse y las licitaciones cierran etapas de preguntas con plazos perentorios. Dedicar a un colaborador a buscar a mano cuesta más de $500/mes y se escapan procesos. LicitaciónYa inspecciona cada 6 horas y le avisa directo a su WhatsApp."
+              "text": "De la API oficial de Datos Abiertos del Sistema Nacional de Contratación Pública, bajo el estándar OCDS. No usamos credenciales del SERCOP ni intervenimos en el portal público."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Cómo funciona la prueba gratis de 15 días?",
+            "name": "¿Qué recibo con el piloto?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Configuramos sus palabras clave y su WhatsApp sin costo inicial. Durante dos semanas recibe alertas reales y dos reportes en Excel. Si al terminar no comprueba valor comercial, el servicio concluye sin compromiso."
+              "text": "Un perfil de búsqueda calibrado con su equipo, alertas por WhatsApp y correo, y un reporte consolidado en Excel los lunes a las 08:00 ECT."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Emiten factura autorizada por el SRI?",
+            "name": "¿Qué pasa al terminar los 15 días?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sí. Todos los pagos se facturan electrónicamente con autorización del SRI, siendo 100% deducibles de impuestos como gasto operativo de inteligencia comercial."
+              "text": "Le confirmamos si desea continuar. No hay permanencia mínima ni cobro automático. Si no continúa, el servicio se detiene."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Garantizan adjudicaciones?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. El servicio reduce el tiempo de detección y ordena la información. La decisión de cotizar, la oferta y la adjudicación dependen de su empresa y del proceso."
             }
           }
         ]
@@ -151,10 +160,15 @@ function build() {
   </script>
 </head>
 
-<body>
-${bodyContent}
+<body class="landing-page">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+${headerContent}
+  <main id="main">
+${mainContent}
+  </main>
+${tailContent}
   <!-- Modular ES Modules Entry Point -->
-  <script type="module" src="js/main.js?v=20261023_v1"></script>
+  <script type="module" src="js/main.js?v=20261025_v4"></script>
 </body>
 
 </html>

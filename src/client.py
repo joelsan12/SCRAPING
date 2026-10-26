@@ -56,6 +56,7 @@ class SercopClient:
         base_url: Optional[str] = None,
         delay_seconds: float = 3.2,
         timeout: float = 20.0,
+        max_requests: Optional[int] = None,
     ):
         self.base_url = (base_url or os.getenv(
             "SERCOP_API_BASE_URL", 
@@ -63,6 +64,11 @@ class SercopClient:
         )).rstrip("/")
         self.delay_seconds = float(os.getenv("REQUEST_DELAY_SECONDS", str(delay_seconds)))
         self.timeout = float(os.getenv("REQUEST_TIMEOUT_SECONDS", str(timeout)))
+        self.max_requests = int(
+            max_requests if max_requests is not None 
+            else os.getenv("MAX_REQUESTS_PER_RUN", "150")
+        )
+        self.request_count = 0
         self._last_request_time = 0.0
 
     def _get_headers(self) -> Dict[str, str]:
@@ -89,7 +95,13 @@ class SercopClient:
         reraise=True,
     )
     def _get(self, endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        if self.request_count >= self.max_requests:
+            msg_limite = f"Límite máximo de seguridad alcanzado ({self.max_requests} peticiones por corrida)."
+            logger.error(msg_limite)
+            raise RuntimeError(msg_limite)
+
         self._esperar_pausa_cortesia()
+        self.request_count += 1
         url = f"{self.base_url}/{endpoint.lstrip('/')}"
         
         with httpx.Client(timeout=self.timeout, headers=self._get_headers()) as client:

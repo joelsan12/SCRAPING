@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/build_landing.js",
     "dev": "python -m http.server 8000 --directory landing",
+    "dev:pages": "wrangler pages dev landing --port 8788",
     "test": "pytest -q"
   },
   "keywords": [

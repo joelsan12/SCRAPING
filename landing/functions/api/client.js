@@ -22,17 +22,18 @@ export async function onRequestOptions() {
 export async function onRequestPost(context) {
   try {
     const body = await context.request.json();
-    const { ruc, phone4 } = body;
+    const { ruc, phone4, password } = body;
 
     const cleanRuc = (ruc || '').toString().replace(/\D/g, '');
     const cleanPhone4 = (phone4 || '').toString().replace(/\D/g, '');
+    const cleanPassword = (password || '').toString().trim();
 
     if (cleanRuc.length !== 13) {
       return jsonResponse({ success: false, error: 'El RUC debe tener 13 dígitos numéricos' }, 400);
     }
 
-    if (cleanPhone4.length !== 4) {
-      return jsonResponse({ success: false, error: 'Ingrese los últimos 4 dígitos de su celular para validar identidad' }, 400);
+    if (cleanPhone4.length !== 4 && cleanPassword.length < 4) {
+      return jsonResponse({ success: false, error: 'Ingrese su contraseña o los últimos 4 dígitos de su celular para validar identidad' }, 400);
     }
 
     const tursoUrl = context.env.TURSO_DATABASE_URL;
@@ -50,12 +51,35 @@ export async function onRequestPost(context) {
       ? cleanEndpoint
       : `${cleanEndpoint}/v2/pipeline`;
 
-    const querySql = `
-      SELECT empresa, ruc, whatsapp, phone_last4, email, rubro, plan, status, created_at
-      FROM leads
-      WHERE ruc = ? AND phone_last4 = ?
-      LIMIT 1;
-    `;
+    let querySql = '';
+    const queryArgs = [{ type: 'text', value: cleanRuc }];
+
+    if (cleanPhone4.length === 4 && cleanPassword.length >= 4) {
+      querySql = `
+        SELECT empresa, ruc, whatsapp, phone_last4, email, rubro, plan, status, created_at
+        FROM leads
+        WHERE ruc = ? AND (phone_last4 = ? OR (password IS NOT NULL AND password = ?))
+        LIMIT 1;
+      `;
+      queryArgs.push({ type: 'text', value: cleanPhone4 });
+      queryArgs.push({ type: 'text', value: cleanPassword });
+    } else if (cleanPassword.length >= 4) {
+      querySql = `
+        SELECT empresa, ruc, whatsapp, phone_last4, email, rubro, plan, status, created_at
+        FROM leads
+        WHERE ruc = ? AND password = ?
+        LIMIT 1;
+      `;
+      queryArgs.push({ type: 'text', value: cleanPassword });
+    } else {
+      querySql = `
+        SELECT empresa, ruc, whatsapp, phone_last4, email, rubro, plan, status, created_at
+        FROM leads
+        WHERE ruc = ? AND phone_last4 = ?
+        LIMIT 1;
+      `;
+      queryArgs.push({ type: 'text', value: cleanPhone4 });
+    }
 
     const pipelinePayload = {
       requests: [
@@ -63,10 +87,7 @@ export async function onRequestPost(context) {
           type: 'execute',
           stmt: {
             sql: querySql,
-            args: [
-              { type: 'text', value: cleanRuc },
-              { type: 'text', value: cleanPhone4 }
-            ]
+            args: queryArgs
           }
         },
         { type: 'close' }

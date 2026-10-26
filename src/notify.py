@@ -9,6 +9,7 @@ Módulo de Notificación Multicanal:
 import os
 import logging
 import base64
+import html
 from typing import Optional, List, Dict, Any
 import httpx
 from src.models import AlertaMatch
@@ -61,16 +62,22 @@ class Notifier:
             signo = "+" if alerta.variacion_pct > 0 else ""
             variacion_str = f" _(Variación: {signo}{alerta.variacion_pct:.1f}% vs previo)_"
 
+        # Escape HTML para prevenir posible XSS en clientes de mensajería
+        title_escaped = html.escape(alerta.title)
+        desc_escaped = html.escape(alerta.description) if alerta.description else ""
+        buyer_escaped = html.escape(alerta.buyer)
+        rubro_escaped = html.escape(alerta.rubro)
+
         keywords_str = ", ".join(f"#{kw.replace(' ', '_')}" for kw in alerta.keywords_detectadas)
         monto_str = f"${alerta.amount:,.2f}"
-        desc_corta = alerta.description[:250] + ("..." if len(alerta.description) > 250 else "")
+        desc_corta = desc_escaped[:250] + ("..." if len(desc_escaped) > 250 else "")
         fase_tag = "🟢 *FASE: CONVOCATORIA ABIERTA*" if alerta.fase.upper() == "ABIERTA" else "⚪ *FASE: ADJUDICADA*"
 
         return (
             f"🚨 *NUEVA OPORTUNIDAD SERCOP*\n"
             f"{fase_tag}\n"
-            f"🏷️ *Rubro:* {alerta.rubro}\n"
-            f"🏢 *Entidad:* {alerta.buyer}\n"
+            f"🏷️ *Rubro:* {rubro_escaped}\n"
+            f"🏢 *Entidad:* {buyer_escaped}\n"
             f"📍 *Región:* {alerta.region}\n"
             f"💵 *Presupuesto:* `{monto_str}`{variacion_str}\n"
             f"🎯 *Keywords:* {keywords_str}\n\n"
@@ -87,7 +94,7 @@ class Notifier:
         fase_badge = f'<span style="background-color:{fase_bg};color:{fase_color};padding:4px 10px;border-radius:4px;font-weight:bold;font-size:12px;display:inline-block;margin-top:6px;">{fase_lbl}</span>'
 
         keywords_tags = " ".join(
-            f'<span style="background-color:#EBF5FB;color:#1A5276;padding:3px 8px;border-radius:4px;font-size:12px;margin-right:5px;">{kw}</span>'
+            f'<span style="background-color:#EBF5FB;color:#1A5276;padding:3px 8px;border-radius:4px;font-size:12px;margin-right:5px;">{html.escape(kw)}</span>'
             for kw in alerta.keywords_detectadas
         )
         return f"""
@@ -97,13 +104,13 @@ class Notifier:
             <div style="max-width: 600px; background-color: #ffffff; margin: 0 auto; border-radius: 8px; overflow: hidden; border: 1px solid #e1e4e8;">
                 <div style="background-color: #1F4E79; color: #ffffff; padding: 18px 24px;">
                     <h2 style="margin: 0; font-size: 20px;">🚨 Nueva Oportunidad de Compra Pública</h2>
-                    <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.9;">Rubro: {alerta.rubro}</p>
+                    <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.9;">Rubro: {html.escape(alerta.rubro)}</p>
                     {fase_badge}
                 </div>
                 <div style="padding: 24px;">
                     <div style="margin-bottom: 16px;">
                         <span style="font-size: 12px; text-transform: uppercase; color: #666; font-weight: bold;">Entidad Contratante</span>
-                        <div style="font-size: 16px; color: #111; font-weight: bold; margin-top: 4px;">{alerta.buyer} ({alerta.region})</div>
+                        <div style="font-size: 16px; color: #111; font-weight: bold; margin-top: 4px;">{html.escape(alerta.buyer)} ({html.escape(alerta.region)})</div>
                     </div>
                     <div style="margin-bottom: 16px; background-color: #f8fafc; padding: 12px; border-radius: 6px; border-left: 4px solid #1F4E79;">
                         <span style="font-size: 12px; text-transform: uppercase; color: #666; font-weight: bold;">Presupuesto Referencial</span>
@@ -115,10 +122,10 @@ class Notifier:
                     </div>
                     <div style="margin-bottom: 24px;">
                         <span style="font-size: 12px; text-transform: uppercase; color: #666; font-weight: bold;">Objeto del Proceso</span>
-                        <p style="font-size: 14px; color: #444; line-height: 1.5; margin-top: 6px;">{alerta.description or alerta.title}</p>
+                        <p style="font-size: 14px; color: #444; line-height: 1.5; margin-top: 6px;">{html.escape(alerta.description) if alerta.description else html.escape(alerta.title)}</p>
                     </div>
                     <div style="text-align: center;">
-                        <a href="{alerta.url_portal}" style="background-color: #1F4E79; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">Ver Pliego Oficial en SERCOP</a>
+                        <a href="{html.escape(alerta.url_portal, quote=True)}" style="background-color: #1F4E79; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">Ver Pliego Oficial en SERCOP</a>
                     </div>
                 </div>
                 <div style="background-color: #f1f3f5; padding: 12px 24px; text-align: center; font-size: 12px; color: #777;">
@@ -165,6 +172,16 @@ class Notifier:
             logger.error(f"Fallo enviando documento a Telegram: {e}")
             return False
 
+    @staticmethod
+    def _enmascarar_correo(correo: str) -> str:
+        """Enmascara la dirección de correo para prevenir fuga de datos sensibles en logs."""
+        if not correo or "@" not in correo:
+            return "***"
+        usuario, dominio = correo.split("@", 1)
+        if len(usuario) <= 2:
+            return f"*@{dominio}"
+        return f"{usuario[:2]}***@{dominio}"
+
     def _enviar_email_resend(
         self,
         asunto: str,
@@ -191,7 +208,7 @@ class Notifier:
             with httpx.Client(timeout=15.0) as client:
                 r = client.post(url, json=payload, headers=headers)
                 if r.status_code in (200, 201):
-                    logger.info(f"✅ Correo enviado vía Resend a {self.resend_to}")
+                    logger.info(f"✅ Correo enviado vía Resend a {self._enmascarar_correo(self.resend_to)}")
                     return True
                 else:
                     logger.error(f"Fallo Resend ({r.status_code}): {r.text}")

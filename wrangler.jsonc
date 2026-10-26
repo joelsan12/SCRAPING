@@ -5,7 +5,5 @@
   "observability": {
     "enabled": true
   },
-  "assets": {
-    "directory": "landing"
-  }
+  "pages_build_output_dir": "landing"
 }

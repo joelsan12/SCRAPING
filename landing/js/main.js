@@ -1,22 +1,16 @@
 /**
- * LicitaciónYa — Entry Point Principal (ES Modules)
- * Orquestador modular y escalable para la plataforma B2B
+ * LicitaciónYa — Entrada principal de la landing
  */
-import { initNavbar } from './navbar.js?v=20261023_v1';
-import { initRadar } from './components/radar.js?v=20261023_v1';
-import { initIndustries } from './components/industries.js?v=20261023_v1';
-import { initExcelPreview } from './components/excel-preview.js?v=20261023_v1';
-import { initCalculator } from './calculator.js?v=20261023_v1';
-import { initFaq } from './faq.js?v=20261023_v1';
-import { initTrialModal } from './modal.js?v=20261023_v1';
+
+import { initNavbar } from './navbar.js?v=20261025_v4';
+import { initCoverage } from './coverage.js?v=20261025_v4';
+import { initCalculator } from './calculator.js?v=20261025_v4';
+import { initTrialModal } from './modal.js?v=20261025_v4';
 
 function initApp() {
   initNavbar();
-  initRadar();
-  initIndustries();
-  initExcelPreview();
+  initCoverage();
   initCalculator();
-  initFaq();
   initTrialModal();
 }
 

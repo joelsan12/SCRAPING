@@ -1,114 +1,180 @@
-<!-- Modal de Activación de Piloto Gratuito (15 Días) -->
-<div class="modal-backdrop" id="trial-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal-card">
-    <button type="button" class="modal-close-btn" id="modal-close" aria-label="Cerrar ventana">&times;</button>
-    
-    <!-- Paso 1: Formulario de Alta Rápida -->
-    <div class="modal-body" id="modal-form-view">
-      <div class="modal-header">
-        <div class="modal-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <span>Piloto de 15 Días 100% Gratuito</span>
-        </div>
-        <h3 id="modal-title" class="modal-title">Active su radar SERCOP</h3>
-        <p class="modal-subtitle">Configure sus canales de recepción hoy y reciba la primera matriz de licitaciones afines a su inventario.</p>
+<div class="modal" id="trial-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card" role="document">
+    <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar ventana">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="modal-view" id="modal-form-view">
+      <div class="modal-head">
+        <p class="modal-kicker">Piloto de 15 días</p>
+        <h2 class="modal-title" id="modal-title">Active su radar SERCOP</h2>
+        <p class="modal-sub">
+          Complete los datos con los que opera su empresa. Le contactamos para calibrar el perfil
+          antes del primer ciclo.
+        </p>
       </div>
 
-      <form id="trial-form" class="trial-form" novalidate>
-        <div class="form-group">
-          <label for="trial-empresa">Nombre o Razón Social de su Empresa <span class="required">*</span></label>
-          <input type="text" id="trial-empresa" name="empresa" class="form-input" placeholder="Ej. Distribuidora Ferretera del Guayas S.A." required>
-          <span class="form-error" id="error-empresa">Por favor ingrese el nombre de su empresa.</span>
-        </div>
+      <form class="modal-form" id="trial-form" novalidate>
+        <div class="modal-error" id="modal-error" role="alert"></div>
 
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="trial-ruc">RUC Oficial (13 dígitos) <span class="required">*</span></label>
-            <input type="text" id="trial-ruc" name="ruc" class="form-input font-mono" placeholder="0941822801001" maxlength="13" pattern="[0-9]{13}" required>
-            <span class="form-error" id="error-ruc">Ingrese un RUC válido de 13 dígitos.</span>
+        <div class="form-grid">
+          <div class="form-group form-group--full">
+            <label for="trial-empresa">Nombre o razón social <span class="required">*</span></label>
+            <input type="text" id="trial-empresa" name="empresa" class="input"
+              placeholder="Ej. Distribuidora Ferretera del Guayas S.A." autocomplete="organization" required>
+            <span class="form-error" id="error-empresa">Ingrese el nombre de su empresa.</span>
           </div>
 
           <div class="form-group">
-            <label for="trial-rubro">Rubro Comercial <span class="required">*</span></label>
-            <select id="trial-rubro" name="rubro" class="form-input form-select" required>
-              <option value="ferreteria" selected>Ferretería Industrial & Acero</option>
-              <option value="construccion">Construcción & Obras Viales</option>
-              <option value="electrico">Distribución Eléctrica & Cables</option>
-              <option value="hidrosanitario">Tubería PEAD & Hidrosanitario</option>
-              <option value="medico">Insumos Médicos & Fármacos</option>
+            <label for="trial-ruc">RUC (13 dígitos) <span class="required">*</span></label>
+            <input type="text" id="trial-ruc" name="ruc" class="input mono" placeholder="Ej. 1790012345001"
+              inputmode="numeric" maxlength="13" pattern="[0-9]{13}" autocomplete="off" required>
+            <span class="form-error" id="error-ruc">Ingrese un RUC de 13 dígitos.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="trial-rubro">Rubro comercial <span class="required">*</span></label>
+            <select id="trial-rubro" name="rubro" class="input" required>
+              <option value="ferreteria" selected>Ferretería y suministros</option>
+              <option value="construccion">Construcción y obra</option>
+              <option value="electrico">Redes eléctricas</option>
+              <option value="hidrosanitario">Tubería y saneamiento</option>
               <option value="otro">Otro rubro comercial</option>
             </select>
           </div>
-        </div>
 
-        <div class="form-row-2">
           <div class="form-group">
-            <label for="trial-whatsapp">WhatsApp para Alertas Diarias <span class="required">*</span></label>
-            <div class="phone-input-wrapper">
+            <label for="trial-whatsapp">WhatsApp <span class="required">*</span></label>
+            <div class="phone-wrap">
               <span class="phone-prefix">+593</span>
-              <input type="tel" id="trial-whatsapp" name="whatsapp" class="form-input font-mono" placeholder="099 123 4567" required>
+              <input type="tel" id="trial-whatsapp" name="whatsapp" class="input mono" placeholder="099 123 4567"
+                autocomplete="tel-national" required>
             </div>
-            <span class="form-error" id="error-whatsapp">Ingrese un número celular válido para WhatsApp.</span>
+            <span class="form-hint">Sin el prefijo. Ej. 0991234567.</span>
+            <span class="form-error" id="error-whatsapp">Ingrese un número celular válido.</span>
           </div>
 
           <div class="form-group">
-            <label for="trial-email">Correo para Reporte Excel (Lunes 8 AM) <span class="required">*</span></label>
-            <input type="email" id="trial-email" name="email" class="form-input" placeholder="ventas@suempresa.com" required>
-            <span class="form-error" id="error-email">Ingrese un correo electrónico corporativo válido.</span>
+            <label for="trial-email">Correo para el reporte <span class="required">*</span></label>
+            <input type="email" id="trial-email" name="email" class="input" placeholder="ventas@suempresa.com"
+              autocomplete="email" required>
+            <span class="form-error" id="error-email">Ingrese un correo corporativo válido.</span>
           </div>
         </div>
 
-        <div class="modal-notice">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <span>Protección de datos conforme a la LOPDP Art. 60.4. Sin cobros sorpresa, no requiere tarjeta de crédito.</span>
-        </div>
+        <p class="modal-fine">
+          Al enviar, acepta la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de
+            privacidad</a>. No compartimos sus datos con terceros.
+        </p>
 
-        <button type="submit" class="btn-modal-submit" id="btn-submit-trial">
-          <span>Activar Radar en Mi WhatsApp y Correo</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit-trial">
+          Solicitar piloto
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
       </form>
     </div>
 
-    <!-- Paso 2: Estado de Éxito y Acceso Inmediato al Panel -->
-    <div class="modal-body modal-success-view" id="modal-success-view" style="display: none;">
-      <div class="success-icon-box">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <div class="modal-view success-view" id="modal-success-view" hidden>
+      <div class="success-mark" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
       </div>
-      <h3 class="modal-title">¡Piloto Activado con Éxito!</h3>
-      <p class="modal-subtitle">
-        Su radar SERCOP ha sido programado. El próximo ciclo de inspección (00h, 06h, 12h, 18h ECT) auditará compras afines a su catálogo.
+      <p class="modal-kicker">Solicitud registrada</p>
+      <h2 class="modal-title">Piloto registrado</h2>
+      <p class="modal-sub">
+        Recibimos sus datos. Nuestro equipo confirmará la calibración y el primer ciclo de monitoreo
+        a los canales registrados.
       </p>
 
-      <div class="success-summary-card">
+      <div class="success-summary">
         <div class="summary-row">
-          <span class="summary-label">Empresa:</span>
+          <span>Empresa</span>
           <strong id="success-empresa">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">RUC:</span>
-          <span id="success-ruc" class="font-mono">-</span>
+          <span>RUC</span>
+          <strong class="mono" id="success-ruc">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">Alertas WhatsApp:</span>
-          <span id="success-whatsapp" class="font-mono text-success">-</span>
+          <span>WhatsApp</span>
+          <strong class="mono" id="success-whatsapp">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">Matriz Excel (Lunes):</span>
-          <span id="success-email">-</span>
+          <span>Reporte</span>
+          <strong id="success-email">-</strong>
         </div>
         <div class="summary-row">
-          <span class="summary-label">Plan & Costo:</span>
-          <span>15 Días Gratis (Luego $80 USD/mes + IVA)</span>
+          <span>Plan</span>
+          <strong>15 días gratis · luego USD 80 + IVA / mes</strong>
         </div>
       </div>
 
-      <div class="success-actions">
-        <a href="portal.html" class="btn-modal-submit" id="btn-go-to-portal">
-          <span>Acceder a Mi Panel de Cliente</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+      <div class="success-password-card" id="success-password-box">
+        <div class="password-card-head">
+          <div>
+            <span class="password-card-kicker">Acceso al portal</span>
+            <label for="success-password" class="password-card-label">Cree su contraseña de acceso</label>
+          </div>
+          <span class="password-badge-opt">Recomendado</span>
+        </div>
+        <p class="password-card-sub">
+          Podrá ingresar directamente al portal desde cualquier dispositivo usando su RUC y esta clave.
+        </p>
+
+        <div class="password-input-row">
+          <div class="password-input-wrap">
+            <input
+              type="password"
+              id="success-password"
+              class="input"
+              placeholder="Definir contraseña (mínimo 6 caracteres)"
+              minlength="6"
+              autocomplete="new-password"
+            >
+            <button
+              type="button"
+              class="btn-toggle-pw"
+              id="btn-toggle-success-pw"
+              aria-label="Mostrar u ocultar contraseña"
+              tabindex="-1"
+            >
+              <svg class="icon-eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="icon-eye-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden>
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <button type="button" class="btn btn-secondary" id="btn-save-success-pw">
+            Guardar clave
+          </button>
+        </div>
+
+        <p class="password-feedback" id="success-password-feedback" role="status" aria-live="polite" hidden></p>
+
+        <p class="password-card-note">
+          Alternativa de respaldo: también podrá ingresar usando su RUC y los últimos 4 dígitos de su celular (<span id="success-hint-phone4" class="mono">----</span>).
+        </p>
       </div>
+
+      <div class="success-actions">
+        <a href="portal.html" class="btn btn-primary btn-lg" id="btn-go-to-portal">
+          Ir al portal
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <button type="button" class="btn btn-secondary btn-lg js-close-modal" id="btn-success-close">
+          Cerrar
+        </button>
+      </div>
+
+      <p class="modal-fine">
+        Si no recibe confirmación, escriba a
+        <a href="mailto:contacto@j2sdynamics.com">contacto@j2sdynamics.com</a>.
+      </p>
     </div>
   </div>
 </div>

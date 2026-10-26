@@ -9,44 +9,48 @@
   <link rel="canonical" href="https://licitacionya.pages.dev/legal/seguridad.html">
 
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/components/navbar.css">
-  <link rel="stylesheet" href="../css/components/buttons.css">
-  <link rel="stylesheet" href="../css/components/footer.css">
-  <link rel="stylesheet" href="../css/components/legal.css">
+  <link rel="stylesheet" href="../css/landing.css?v=20261025_v4">
 </head>
 <body class="legal-page">
 
-  <!-- Sticky Navbar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="../index.html" class="brand-link" id="brand-logo">
-        <div class="brand-symbol">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Site Header (Design v3.1) -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-shell">
+      <a href="../index.html" class="brand" id="brand-logo" aria-label="LicitaciónYa, ir al inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M5 12a7 7 0 0 1 14 0"></path>
             <path d="M2 12a10 10 0 0 1 20 0"></path>
           </svg>
-        </div>
-        <span class="brand-text">Licitación<strong>Ya</strong></span>
-        <span class="brand-badge">ECUADOR</span>
+        </span>
+        <span class="brand-text">Licitación<span>Ya</span></span>
+        <span class="brand-tag">SERCOP · EC</span>
       </a>
 
-      <nav class="nav-menu" id="nav-links">
-        <a href="../index.html#hero" class="nav-item">Radar SERCOP</a>
-        <a href="../index.html#rubros" class="nav-item">Rubros B2B</a>
-        <a href="../index.html#precios" class="nav-item">Precios</a>
-        <a href="privacidad.html" class="nav-item">Privacidad</a>
-        <a href="terminos.html" class="nav-item">Términos</a>
+      <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+        <a href="../index.html#metodologia" class="nav-link">Cómo funciona</a>
+        <a href="../index.html#rubros" class="nav-link">Rubros</a>
+        <a href="../index.html#precios" class="nav-link">Precio</a>
+        <a href="../index.html#faq" class="nav-link">Preguntas</a>
+        <a href="privacidad.html" class="nav-link">Privacidad</a>
+        <a href="terminos.html" class="nav-link">Términos</a>
+        <a href="../portal.html" class="nav-link nav-link-portal">Portal clientes</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="../index.html#precios" class="nav-cta-btn">
-          <span>Prueba gratis 15 días</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <a href="../portal.html" class="btn btn-quiet btn-sm nav-portal-desktop">Portal clientes</a>
+        <a href="../index.html#precios" class="btn btn-primary btn-sm" id="nav-trial-btn">
+          Iniciar piloto
         </a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación"
+          aria-expanded="false" aria-controls="nav-links">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
@@ -245,9 +249,9 @@
               <h4>¿Tiene requerimientos de seguridad o compliance específicos?</h4>
               <p>Nuestro equipo técnico puede coordinar anexos de confidencialidad (NDA) para su empresa.</p>
             </div>
-            <a href="mailto:contacto@j2sdynamics.com?subject=Consulta%20de%20Seguridad%20y%20NDA%20Licitaci%C3%B3nYa" class="btn btn-whatsapp" style="background: var(--primary, #059669); color: #ffffff;">
+            <a href="mailto:contacto@j2sdynamics.com?subject=Consulta%20de%20Seguridad%20y%20NDA%20Licitaci%C3%B3nYa" class="btn-legal-action">
               <span>Consultar con Soporte Técnico</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </a>
           </div>
         </section>
@@ -255,65 +259,95 @@
     </div>
   </main>
 
-  <!-- Legal Footer -->
-  <footer class="footer">
+  <!-- Site Footer (Design v3.1) -->
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col footer-brand">
-          <div class="footer-brand-header">
-            <span class="footer-brand-title">Licitación<strong>Ya</strong></span>
-            <span class="footer-brand-badge">ECUADOR</span>
-          </div>
+        <div class="footer-brand">
+          <a href="../index.html" class="brand brand--footer" aria-label="LicitaciónYa, ir al inicio">
+            <span class="brand-mark" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M5 12a7 7 0 0 1 14 0"></path>
+                <path d="M2 12a10 10 0 0 1 20 0"></path>
+              </svg>
+            </span>
+            <span class="brand-text">Licitación<span>Ya</span></span>
+          </a>
           <p class="footer-tagline">
-            Plataforma B2B de inteligencia y auditoría de compras públicas en Ecuador conforme al estándar internacional OCDS y la LOSNCP.
+            Radar de compras públicas SERCOP para equipos comerciales que necesitan decidir con datos, no con ruido.
           </p>
-          <div class="footer-legal-card">
-            <div class="legal-card-row">
-              <span class="legal-label">Prestador Legal:</span>
-              <span class="legal-val">J2S Dynamics / Joel Jeremias Sancan Sosa</span>
-            </div>
-            <div class="legal-card-row">
-              <span class="legal-label">RUC Oficial:</span>
-              <span class="legal-val">0941822801001 · Guayaquil, Ecuador</span>
-            </div>
+          <div class="footer-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            Monitoreo programado cada 6 horas
           </div>
+          <p class="footer-company">
+            J2S Dynamics · RUC 0941822801001<br>
+            Guayaquil, Ecuador
+          </p>
         </div>
+
         <div class="footer-col">
-          <h4 class="footer-col-title">
-            <span class="title-bar"></span>
-            Legal & Cumplimiento
-          </h4>
-          <ul class="footer-nav-list">
-            <li><a href="privacidad.html"><span>Política de Privacidad (LOPDP)</span></a></li>
-            <li><a href="seguridad.html"><span>Seguridad y Resguardo Técnico</span></a></li>
-            <li><a href="terminos.html"><span>Términos y Condiciones del Servicio</span></a></li>
-            <li><a href="terminos.html#propiedad-intelectual"><span>Propiedad Intelectual y SERCOP</span></a></li>
+          <h3>Producto</h3>
+          <ul>
+            <li><a href="../index.html#metodologia">Cómo funciona</a></li>
+            <li><a href="../index.html#rubros">Rubros</a></li>
+            <li><a href="../index.html#precios">Precio</a></li>
+            <li><a href="../index.html#faq">Preguntas</a></li>
+            <li><a href="../portal.html">Portal clientes</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
-          <h4 class="footer-col-title">
-            <span class="title-bar"></span>
-            Contacto Corporativo
-          </h4>
-          <ul class="footer-nav-list">
-            <li><a href="mailto:contacto@j2sdynamics.com"><span>contacto@j2sdynamics.com</span></a></li>
-            <li><span>Guayaquil · Quito · Cuenca</span></li>
-            <li><a href="../index.html#precios"><span>Suscripción B2B ($80/mes)</span></a></li>
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="privacidad.html">Privacidad (LOPDP)</a></li>
+            <li><a href="seguridad.html">Seguridad</a></li>
+            <li><a href="terminos.html">Términos del servicio</a></li>
+            <li><a href="https://datosabiertos.compraspublicas.gob.ec" target="_blank" rel="noopener">Portal SERCOP</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Operación</h3>
+          <ul class="footer-meta-list">
+            <li>
+              <span class="footer-meta-label">Ciclos</span>
+              <span>00:00 · 06:00 · 12:00 · 18:00 ECT</span>
+            </li>
+            <li>
+              <span class="footer-meta-label">Reporte</span>
+              <span>Lunes 08:00 ECT</span>
+            </li>
+            <li>
+              <span class="footer-meta-label">Cobertura</span>
+              <span>24 provincias</span>
+            </li>
+            <li>
+              <span class="footer-meta-label">Soporte</span>
+              <a href="mailto:contacto@j2sdynamics.com">contacto@j2sdynamics.com</a>
+            </li>
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <div class="footer-bottom-legal">
-          <p class="footer-disclaimer">© 2026 LicitaciónYa Ecuador · J2S Dynamics. Plataforma privada e independiente de analítica de datos abiertos oficiales OCDS conforme a la Ley Orgánica de Contratación Pública. No representa ni está afiliada oficialmente con el SERCOP.</p>
-        </div>
-        <div class="footer-trust-pills">
-          <span class="trust-tag">SSL 256-Bit</span>
-          <span class="trust-tag">LOPDP Art. 60.4</span>
-          <span class="trust-tag">Factura Electrónica SRI</span>
+        <p>
+          © 2026 LicitaciónYa Ecuador · J2S Dynamics. Datos oficiales OCDS conforme a la LOSNCP. No representa oficialmente al SERCOP.
+        </p>
+        <div class="footer-tags">
+          <span>LOPDP</span>
+          <span>OCDS</span>
+          <span>Factura SRI</span>
         </div>
       </div>
     </div>
   </footer>
 
+  <script type="module">
+    import { initNavbar } from '../js/navbar.js';
+    initNavbar();
+  </script>
 </body>
 </html>
